@@ -1,0 +1,480 @@
+export type Line = { text: string; strong?: boolean };
+
+// #TODO: 사업자 번호는 변경해야함
+export const CLINIC = {
+    name: '연세진치과',
+    nameEn: 'Yonsei Jin Dental',
+    owner: '조진세',
+    address: '경기도 여주시 세종로 375-1, 2층',
+    tel: '031-883-0045',
+    bizNo: '209-90-12410',
+    hours: [
+        { day: '월 / 수', time: '9:00 ~ 18:00' },
+        { day: '화 / 금', time: '9:00 ~ 20:30', note: '야간진료' },
+        { day: '토 요 일', time: '9:00 ~ 12:30' },
+    ],
+    lunch: { day: '점 심 시 간', time: '12:30 ~ 14:00' },
+    notes: ['목요일 휴진', '진료종료 1시간 전 접수마감 / 예약진료'],
+    parking: '주차 가능',
+};
+
+export const NAV = [
+    { label: '의료진 소개', href: '#doctor' },
+    { label: '핵심역량', href: '#core' },
+    { label: '학술·연구', href: '#research' },
+    { label: '진료 안내', href: '#contact' },
+    { label: '특화진료', href: '#signature' },
+];
+
+export const PHILOSOPHY = {
+    eyebrow: 'Our Philosophy',
+    title: '연세진치과의 진료철학',
+    desc: [
+        '여주에서 14년, 한 가지 마음으로 진료해 왔습니다.',
+        '치아 때문에, 비용 때문에, 두려움 때문에 \n치료를 미루는 분이 없기를 바라는 마음입니다.',
+    ],
+    image: '/image/img-tour-01.jpg',
+    alt: '여주 연세진치과 상담실과 진료 준비 공간',
+    slides: [
+        {
+            lead: '연세진치과는 3가지를 지킵니다.',
+            title: '정직하게 설명합니다.',
+            lines: ['구강 상태를 있는 그대로 말씀드리고,', '필요 없는 치료는 권하지 않습니다.'],
+        },
+        {
+            title: '환자가 결정합니다.',
+            lines: ['무엇을 언제 치료할지,', '그 선택의 주인은 언제나 환자분입니다.'],
+        },
+        {
+            title: '덜 아프게 치료합니다.',
+            lines: ['통증과 두려움을 덜어내는 일을', '먼저 생각합니다.'],
+        },
+    ],
+};
+
+type SpecialCareItem = {
+    no: string;
+    tone: 'light' | 'dark';
+    title: string[];
+    highlight?: string[];
+    body: Line[];
+};
+
+export const SPECIAL_CARE: { eyebrow: string; title: string; items: SpecialCareItem[] } = {
+    eyebrow: 'Yonsei JIN Special Care',
+    title: '연세진치과의 특별함',
+    items: [
+        {
+            no: '01',
+            tone: 'light',
+            title: ['환자분의 치아를 먼저 생각합니다'],
+            highlight: ['가장 좋은 치아는 원래 갖고 있는', '환자분의 치아입니다.'],
+            body: [
+                { text: '뺄 수 있는 치아라도 살릴 방법이 있다면, 신경치료를' },
+                { text: '비롯해 할 수 있는 모든 방법을 먼저 찾습니다.' },
+                { text: '발치와 임플란트는 언제나 마지막 선택입니다.' },
+            ],
+        },
+        {
+            no: '02',
+            tone: 'dark',
+            title: ['대학병원급 디지털 첨단 장비로 정밀하게,', '여주 유일 풀아치까지!'],
+            body: [
+                { text: '손끝의 감에만 의존하지 않습니다. 수술 전 3D 디지털 진단' },
+                { text: '과 설계를 바탕으로, ' },
+                { text: '계획된 위치에 정확하게 치료합니다.', strong: true },
+                { text: '잇몸 절개를 최소화하는 디오나비 네비게이션 임플란트,' },
+                { text: '그리고 임플란트 4~6개로 한쪽 턱 전체를 다시 세우는', strong: true },
+                { text: '디오나비 풀아치까지 정밀한 디지털 기술로 진료합니다.', strong: true },
+            ],
+        },
+        {
+            no: '03',
+            tone: 'dark',
+            title: ['덜 아픈 치료를 지향합니다'],
+            body: [
+                { text: '아픔을 오래 겪어본 사람은, 아픈 것을 참는 일이 얼마나 고단' },
+                { text: '한지 압니다. "이 정도는 참으세요"라는 말이 환자분께 얼마나' },
+                { text: '무거운지 알기에, 연세진치과는 통증과 두려움을 더는 일을', strong: true },
+                { text: '늘 먼저 생각합니다.', strong: true },
+                { text: '절개를 줄이고 회복을 앞당기는 방법으로,' },
+                { text: '치과에 대한 두려움까지 덜어드립니다.' },
+            ],
+        },
+        {
+            no: '04',
+            tone: 'light',
+            title: ['끝까지 책임지는 진료'],
+            body: [
+                { text: '좋은 치료는 환자분의 이야기를 끝까지 듣는 데서 시작한다고' },
+                { text: '믿습니다. 어디가 어떻게 불편하신지 충분히 듣고, 무엇을', strong: true },
+                { text: '치료할지는 언제나 환자분 자신이 결정하실 수 있도록 있는', strong: true },
+                { text: '그대로 설명드립니다.', strong: true },
+                { text: '치료가 끝나는 순간까지, 그리고 그' },
+                { text: '이후로도 환자분의 구강 건강을 곁에서 책임지고 살펴드립니다.' },
+            ],
+        },
+    ],
+};
+
+export const SIGNATURE_CARE = [
+    { title: '임플란트', image: '/image/img-teeth-01.jpg' },
+    { title: '치아교정', image: '/image/img-teeth-02.jpg' },
+    { title: '디지털 풀아치', image: '/image/img-teeth-03.jpg' },
+    { title: '보철진료', image: '/image/img-teeth-04.jpg' },
+];
+
+export const DOCTOR = {
+    name: '조진세',
+    role: '대표원장',
+    image: '/image/img-doc-01.jpg',
+    groups: [
+        {
+            label: '학력',
+            items: ['연세대학교 치과대학 졸업', '통합치의학과 전문의'],
+        },
+        {
+            label: '약력',
+            items: [
+                '일본 동경치과대학 교합박사 연수',
+                '오스템 AIC 임플란트 TRAINING COURSE 수료',
+                // TODO: 아래 2줄은 시안 해상도 한계로 판독 불확실. 원본 문구 확인 후 교체
+                '유럽심미연구회 SEMINAR 수료',
+                '덴티움 심미보철 SEMINAR 수료',
+                '국내 TWEED 교정 COURSE 수료 (한국지회, 서울)',
+                '미국 TWEED INTERNATIONAL FOUNDATION',
+                '교정 COURSE 수료 (미국 애리조나 투손)',
+            ],
+        },
+        {
+            label: '',
+            items: [
+                '전) 한국치과교정연구회 이사',
+                '한국치과교정연구회 교수부원',
+                '한국치과교정연구회 강원지부 INSTRUCTOR',
+                '대한치과보철학회 정회원',
+            ],
+        },
+    ],
+};
+
+export const RESEARCH = {
+    eyebrow: 'Research & Academic Activities',
+    title: '학술·연구',
+    desc: '연세진치과는 더 안전하고 정확한 치료를 위해 끊임없이 연구하고 함께 공유합니다.',
+    tabs: [
+        {
+            label: '원내 학술 활동',
+            title: '함께 보는 진료',
+            // TODO: 실제 원내 브리핑 사진으로 교체
+            image: '/image/img-who-06.jpg',
+            alt: '연세진치과 의료진이 수술 환자 브리핑을 진행하는 모습',
+            items: [
+                '매주 수술 환자 브리핑 1회,\n교육 미팅 2회 상시 진행',
+                '수술을 앞둔 환자의 상태를 의료진이\n함께 검토하고 준비하는 시스템',
+            ],
+        },
+        {
+            label: '대외 학술대회',
+            title: '함께 보는 진료와 교류',
+            // TODO: 실제 학술대회 사진으로 교체
+            image: '/image/img-who-07.jpg',
+            alt: '연세진치과 원장이 대외 학술대회 강연에 참석한 모습',
+            items: [
+                '대한치과교정학회 학술대회 및\n국내 주요 학회 정기 참석',
+                '최신 임상 지견 공유를 위한 학술 활동 참여',
+            ],
+        },
+        {
+            label: '교정 연구 및 교육',
+            title: '교정 연구 및 교육',
+            // TODO: 실제 교정연구회 단체 사진으로 교체
+            image: '/image/img-who-08.jpg',
+            alt: '한국치과교정연구회 교육 과정 단체 사진',
+            items: [
+                '(사)한국치과교정연구회 교수부원 및\n강원지부 인스트럭터 활동',
+                '서울 TWEED 코스에서 국내외 치과의사 실습 지도',
+                '정기 증례 검토 및 교정 임상 연구 진행',
+            ],
+        },
+        {
+            label: '글로벌 교정 연수',
+            title: '해외 교정 연수',
+            // TODO: 실제 해외 연수 단체 사진으로 교체
+            image: '/image/img-who-09.jpg',
+            alt: '미국 TWEED 교정 코스 해외 연수 단체 사진',
+            items: [
+                '미국 애리조나 TWEED INTERNATIONAL FOUNDATION 교정 코스 수료',
+                '일본 동경치과대학 교환학생 연수 이수',
+            ],
+        },
+    ],
+};
+
+type Slide = { head?: string; items: string[] };
+
+export type CoreTab = {
+    id: string;
+    label: string;
+    title: { top: string[]; lead?: string; bottom: string };
+    desc: Line[];
+    expertise?: { title: Line[]; paragraphs: string[]; image: string; alt: string };
+    highlight: {
+        title: string;
+        numbered: boolean;
+        image: string;
+        alt: string;
+        slides: Slide[];
+    };
+    system?: {
+        title: string[];
+        desc: string;
+        slides: { image: string; alt: string; label?: string; wide?: boolean }[];
+    };
+};
+
+export const CORE_TABS: CoreTab[] = [
+    {
+        id: 'navigation-implant',
+        label: '네비게이션\n임플란트',
+        title: {
+            top: ['잇몸 절개는 최소로, 정확함은 최대로'],
+            lead: '덜 아픈',
+            bottom: '네비게이션 임플란트',
+        },
+        desc: [
+            { text: '수술 전 3D CT와 디지털 설계를 바탕으로,' },
+            { text: '미리 계획한 위치에 정확하게 임플란트를 심는 방식입니다.' },
+            { text: '잇몸을 넓게 절개하지 않고 최소한의 부위로만 진행하기 때문에,', strong: true },
+            { text: '통증과 붓기는 줄이고 정확도는 높인 치료입니다', strong: true },
+        ],
+        highlight: {
+            title: '이런 분께 권해드립니다',
+            numbered: false,
+            image: '/image/img-who-01.jpg',
+            alt: '연세진치과 네비게이션 임플란트 상담을 안내하는 의료진',
+            slides: [
+                {
+                    items: [
+                        '정확하고 안전한 임플란트를 원하시는 분',
+                        '임플란트 수술의 통증과 부기가 걱정되시는 분',
+                        '잇몸 절개에 부담을 느끼시는 분',
+                        '당뇨·고혈압 등으로 출혈이나 회복이 걱정되시는 분',
+                        '수술 시간을 줄이고 빠르게 일상으로 돌아가고 싶으신 분',
+                    ],
+                },
+            ],
+        },
+        system: {
+            title: ['디오나비 디지털', '임플란트 시스템'],
+            desc: '연세진치과는 국내 대표\n디지털 임플란트 시스템인\n디오나비를 활용해\n정밀한 수술을 진행합니다.',
+            slides: [
+                {
+                    image: '/image/img-ex-01.jpg',
+                    alt: '디오나비 디지털 임플란트 수술 계획 장비',
+                    label: 'DIO Navi',
+                    wide: true,
+                },
+                { image: '/image/img-ex-02.jpg', alt: '환자 구강 스캔을 진행하는 네비게이션 임플란트 진료 장면' },
+            ],
+        },
+    },
+    {
+        id: 'orthodontics',
+        label: '치아교정',
+        title: {
+            top: ['나의 상태를 충분히'],
+            bottom: '이해하고 시작하는 교정',
+        },
+        desc: [
+            { text: '교정은 짧게는 1년, 길게는 몇 년에 걸친 긴 여정입니다.' },
+            { text: '연세진치과는 환자분이 자신의 상태와 치료 과정을' },
+            { text: '충분히 이해하고 스스로 동기부여가 되었을 때,', strong: true },
+            { text: '정밀한 분석과 치료계획을 거쳐 교정치료를 시작합니다.' },
+        ],
+        expertise: {
+            title: [{ text: '연세진치과', strong: true }, { text: '의 교정 전문성' }],
+            paragraphs: [
+                '연세진치과 원장은 (사)한국치과교정연구회 교수부원 및\n강원지부 인스트럭터로 활동하며, 서울 TWEED 코스에서\n국내외 치과의사들의 실습을 지도하고 있습니다.',
+                '교육생으로 시작해 오랜 학술 활동과 임상 경험을 쌓아왔으며,\n구강의 기능과 심미를 함께 고려한 정밀한 교정 치료를 통해\n환자에게 적합한 치료 계획을 세웁니다.',
+            ],
+            image: '/image/img-doc-01.jpg',
+            alt: '연세진치과 조진세 대표원장 교정 진료 소개',
+        },
+        highlight: {
+            title: '이런 분께 권해드립니다',
+            numbered: false,
+            image: '/image/img-who-02.jpg',
+            alt: '연세진치과 치아교정 상담을 안내하는 의료진',
+            slides: [
+                {
+                    items: [
+                        '치아 배열이나 부정교합이 고민이신 분',
+                        '돌출입 등 얼굴 라인까지 개선하고 싶으신 분',
+                        '임플란트나 보철 치료를 위해 치아 위치를 바로잡아야 하는 분',
+                        '앞니 등 일부만 부분적으로 교정하고 싶으신 분',
+                        '성장기 자녀의 교정 시기를 고민하는 부모님',
+                    ],
+                },
+            ],
+        },
+        system: {
+            title: ['폭넓은', '교정 범위'],
+            desc: '성인은 물론 소아·청소년 교정까지,\n전체 교정과 부분 교정을 폭넓게\n진료합니다. 임플란트나 보철 전\n필요한 부분 교정, 앞니 부분 교정\n등 환자분의 상황에 맞는 다양한\n치료가 가능합니다.',
+            slides: [
+                { image: '/image/img-ex-03.jpg', alt: '치아교정 장치를 부착한 환자의 미소', wide: true },
+                { image: '/image/img-ex-04.jpg', alt: '치아교정 장치가 부착된 교정 모형' },
+            ],
+        },
+    },
+    {
+        id: 'digital-full-arch',
+        label: '디지털 풀아치',
+        title: {
+            top: ['이가 거의 없어도, 하루 만에', '다시 웃을 수 있습니다'],
+            bottom: '디오나비 풀아치 임플란트',
+        },
+        desc: [
+            { text: '디지털 풀아치는 치아를 대부분 잃은 경우,' },
+            { text: '임플란트 4~6개로 전체 치아를 회복하는 치료입니다.', strong: true },
+            { text: '틀니의 불편함을 줄이고, 자연스러운 심미와', strong: true },
+            { text: '씹는 기능을 함께 되찾을 수 있도록 돕습니다.', strong: true },
+        ],
+        highlight: {
+            title: '이런 분께 권해드립니다',
+            numbered: false,
+            image: '/image/img-who-03.jpg',
+            alt: '연세진치과 디지털 풀아치 임플란트 상담을 안내하는 의료진',
+            slides: [
+                {
+                    items: [
+                        '치아를 대부분 잃어 틀니를 고민하고 계신 분',
+                        '틀니가 불편해 제대로 씹지 못하시는 분',
+                        '전체 임플란트를 원하지만 비용이 부담되시는 분',
+                        '잇몸뼈가 부족해 일반 임플란트가 어렵다고 들으신 분',
+                        '빠르게 치아 기능과 외모를 회복하고 싶으신 분',
+                    ],
+                },
+            ],
+        },
+        system: {
+            title: ['여주 유일,', '디오나비 풀아치 시스템'],
+            desc: '연세진치과는 여주에서 디오나비\n풀아치 시스템을 도입해 진료하는\n유일한 치과입니다. 정밀한 디지털\n진단과 설계를 바탕으로, 환자 한 분께\n맞는 정확한 치료 계획을 세웁니다.',
+            slides: [
+                {
+                    image: '/image/img-ex-05.jpg',
+                    alt: '디오나비 풀아치 임플란트 식립 모형',
+                    label: 'DIO Navi',
+                    wide: true,
+                },
+                { image: '/image/img-ex-06.jpg', alt: '풀아치 임플란트 보철 구조 모형' },
+                { image: '/image/img-ex-07.jpg', alt: '임플란트 구조를 단면으로 보여주는 이미지' },
+            ],
+        },
+    },
+    {
+        id: 'tooth-preservation',
+        label: '자연치아\n보존원칙',
+        title: {
+            top: ['가장 좋은 치아는,'],
+            bottom: '원래 내 치아입니다',
+        },
+        desc: [
+            { text: '임플란트가 아무리 발전해도, 자연치아를 완전히 대신할 수는 없습니다.' },
+            { text: '연세진치과는 살릴 수 있는 치아라면 먼저 보존하는 것을 원칙으로 하며,', strong: true },
+            { text: '자연치아를 지키기 위한 모든 방법을 먼저 찾습니다.', strong: true },
+        ],
+        highlight: {
+            title: '연세진치과의 약속',
+            numbered: true,
+            image: '/image/img-who-04.jpg',
+            alt: '연세진치과 자연치아 보존 진료를 준비하는 의료진',
+            slides: [
+                {
+                    head: '살릴 수 있는 치아는 먼저 살립니다',
+                    items: [
+                        '신경까지 손상된 치아라도 곧바로 빼지 않고,\n신경치료(근관치료)를 통해 자연치아를 최대한\n보존하는 것을 우선합니다.',
+                        '발치와 임플란트는 다른 방법으로 치아를 살리기\n어려울 때 선택하는 마지막 단계입니다.',
+                    ],
+                },
+            ],
+        },
+    },
+    {
+        id: 'sterilization',
+        label: '철저한\n위생관리',
+        title: {
+            top: ['눈에 보이지 않는 곳까지,'],
+            bottom: '환자의 안전을 먼저 생각합니다',
+        },
+        desc: [
+            { text: '치과 치료는 입안의 예민한 조직을 다루는 만큼, 감염 관리가 무엇보다 중요합니다.' },
+            { text: '연세진치과는 모든 기구와 장비를 원칙에 따라 철저히 멸균·소독하여,', strong: true },
+            { text: '환자분이 안심하고 치료받으실 수 있는 환경을 유지하고 있습니다.', strong: true },
+        ],
+        highlight: {
+            title: '연세진치과의 약속',
+            numbered: true,
+            image: '/image/img-who-05.jpg',
+            alt: '연세진치과 진료 기구를 멸균 소독기에 넣어 관리하는 모습',
+            slides: [
+                {
+                    head: '매일 빠짐없이, 철저한 멸균 관리',
+                    items: [
+                        '오토클레이브(고압증기 멸균기)와 핸드피스 전용\n멸균 소독기를 매일 빠짐없이 가동하여,\n진료에 사용되는 기구를 철저히 멸균 관리합니다.',
+                    ],
+                },
+            ],
+        },
+    },
+];
+
+export const FAQ = [
+    {
+        category: '네비게이션 임플란트',
+        items: [
+            {
+                q: '기간은 얼마나 걸리나요?',
+                a: '진단 후 보통 1~2주 안에 수술을 진행하며, 최종 보철까지는 일반적으로 약 2개월,\n뼈 이식이 필요한 경우 4~6개월까지 소요될 수 있습니다.',
+            },
+            {
+                // #TODO: 답변 원고 미수령. 전달받는 대로 교체
+                q: '정말 덜 아픈가요?',
+                a: '',
+            },
+        ],
+    },
+    {
+        category: '치아교정',
+        items: [
+            {
+                q: '어떤 장치가 저에게 맞나요?',
+                a: '치아 상태, 생활 방식, 선호도에 따라 적합한 장치가 다릅니다. 정밀 진단과 상담을 통해\n가장 알맞은 방법을 함께 찾아드립니다.',
+            },
+            {
+                q: '성인도 교정이 가능한가요?',
+                a: '네. 교정에 나이 제한은 없습니다. 잇몸과 치아뼈가 건강하다면 성인도 얼마든지\n교정이 가능합니다.',
+            },
+        ],
+    },
+    {
+        category: '디지털 풀아치',
+        items: [
+            {
+                q: '정말 임플란트 4~6개로 치아 전체가 지탱되나요?',
+                a: '네. 힘을 가장 효율적으로 받는 위치에 임플란트를 배치하기 때문에, 적은 개수로도 안정적으로 전체 치아를 지지할 수 있습니다. 다만 잇몸뼈 상태에 따라 개수는 달라질 수 있습니다.',
+            },
+            {
+                q: '수술 당일 바로 씹을 수 있나요?',
+                a: '당일 임시 치아를 장착해 일상생활은 가능하지만, 임플란트가 뼈에 완전히 안정되기 전까지는\n부드러운 음식 위주로 드시는 것이 좋습니다.',
+            },
+            {
+                q: '비용은 어떻게 되나요?',
+                a: '풀아치 치료는 심는 임플란트 개수와 보철 방식, 잇몸뼈 상태에 따라 환자분마다 달라집니다.\n정확한 비용은 정밀 진단과 상담을 통해 안내해 드리니, 편하게 내원해 상담받아 보시길 권해드립니다.',
+            },
+        ],
+    },
+    // #TODO: 자연치아 보존원칙 / 철저한 위생관리 FAQ 원고 미수령. items 배열만 채우면 바로 노출됨
+    { category: '자연치아 보존원칙', items: [] },
+    { category: '철저한 위생관리', items: [] },
+];
