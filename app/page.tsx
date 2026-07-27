@@ -1,9 +1,9 @@
-import Image from "next/image";
+import Image from 'next/image';
 
 export default function Home() {
-  return (
-   <>
-   <p>테스트</p>
-   </>
-  );
+    return (
+        <>
+            <p className="p-10 text-h3">테스트</p>
+        </>
+    );
 }
