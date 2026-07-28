@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
 
-// 나눔스퀘어 네오 폰트 & 영문도 사용
+// 나눔스퀘어 네오 가변 폰트 한 개로 100~900 전 굵기를 커버한다.
 const nanum = localFont({
     src: '../public/fonts/NanumSquareNeo-Variable.woff2',
     weight: '100 900',
@@ -10,7 +10,6 @@ const nanum = localFont({
     display: 'swap',
 });
 
-// #TODO: 도메인 확정되면 실제 주소로 교체
 const SITE_URL = 'https://yonsei-jin-dental.vercel.app/';
 const TITLE = '연세진치과 | 여주 임플란트·치아교정 치과';
 const DESCRIPTION =
@@ -33,7 +32,7 @@ export const metadata: Metadata = {
                 url: '/image/og-image.jpg',
                 width: 1200,
                 height: 630,
-                alt: '연세진치과 - 정직한 진료, 세심한 치료를 약속드립니다.',
+                alt: '연세진치과 - 정직한 진료, 세심한 치료를 약속드립니다',
             },
         ],
     },
@@ -48,9 +47,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="ko" className={nanum.variable}>
-            <body>
-                <main>{children}</main>
-            </body>
+            <body>{children}</body>
         </html>
     );
 }

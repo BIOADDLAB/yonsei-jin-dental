@@ -3,26 +3,16 @@ import { getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 
-// Your web app's Firebase configuration
-const firebaseConfig = {
-    apiKey: 'AIzaSyCC9gPhwhdELDjTVEWZLbGR9-XnRIaTra8',
-    authDomain: 'yonsei-jin-dental.firebaseapp.com',
-    projectId: 'yonsei-jin-dental',
-    storageBucket: 'yonsei-jin-dental.firebasestorage.app',
-    messagingSenderId: '330148754850',
-    appId: '1:330148754850:web:8b4122806f6375c89faefb',
-};
-
 // 파이어베이스 콘솔 > 프로젝트 설정 > 내 앱 에서 복사한 값을 그대로 붙여넣는다.
-// 회사 계정으로 이 객체 값만 통째로 교체한다.
-// const firebaseConfig = {
-//   apiKey: "",
-//   authDomain: "",
-//   projectId: "",
-//   storageBucket: "",
-//   messagingSenderId: "",
-//   appId: "",
-// };
+// 회사 계정 프로젝트가 생기면 이 객체 값만 통째로 교체한다.
+const firebaseConfig = {
+    apiKey: '',
+    authDomain: '',
+    projectId: '',
+    storageBucket: '',
+    messagingSenderId: '',
+    appId: '',
+};
 
 export const isFirebaseReady = Boolean(firebaseConfig.apiKey && firebaseConfig.projectId);
 

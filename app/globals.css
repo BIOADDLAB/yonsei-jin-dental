@@ -54,10 +54,28 @@
     /* 캡션 및 주석 */
     font-size: 14px;
 }
+.text-caption-sm {
+    /* 플로팅 버튼 라벨 등 최소 캡션 */
+    font-size: 12px;
+}
+
+/* 시안의 PC 줄바꿈을 그대로 재현한다.
+   데이터의 \n 이 PC에서는 줄바꿈, 모바일·태블릿에서는 공백으로 접혀 자연 줄바꿈된다.
+   <br> 을 심지 않으므로 문단은 텍스트 노드 하나로 유지된다. */
+.text-wrap-design {
+    white-space: normal;
+}
+@media (min-width: 1280px) {
+    .text-wrap-design {
+        white-space: pre-line;
+    }
+}
 
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 72px;
+    /* 좌우 슬라이드 진입 애니메이션이 가로 스크롤을 만들지 않도록 차단 */
+    overflow-x: clip;
 }
 
 body {
@@ -65,7 +83,6 @@ body {
     color: var(--color-basic);
     background: #ffffff;
     -webkit-font-smoothing: antialiased;
-    /* 좌우 슬라이드 진입 애니메이션이 가로 스크롤을 만들지 않도록 차단 */
     overflow-x: clip;
 }
 

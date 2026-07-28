@@ -64,7 +64,7 @@ export default function AdminNoticePage() {
     if (!isFirebaseReady || checking || !user) {
         return (
             <main className="flex min-h-screen items-center justify-center px-5">
-                <p className="text-small text-foreground/60">확인 중입니다.</p>
+                <p className="text-small text-basic/60">확인 중입니다.</p>
             </main>
         );
     }
@@ -74,7 +74,7 @@ export default function AdminNoticePage() {
             <header className="flex items-center justify-between gap-4">
                 <h1 className="text-subheading font-extrabold text-primary">공지사항 관리</h1>
                 <div className="flex gap-2">
-                    <Link href="/" className="rounded-xl border border-hairline px-4 py-2 text-caption text-foreground">
+                    <Link href="/" className="rounded-xl border border-neutral-200 px-4 py-2 text-caption text-basic">
                         사이트 보기
                     </Link>
                     <button
@@ -95,13 +95,13 @@ export default function AdminNoticePage() {
                         value={form.title}
                         onChange={(event) => setForm({ ...form, title: event.target.value })}
                         placeholder="제목"
-                        className="rounded-xl border border-hairline px-4 py-3 text-small outline-none focus:border-primary"
+                        className="rounded-xl border border-neutral-200 px-4 py-3 text-small outline-none focus:border-primary"
                     />
                     <input
                         type="date"
                         value={form.date}
                         onChange={(event) => setForm({ ...form, date: event.target.value })}
-                        className="rounded-xl border border-hairline px-4 py-3 text-small outline-none focus:border-primary"
+                        className="rounded-xl border border-neutral-200 px-4 py-3 text-small outline-none focus:border-primary"
                     />
                 </div>
 
@@ -139,7 +139,7 @@ export default function AdminNoticePage() {
                         <button
                             type="button"
                             onClick={reset}
-                            className="rounded-xl border border-hairline px-5 py-2.5 text-caption"
+                            className="rounded-xl border border-neutral-200 px-5 py-2.5 text-caption"
                         >
                             취소
                         </button>
@@ -151,17 +151,17 @@ export default function AdminNoticePage() {
                 <h2 className="text-body font-extrabold text-primary">공지 목록</h2>
 
                 {loading ? (
-                    <p className="py-8 text-center text-caption text-foreground/60">불러오는 중입니다.</p>
+                    <p className="py-8 text-center text-caption text-basic/60">불러오는 중입니다.</p>
                 ) : notices.length === 0 ? (
-                    <p className="py-8 text-center text-caption text-foreground/60">등록된 공지사항이 없습니다.</p>
+                    <p className="py-8 text-center text-caption text-basic/60">등록된 공지사항이 없습니다.</p>
                 ) : (
-                    <ul className="mt-4 divide-y divide-hairline">
+                    <ul className="mt-4 divide-y divide-neutral-200">
                         {notices.map((notice, index) => (
                             <li key={notice.id} className="flex items-center gap-4 py-3">
-                                <span className="w-8 shrink-0 text-caption text-foreground/50">
+                                <span className="w-8 shrink-0 text-caption text-basic/50">
                                     {String(index + 1).padStart(2, '0')}
                                 </span>
-                                <span className="w-28 shrink-0 text-caption text-foreground/60">{notice.date}</span>
+                                <span className="w-28 shrink-0 text-caption text-basic/60">{notice.date}</span>
                                 <span className="flex-1 truncate text-small font-bold text-primary">
                                     {notice.title}
                                 </span>
@@ -171,14 +171,14 @@ export default function AdminNoticePage() {
                                         setEditingId(notice.id);
                                         setForm({ title: notice.title, date: notice.date, imageUrl: notice.imageUrl });
                                     }}
-                                    className="rounded-lg border border-hairline px-3 py-1.5 text-caption"
+                                    className="rounded-lg border border-neutral-200 px-3 py-1.5 text-caption"
                                 >
                                     수정
                                 </button>
                                 <button
                                     type="button"
                                     onClick={() => remove(notice.id)}
-                                    className="rounded-lg border border-hairline px-3 py-1.5 text-caption text-red-600"
+                                    className="rounded-lg border border-neutral-200 px-3 py-1.5 text-caption text-red-600"
                                 >
                                     삭제
                                 </button>
