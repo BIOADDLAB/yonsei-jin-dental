@@ -13,8 +13,17 @@ export default function Footer() {
     return (
         <footer className="bg-basic py-14 text-center md:py-25">
             <div className="mx-auto w-full max-w-site px-5">
-                <div className="flex items-center justify-center gap-2 text-white">
-                    <Image src="/images/logo.svg" alt="" width={180} height={46} />
+                <div className="flex items-center justify-center gap-2.5 text-white">
+                    <Image
+                        src="/images/logo-03.svg"
+                        alt="여주 연세진치과"
+                        width={48}
+                        height={46}
+                        className="
+                    h-auto w-11 md:w-12
+                    "
+                    />
+                    <span className="text-[20px] font-bold">{CLINIC.name}</span>
                 </div>
 
                 <ul className="mt-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-caption-sm text-white/90">

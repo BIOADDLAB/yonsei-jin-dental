@@ -40,14 +40,19 @@ export default function Header() {
             }`}
         >
             <div className="mx-auto flex h-[80px] w-full max-w-site items-center justify-between px-5 md:h-[100px] md:px-8">
-                <Link href="/" aria-label={`${CLINIC.name} 홈으로 이동`}>
+                <Link
+                    href="/"
+                    className={`flex items-center gap-2.5  text-white`}
+                    aria-label={`${CLINIC.name} 홈으로 이동`}
+                >
                     <Image
                         src="/images/logo.svg"
-                        alt=""
-                        width={180}
+                        alt="여주 연세진치과"
+                        width={46}
                         height={46}
-                        className="h-auto w-[146px] md:w-[180px]"
+                        className="h-auto w-[34px] md:w-[46px]"
                     />
+                    <span className="text-[22px] md:text-[26px] font-bold">{CLINIC.name}</span>
                 </Link>
 
                 <nav className="hidden items-center gap-14.5 lg:flex" aria-label="주요 메뉴">
