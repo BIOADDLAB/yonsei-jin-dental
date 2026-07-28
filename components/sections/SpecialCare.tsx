@@ -4,7 +4,7 @@ import Reveal from '@/components/ui/Reveal';
 export default function SpecialCare() {
     return (
         <section id="special" className="bg-texture py-16 md:py-24 lg:py-37.5" aria-labelledby="special-title">
-            <div className="mx-auto w-full max-w-site px-5 md:px-8">
+            <div className="mx-auto w-full max-w-[1110px] px-5 md:px-8">
                 <Reveal>
                     <p className="text-subheading font-medium text-primary">{SPECIAL_CARE.eyebrow}</p>
                     <h2 id="special-title" className="dot mt-2.5 inline-block text-heading font-bold text-primary">

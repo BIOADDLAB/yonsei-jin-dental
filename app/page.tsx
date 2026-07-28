@@ -6,6 +6,7 @@ import Intro from '@/components/sections/Intro';
 import Contact from '@/components/sections/Contact';
 import Philosophy from '@/components/sections/Philosophy';
 import SpecialCare from '@/components/sections/SpecialCare';
+import SignatureCare from '@/components/sections/SignatureCare';
 
 export default function Home() {
     return (
@@ -16,6 +17,7 @@ export default function Home() {
                 <Intro />
                 <Philosophy />
                 <SpecialCare />
+                <SignatureCare />
                 <Contact />
             </main>
             <Footer />
