@@ -31,7 +31,7 @@ export const FLOATING = [
     { label: '간편상담', href: 'tel:031-883-0045', icon: '/images/i-flo-01.svg' },
     // #ISSUE: 카카오톡은 채널이 없는것 같아서 일단 제외 함
     // { label: '카카오톡', href: 'https://pf.kakao.com/_yonseijin', icon: '/images/i-flo-02.svg' },
-    { label: '네이버예약', href: 'https://naver.me/59vHMVNw', icon: '/images/i-flo-03.svg' },
+    { label: '네이버\n예약', href: 'https://naver.me/59vHMVNw', icon: '/images/i-flo-03.svg' },
 ];
 
 export const PHILOSOPHY = {
