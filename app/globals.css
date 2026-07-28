@@ -121,6 +121,8 @@ body {
     background: #ffffff;
     -webkit-font-smoothing: antialiased;
     overflow-x: clip;
+    word-break: keep-all;
+    overflow-wrap: break-word;
 }
 
 /* 시안 공통 텍스처 배경 */

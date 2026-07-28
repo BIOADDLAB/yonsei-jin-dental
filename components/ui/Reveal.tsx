@@ -2,11 +2,11 @@
 
 import { motion, useReducedMotion } from 'framer-motion';
 import type { ReactNode } from 'react';
-
-type Kind = 'up' | 'left' | 'right' | 'scale';
+type Kind = 'up' | 'bottom' | 'left' | 'right' | 'scale';
 
 const FROM: Record<Kind, { x?: number; y?: number; scale?: number }> = {
     up: { y: 32 },
+    bottom: { y: 64 },
     left: { x: -48 },
     right: { x: 48 },
     scale: { scale: 0.94 },
