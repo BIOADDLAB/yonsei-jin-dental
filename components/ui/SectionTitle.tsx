@@ -10,7 +10,7 @@ type Props = {
 export default function SectionTitle({ eyebrow, title, tone = 'dark', align = 'center' }: Props) {
     return (
         <Reveal className={align === 'center' ? 'text-center' : 'text-left'}>
-            <p className={`text-subheading font-bold ${tone === 'dark' ? 'text-primary' : 'text-accent'}`}>{eyebrow}</p>
+            <p className={`text-lead ${tone === 'dark' ? 'text-primary' : 'text-accent'}`}>{eyebrow}</p>
             <h2 className={`mt-2 text-heading font-extrabold ${tone === 'dark' ? 'text-primary' : 'text-white'}`}>
                 {title}
             </h2>
