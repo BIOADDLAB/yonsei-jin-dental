@@ -3,8 +3,9 @@ import Footer from '@/components/layout/Footer';
 import FloatingMenu from '@/components/layout/FloatingMenu';
 import Hero from '@/components/sections/Hero';
 import Intro from '@/components/sections/Intro';
-import Contact from '../components/sections/Contact';
+import Contact from '@/components/sections/Contact';
 import Philosophy from '@/components/sections/Philosophy';
+import SpecialCare from '@/components/sections/SpecialCare';
 
 export default function Home() {
     return (
@@ -14,6 +15,7 @@ export default function Home() {
                 <Hero />
                 <Intro />
                 <Philosophy />
+                <SpecialCare />
                 <Contact />
             </main>
             <Footer />
