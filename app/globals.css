@@ -86,9 +86,8 @@
         white-space: pre-line;
     }
 }
-
-/* 제목 앞머리에 겹치는 포인트 원. 텍스트 뒤로 깔린다.
-   호스트 요소는 inline-block + relative 가 함께 걸린다. */
+/* 제목 첫 글자에 겹치는 포인트 원. 텍스트 뒤로 깔린다.
+   중앙 정렬된 제목에서는 h2 가 아니라 첫 줄 span 에 걸어야 글자에 겹친다 */
 .dot {
     position: relative;
     z-index: 0;
@@ -96,15 +95,15 @@
 .dot::before {
     content: '';
     position: absolute;
-    left: -10px;
-    top: -7px;
+    left: -14px;
+    top: -8px;
     z-index: -1;
     width: 31px;
     height: 31px;
     border-radius: 9999px;
-    background: var(--color-accent);
+    background: color-mix(in srgb, var(--color-accent) 40%, transparent);
 }
-/* 밝은 배경 위에서는 네이비 20% */
+/* 밝은 배경 위에 얹을 때는 네이비 20% */
 .dot-on-light::before {
     background: color-mix(in srgb, var(--color-primary) 20%, transparent);
 }

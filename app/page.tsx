@@ -3,6 +3,7 @@ import Footer from '@/components/layout/Footer';
 import FloatingMenu from '@/components/layout/FloatingMenu';
 import Hero from '@/components/sections/Hero';
 import Intro from '@/components/sections/Intro';
+import Contact from '../components/sections/Contact';
 
 export default function Home() {
     return (
@@ -11,6 +12,7 @@ export default function Home() {
             <main>
                 <Hero />
                 <Intro />
+                <Contact />
             </main>
             <Footer />
             <FloatingMenu />
