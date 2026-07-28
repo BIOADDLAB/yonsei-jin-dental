@@ -28,10 +28,10 @@ export const NAV = [
 
 // 우측 하단 고정 버튼. TODO: 실제 카카오 채널 / 네이버 예약 주소로 교체
 export const FLOATING = [
-    { label: '간편상담', href: 'tel:031-883-0045', icon: '/image/i-flo-01.svg' },
+    { label: '간편상담', href: 'tel:031-883-0045', icon: '/images/i-flo-01.svg' },
     // #ISSUE: 카카오톡은 채널이 없는것 같아서 일단 제외 함
-    // { label: '카카오톡', href: 'https://pf.kakao.com/_yonseijin', icon: '/image/i-flo-02.svg' },
-    { label: '네이버예약', href: 'https://naver.me/59vHMVNw', icon: '/image/i-flo-03.svg' },
+    // { label: '카카오톡', href: 'https://pf.kakao.com/_yonseijin', icon: '/images/i-flo-02.svg' },
+    { label: '네이버예약', href: 'https://naver.me/59vHMVNw', icon: '/images/i-flo-03.svg' },
 ];
 
 export const PHILOSOPHY = {
@@ -41,7 +41,7 @@ export const PHILOSOPHY = {
         '여주에서 14년, 한 가지 마음으로 진료해 왔습니다.',
         '치아 때문에, 비용 때문에, 두려움 때문에\n치료를 미루는 분이 없기를 바라는 마음입니다.',
     ],
-    image: '/image/img-tour-01.jpg',
+    image: '/images/img-tour-01.jpg',
     alt: '연세진치과 상담실과 진료 준비 공간',
     slides: [
         {
@@ -128,16 +128,16 @@ export const SPECIAL_CARE: { eyebrow: string; title: string; items: SpecialCareI
 };
 
 export const SIGNATURE_CARE = [
-    { title: '임플란트', image: '/image/img-teeth-01.jpg' },
-    { title: '치아교정', image: '/image/img-teeth-02.jpg' },
-    { title: '디지털 풀아치', image: '/image/img-teeth-03.jpg' },
-    { title: '보철진료', image: '/image/img-teeth-04.jpg' },
+    { title: '임플란트', image: '/images/img-teeth-01.jpg' },
+    { title: '치아교정', image: '/images/img-teeth-02.jpg' },
+    { title: '디지털 풀아치', image: '/images/img-teeth-03.jpg' },
+    { title: '보철진료', image: '/images/img-teeth-04.jpg' },
 ];
 
 export const DOCTOR = {
     name: '조진세',
     role: '대표원장',
-    image: '/image/img-doc-01.jpg',
+    image: '/images/img-doc-01.jpg',
     groups: [
         {
             label: '학력',
@@ -175,7 +175,7 @@ export const RESEARCH = {
             // #TODO: 원내학술활동의 활동사진은 추후에 받기로 함
             label: '원내 학술 활동',
             title: '함께 보는 진료',
-            image: '/image/img-card-03.jpg',
+            image: '/images/img-card-03.jpg',
             alt: '연세진치과 의료진이 수술 환자 브리핑을 진행하는 모습',
             items: [
                 '매주 수술 환자 브리핑 1회,\n교육 미팅 2회 상시 진행',
@@ -185,7 +185,7 @@ export const RESEARCH = {
         {
             label: '대외 학술대회',
             title: '끊임없는 연구와 교류',
-            image: '/image/img-card-01.jpg',
+            image: '/images/img-card-01.jpg',
             alt: '연세진치과 원장이 대외 학술대회 강연에 참석한 모습',
             items: [
                 '사)한국치과교정연구회 정기학술대회 및\n대의원 총회 지속 참석 (2024~2025 등)',
@@ -195,7 +195,7 @@ export const RESEARCH = {
         {
             label: '교정 연구 및 교육',
             title: '교정 연구 및 교육',
-            image: '/image/img-card-02.jpg',
+            image: '/images/img-card-02.jpg',
             alt: '한국치과교정연구회 교육 과정 단체 사진',
             items: [
                 '現 (사)한국치과교정연구회 교수부원 및 강원지부 인스트럭터 활동',
@@ -206,7 +206,7 @@ export const RESEARCH = {
         {
             label: '글로벌 교정 연수',
             title: '해외 교정 연수',
-            image: '/image/img-card-03.jpg',
+            image: '/images/img-card-03.jpg',
             alt: '미국 TWEED 교정 코스 해외 연수 단체 사진',
             items: ['미국 애리조나 TWEED 국제 재단 교정 코스 수료', '전문적인 교정학 연수 과정 이수'],
         },
@@ -263,7 +263,7 @@ export const CORE_TABS: CoreTab[] = [
         highlight: {
             title: '이런 분께 권해드립니다',
             numbered: false,
-            image: '/image/img-who-01.jpg',
+            image: '/images/img-who-01.jpg',
             alt: '연세진치과 네비게이션 임플란트 상담을 안내하는 의료진',
             slides: [
                 {
@@ -288,12 +288,12 @@ export const CORE_TABS: CoreTab[] = [
                 desc: '연세진치과는 국내 대표\n디지털 임플란트 시스템인\n디오나비를 활용해\n정밀한 수술을 진행합니다.',
                 slides: [
                     {
-                        image: '/image/img-ex-01.jpg',
+                        image: '/images/img-ex-01.jpg',
                         alt: '디오나비 디지털 임플란트 수술 계획 장비',
                         label: 'DIO Navi',
                         wide: true,
                     },
-                    { image: '/image/img-ex-02.jpg', alt: '' },
+                    { image: '/images/img-ex-02.jpg', alt: '' },
                 ],
             },
             {
@@ -301,12 +301,12 @@ export const CORE_TABS: CoreTab[] = [
                 desc: '원장님은 디오나비 시술 \n1000례를 달성하였습니다.\n오랜 임상 경험에서 나오는 \n정확함으로 환자분의 안전한 치료를 책임집니다.',
                 slides: [
                     {
-                        image: '/image/img-ex-02.jpg',
+                        image: '/images/img-ex-02.jpg',
                         alt: '디오나비 시술 1000례를 달성한 연세진치과 진료 장면',
                         label: 'DIO Navi',
                         wide: true,
                     },
-                    { image: '/image/img-ex-01.jpg', alt: '' },
+                    { image: '/images/img-ex-01.jpg', alt: '' },
                 ],
             },
         ],
@@ -331,13 +331,13 @@ export const CORE_TABS: CoreTab[] = [
                 '연세진치과 원장은 (사)한국치과교정연구회 교수부원 및\n강원지부 인스트럭터로 활동하며, 서울 TWEED 코스에서\n국내외 치과의사들의 실습을 지도하고 있습니다.',
                 '교육생으로 시작해 오랜 학술 활동과 임상 경험을 쌓아왔으며,\n구강의 기능과 심미를 함께 고려한 정밀한 교정 치료를 통해\n환자에게 적합한 치료 계획을 세웁니다.',
             ],
-            image: '/image/img-doc-01.jpg',
+            image: '/images/img-doc-01.jpg',
             alt: '연세진치과 조진세 대표원장 교정 진료 소개',
         },
         highlight: {
             title: '이런 분께 권해드립니다',
             numbered: false,
-            image: '/image/img-who-02.jpg',
+            image: '/images/img-who-02.jpg',
             alt: '연세진치과 치아교정 상담을 안내하는 의료진',
             slides: [
                 {
@@ -357,8 +357,8 @@ export const CORE_TABS: CoreTab[] = [
                 title: ['폭넓은', '교정 범위'],
                 desc: '성인은 물론 소아·청소년 교정까지,\n전체 교정과 부분 교정을 폭넓게\n진료합니다. 임플란트나 보철 전\n필요한 부분 교정, 앞니 부분 교정\n등 환자분의 상황에 맞는 다양한\n치료가 가능합니다.',
                 slides: [
-                    { image: '/image/img-ex-03.jpg', alt: '치아교정 장치를 부착한 환자의 미소', wide: true },
-                    { image: '/image/img-ex-04.jpg', alt: '치아교정 장치가 부착된 교정 모형' },
+                    { image: '/images/img-ex-03.jpg', alt: '치아교정 장치를 부착한 환자의 미소', wide: true },
+                    { image: '/images/img-ex-04.jpg', alt: '치아교정 장치가 부착된 교정 모형' },
                 ],
             },
         ],
@@ -391,7 +391,7 @@ export const CORE_TABS: CoreTab[] = [
         highlight: {
             title: '이런 분께 권해드립니다',
             numbered: false,
-            image: '/image/img-who-03.jpg',
+            image: '/images/img-who-03.jpg',
             alt: '연세진치과 디지털 풀아치 임플란트 상담을 안내하는 의료진',
             slides: [
                 {
@@ -416,13 +416,13 @@ export const CORE_TABS: CoreTab[] = [
                 desc: '연세진치과는 여주에서 디오나비\n풀아치 시스템을 도입해 진료하는\n유일한 치과입니다. 정밀한 디지털\n진단과 설계를 바탕으로, 환자 한 분께\n맞는 정확한 치료 계획을 세웁니다.',
                 slides: [
                     {
-                        image: '/image/img-ex-05.jpg',
+                        image: '/images/img-ex-05.jpg',
                         alt: '디오나비 풀아치 임플란트 식립 모형',
                         label: 'DIO Navi Full Arch',
                         wide: true,
                     },
-                    { image: '/image/img-ex-06.jpg', alt: '풀아치 임플란트 보철 구조 모형' },
-                    { image: '/image/img-ex-07.jpg', alt: '임플란트 구조를 단면으로 보여주는 이미지' },
+                    { image: '/images/img-ex-06.jpg', alt: '풀아치 임플란트 보철 구조 모형' },
+                    { image: '/images/img-ex-07.jpg', alt: '임플란트 구조를 단면으로 보여주는 이미지' },
                 ],
             },
         ],
@@ -454,7 +454,7 @@ export const CORE_TABS: CoreTab[] = [
         highlight: {
             title: '연세진치과의 약속',
             numbered: true,
-            image: '/image/img-who-04.jpg',
+            image: '/images/img-who-04.jpg',
             alt: '연세진치과 자연치아 보존 진료를 준비하는 의료진',
             slides: [
                 {
@@ -498,7 +498,7 @@ export const CORE_TABS: CoreTab[] = [
         highlight: {
             title: '연세진치과의 약속',
             numbered: true,
-            image: '/image/img-who-05.jpg',
+            image: '/images/img-who-05.jpg',
             alt: '연세진치과 진료 기구를 멸균 소독기에 넣어 관리하는 모습',
             slides: [
                 {

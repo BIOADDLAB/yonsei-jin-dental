@@ -19,6 +19,22 @@
     --breakpoint-lg: 1280px;
 }
 
+@theme {
+    --animate-wheel: wheel 1.5s ease-in-out infinite;
+
+    @keyframes wheel {
+        0%,
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        50% {
+            transform: translateY(6px);
+            opacity: 0.3;
+        }
+    }
+}
+
 /* ───────── 타입 스케일 (Design Guide 48/36/24/20/18/16/14 기준) ─────────
    clamp 로 크기가 뷰포트에 따라 자동으로 줄어들기 때문에 md: lg: 를 붙이지 않는다.
    텍스트 크기는 역할 하나당 클래스 하나로 끝낸다. */
@@ -88,13 +104,13 @@ body {
 
 /* 시안 공통 텍스처 배경 */
 .bg-texture {
-    background-image: url('/image/bg-sub-01.jpg');
+    background-image: url('/images/bg-sub-01.jpg');
     background-size: cover;
     background-position: center;
 }
 
 .bg-texture-stone {
-    background-image: url('/image/bg-sub-02.jpg');
+    background-image: url('/images/bg-sub-02.jpg');
     background-size: cover;
     background-position: center;
 }

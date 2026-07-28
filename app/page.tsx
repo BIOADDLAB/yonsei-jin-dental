@@ -1,9 +1,17 @@
-import Image from 'next/image';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+import FloatingMenu from '@/components/layout/FloatingMenu';
+import Hero from '@/components/sections/Hero';
 
 export default function Home() {
     return (
         <>
-            <p className="p-10 text-h3">테스트</p>
+            <Header />
+            <main>
+                <Hero />
+            </main>
+            <Footer />
+            <FloatingMenu />
         </>
     );
 }

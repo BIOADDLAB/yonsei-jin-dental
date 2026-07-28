@@ -10,6 +10,7 @@ const nanum = localFont({
     display: 'swap',
 });
 
+// #TODO: 도메인 확정되면 실제 주소로 교체
 const SITE_URL = 'https://yonsei-jin-dental.vercel.app/';
 const TITLE = '연세진치과 | 여주 임플란트·치아교정 치과';
 const DESCRIPTION =
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
         locale: 'ko_KR',
         images: [
             {
-                url: '/image/og-image.jpg',
+                url: '/images/og-image.jpg',
                 width: 1200,
                 height: 630,
                 alt: '연세진치과 - 정직한 진료, 세심한 치료를 약속드립니다',
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
         card: 'summary_large_image',
         title: TITLE,
         description: DESCRIPTION,
-        images: ['/image/og-image.jpg'],
+        images: ['/images/og-image.jpg'],
     },
 };
 
