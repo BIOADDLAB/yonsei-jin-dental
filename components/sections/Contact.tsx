@@ -18,7 +18,10 @@ export default function Contact() {
                 </Reveal>
 
                 <div className="mt-12 grid grid-cols-1 gap-10 md:mt-18.5 lg:grid-cols-[1fr_674px] lg:gap-14">
-                    <Reveal kind="left" className="order-2 lg:order-1">
+                    <Reveal
+                        kind="left"
+                        className="order-2 mx-auto w-full max-w-[674px] lg:order-1 lg:mx-0 lg:max-w-none"
+                    >
                         <h3 className="text-subheading font-extrabold text-white">진료시간 안내</h3>
                         <dl className="mt-6 space-y-3">
                             {CLINIC.hours.map((item) => (
@@ -54,7 +57,10 @@ export default function Contact() {
                         </div>
                     </Reveal>
 
-                    <Reveal kind="right" className="order-1 flex flex-col lg:order-2">
+                    <Reveal
+                        kind="right"
+                        className="order-1 flex flex-col mx-auto w-full max-w-[674px] lg:order-2 lg:mx-0 lg:max-w-none"
+                    >
                         <h3 className="text-subheading font-extrabold text-white">오시는 길 안내</h3>
                         <div className="relative mt-6 min-h-[320px] w-full max-w-[674px] flex-1 overflow-hidden rounded-[20px] bg-neutral-300 md:min-h-[420px] lg:min-h-0">
                             <iframe
@@ -65,7 +71,6 @@ export default function Contact() {
                                 referrerPolicy="strict-origin-when-cross-origin"
                                 className="absolute inset-0 h-full w-full border-0"
                             />
-                            {/* #ISSUE: 구글 비즈니스 프로필 미등록 상태로 확인되어 임시로 병원명을 위에 얹어놨음 */}
                             <div className="pointer-events-none absolute top-2 right-2 rounded-sm bg-white/70 px-1.5 py-1.5 shadow-[0_4px_16px_rgb(0_0_0/0.18)]">
                                 <p className="text-small font-extrabold text-primary">{CLINIC.name}</p>
                                 <p className="mt-0.5 text-caption-sm text-basic/70">{CLINIC.address}</p>

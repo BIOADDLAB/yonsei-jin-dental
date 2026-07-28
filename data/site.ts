@@ -137,7 +137,7 @@ export const SIGNATURE_CARE = [
 export const DOCTOR = {
     name: '조진세',
     role: '대표원장',
-    image: '/images/img-doc-01.jpg',
+    image: '/images/img-doc.png',
     groups: [
         {
             label: '학력',
@@ -151,7 +151,8 @@ export const DOCTOR = {
                 '유펜엔도연구회 SEMINAR 수료',
                 '덴티움 심미보철 SEMINAR 수료',
                 '국내 TWEED 교정 COURSE 수료 (한국지회, 서울)',
-                '미국 TWEED INTERNATIONAL FOUNDATION\n교정 COURSE 수료 (미국 애리조나 투쏜)',
+                '미국 TWEED INTERNATIONAL FOUNDATION',
+                '교정 COURSE 수료 (미국 애리조나 투쏜)',
             ],
         },
         {
@@ -331,7 +332,7 @@ export const CORE_TABS: CoreTab[] = [
                 '연세진치과 원장은 (사)한국치과교정연구회 교수부원 및\n강원지부 인스트럭터로 활동하며, 서울 TWEED 코스에서\n국내외 치과의사들의 실습을 지도하고 있습니다.',
                 '교육생으로 시작해 오랜 학술 활동과 임상 경험을 쌓아왔으며,\n구강의 기능과 심미를 함께 고려한 정밀한 교정 치료를 통해\n환자에게 적합한 치료 계획을 세웁니다.',
             ],
-            image: '/images/img-doc-01.jpg',
+            image: '/images/img-doc.png',
             alt: '연세진치과 조진세 대표원장 교정 진료 소개',
         },
         highlight: {

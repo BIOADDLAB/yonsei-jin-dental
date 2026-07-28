@@ -7,6 +7,7 @@ import Contact from '@/components/sections/Contact';
 import Philosophy from '@/components/sections/Philosophy';
 import SpecialCare from '@/components/sections/SpecialCare';
 import SignatureCare from '@/components/sections/SignatureCare';
+import Doctor from '@/components/sections/Doctor';
 
 export default function Home() {
     return (
@@ -18,6 +19,7 @@ export default function Home() {
                 <Philosophy />
                 <SpecialCare />
                 <SignatureCare />
+                <Doctor />
                 <Contact />
             </main>
             <Footer />
