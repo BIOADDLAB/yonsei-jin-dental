@@ -87,6 +87,28 @@
     }
 }
 
+/* 제목 앞머리에 겹치는 포인트 원. 텍스트 뒤로 깔린다.
+   호스트 요소는 inline-block + relative 가 함께 걸린다. */
+.dot {
+    position: relative;
+    z-index: 0;
+}
+.dot::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: -7px;
+    z-index: -1;
+    width: 31px;
+    height: 31px;
+    border-radius: 9999px;
+    background: var(--color-accent);
+}
+/* 밝은 배경 위에서는 네이비 20% */
+.dot-on-light::before {
+    background: color-mix(in srgb, var(--color-primary) 20%, transparent);
+}
+
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 72px;
