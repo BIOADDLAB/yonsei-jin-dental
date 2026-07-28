@@ -1,6 +1,3 @@
-// #ISSUE: 모바일에서 이미지가 우측에서 튀어나와 부자연스럽고(덜렁거림), 슬라이드 컨테이너의 곡률과 패딩이 답답한 문제 수정
-// #STYLE: 이미지 등장 애니메이션을 상향(bottom)으로 변경 및 모바일 반경(radius) 제거. 슬라이드는 좌측 텍스트 라인에 정렬하고 우측 여백 확보.
-
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -11,6 +8,7 @@ import Reveal from '@/components/ui/Reveal';
 
 const INTERVAL = 4500;
 
+// 리드문과 슬라이드 본문이 같은 세로 라인에서 시작하도록 좌측 여백을 하나로 통일한다
 const TEXT_INSET = 'lg:pl-[20vw]';
 
 export default function Philosophy() {
@@ -18,6 +16,7 @@ export default function Philosophy() {
     const reduced = useReducedMotion();
     const total = PHILOSOPHY.slides.length;
 
+    // 1 → 2 → 3 → 1 무한 반복
     useEffect(() => {
         const timer = window.setInterval(() => setIndex((prev) => (prev + 1) % total), INTERVAL);
         return () => window.clearInterval(timer);
@@ -42,7 +41,7 @@ export default function Philosophy() {
                         {PHILOSOPHY.desc.map((line) => (
                             <p
                                 key={line}
-                                className="text-wrap-design text-body leading-8  text-white/90 md:leading-[38px]"
+                                className="text-wrap-design text-body leading-8 text-white/90 md:leading-[38px]"
                             >
                                 {line}
                             </p>
@@ -50,6 +49,7 @@ export default function Philosophy() {
                     </div>
                 </Reveal>
 
+                {/* 진료철학 3가지 자동 슬라이드. 배경은 화면 왼쪽 끝에서 시작한다. PC 기준 901x236 */}
                 <div className="mt-10 lg:mt-11">
                     <div
                         className={`relative flex h-[204px] w-[92%] items-center overflow-hidden rounded-r-[32px] bg-accent-soft py-7 pr-6 pl-14 md:h-[220px] md:w-[94%] md:rounded-r-[110px] md:py-10 md:pr-10 md:pl-20 lg:h-[236px] lg:w-[46.93vw] lg:rounded-r-full lg:py-0 lg:pr-16 ${TEXT_INSET}`}
@@ -63,6 +63,7 @@ export default function Philosophy() {
                                 transition={{ duration: reduced ? 0 : 0.5, ease: [0.22, 1, 0.36, 1] }}
                                 className="relative w-full"
                             >
+                                {/* 숫자는 흐름에서 빼서 본문 왼쪽 라인이 리드문과 정확히 맞도록 한다 */}
                                 <span
                                     aria-hidden="true"
                                     className="absolute -top-2 -left-9 text-[40px] leading-none font-bold text-primary/30"
@@ -89,16 +90,11 @@ export default function Philosophy() {
                 </div>
             </div>
 
-            {/* 변경점: 모바일에서는 부드럽게 아래에서 위로(bottom) 나타나도록 애니메이션 방향 수정 */}
-            <Reveal kind="bottom" className="order-1 lg:order-2">
-                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-none md:aspect-[16/9] md:rounded-bl-[140px] lg:aspect-auto lg:h-full lg:rounded-bl-none lg:rounded-tl-[240px]">
-                    <Image
-                        src={PHILOSOPHY.image}
-                        alt={PHILOSOPHY.alt}
-                        fill
-                        sizes="(max-width: 1280px) 100vw, 51vw"
-                        className="object-cover"
-                    />
+            {/* 세로 정렬로 바뀌는 구간에서는 사진을 숨긴다 */}
+            <Reveal kind="bottom" className="order-1 hidden lg:order-2 lg:block">
+                {/* TODO: 실제 병원 내부 사진으로 교체 */}
+                <div className="relative h-full w-full overflow-hidden rounded-tl-[240px]">
+                    <Image src={PHILOSOPHY.image} alt={PHILOSOPHY.alt} fill sizes="51vw" className="object-cover" />
                 </div>
             </Reveal>
         </section>
