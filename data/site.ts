@@ -7,7 +7,7 @@ export const CLINIC = {
     owner: '조진세',
     address: '경기도 여주시 세종로 375-1, 2층',
     tel: '031-883-0045',
-    bizNo: '209-90-12410',
+    bizNo: '627-02-01230',
     hours: [
         { day: '월 / 수', time: '9:00 ~ 18:00' },
         { day: '화 / 금', time: '9:00 ~ 20:30', note: '야간진료' },
