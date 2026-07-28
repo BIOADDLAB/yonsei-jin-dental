@@ -26,7 +26,6 @@ export default function FloatingMenu() {
                             transition={{
                                 duration: reduced ? 0.15 : 0.42,
                                 ease: EASE,
-                                // 열릴 때는 아래에서 위로, 닫힐 때는 위에서 아래로 순차 진행
                                 delay: reduced ? 0 : (isOpen ? total - 1 - index : index) * 0.06,
                             }}
                             whileHover={reduced ? undefined : { scale: 1.06 }}
@@ -36,7 +35,7 @@ export default function FloatingMenu() {
                                 href={item.href}
                                 target={item.href.startsWith('http') ? '_blank' : undefined}
                                 rel={item.href.startsWith('http') ? 'noreferrer' : undefined}
-                                className="flex h-14 w-14 flex-col items-center justify-center gap-0.5 rounded-full bg-white text-basic font-extrabold shadow-[0_4px_16px_rgb(0_0_0/0.18)] transition-colors hover:bg-accent hover:text-basic md:h-[70px] md:w-[70px] md:gap-1"
+                                className="flex h-14 w-14 flex-col items-center justify-center gap-0.5 rounded-full bg-white text-basic font-extrabold shadow-[0_4px_16px_rgb(0_0_0/0.18)] transition-colors hover:bg-gray-100 hover:text-basic md:h-[70px] md:w-[70px] md:gap-1"
                             >
                                 <Image
                                     src={item.icon}
@@ -64,7 +63,7 @@ export default function FloatingMenu() {
                 transition={{ duration: 0.55, ease: EASE, delay: 0.15 }}
                 whileHover={reduced ? undefined : { scale: 1.06 }}
                 whileTap={reduced ? undefined : { scale: 0.9 }}
-                className="flex h-14 w-14 items-center justify-center rounded-full bg-white text-basic shadow-[0_4px_16px_rgb(0_0_0/0.18)] transition-colors hover:bg-accent-soft md:h-[70px] md:w-[70px]"
+                className="flex h-14 w-14 items-center justify-center rounded-full bg-white text-basic shadow-[0_4px_16px_rgb(0_0_0/0.18)] transition-colors hover:bg-gray-100 md:h-[70px] md:w-[70px]"
             >
                 <motion.span
                     key={isOpen ? 'close' : 'open'}
@@ -92,7 +91,7 @@ export default function FloatingMenu() {
                 transition={{ duration: 0.55, ease: EASE, delay: 0.25 }}
                 whileHover={reduced ? undefined : { scale: 1.06, y: -2 }}
                 whileTap={reduced ? undefined : { scale: 0.9 }}
-                className="flex h-14 w-14 items-center justify-center rounded-full bg-white text-basic shadow-[0_4px_16px_rgb(0_0_0/0.18)] transition-colors hover:bg-accent-soft md:h-[70px] md:w-[70px]"
+                className="flex h-14 w-14 items-center justify-center rounded-full bg-white text-basic shadow-[0_4px_16px_rgb(0_0_0/0.18)] transition-colors hover:bg-gray-100 md:h-[70px] md:w-[70px]"
             >
                 <svg
                     viewBox="0 0 24 24"
