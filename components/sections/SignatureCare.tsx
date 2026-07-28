@@ -6,35 +6,35 @@ import SectionTitle from '@/components/ui/SectionTitle';
 export default function SignatureCare() {
     return (
         <section id="signature" className="bg-white py-16 md:py-20" aria-labelledby="signature-title">
-            {/* 상단 패널. 오른쪽 끝까지 붙고 좌상단만 라운드 */}
-            <div className="rounded-tl-[60px] bg-neutral-300 px-5 pb-28 pt-14 text-center md:rounded-tl-[120px] md:pb-36 md:pt-22.5 lg:ml-auto lg:w-[83%]">
+            <div className="ml-auto rounded-l-[60px] bg-neutral-300 px-5 pt-14 pb-28 text-center md:rounded-l-[240px] md:px-8 lg:h-[474px] lg:pt-[90px] lg:pr-[15.31%] lg:pb-0 lg:pl-0 lg:w-[84.69%]">
                 <SectionTitle eyebrow="Signature Care" title="시그니처 진료" />
             </div>
 
-            {/* 하단 패널. 왼쪽 끝에서 시작해 상단 패널 위로 겹친다 */}
-            <div className="-mt-20 rounded-r-full bg-primary py-10 md:-mt-28 md:py-14 lg:w-[84%]">
-                <ul className="grid grid-cols-2 gap-4 px-5 md:gap-6 md:px-8 lg:ml-[18%] lg:grid-cols-4 lg:pr-8">
-                    {SIGNATURE_CARE.map((item, index) => (
-                        <li key={item.title}>
-                            <Reveal kind="up" delay={index * 0.08}>
-                                <article className="rounded-2xl bg-white p-3 transition hover:bg-accent-soft">
-                                    <div className="relative aspect-square w-full overflow-hidden rounded-xl">
-                                        <Image
-                                            src={item.image}
-                                            alt={`연세진치과 ${item.title} 진료 이미지`}
-                                            fill
-                                            sizes="(max-width: 768px) 50vw, 20vw"
-                                            className="object-cover"
-                                        />
-                                    </div>
-                                    <h3 className="py-3 text-center text-small font-extrabold text-primary">
-                                        {item.title}
-                                    </h3>
-                                </article>
-                            </Reveal>
-                        </li>
-                    ))}
-                </ul>
+            <div className="-mt-20 flex items-center rounded-r-[14px] bg-primary py-10 md:-mt-28 md:rounded-r-[240px] md:py-14 lg:-mt-[233px] lg:h-[474px] lg:w-[84.69%] lg:py-0">
+                <div className="mx-auto w-full max-w-site px-5 md:px-8 lg:mx-0 lg:max-w-none lg:pr-0 lg:pl-[21.2%]">
+                    <ul className="grid grid-cols-2 gap-5 md:grid-cols-4 lg:w-[1068px]">
+                        {SIGNATURE_CARE.map((item, index) => (
+                            <li key={item.title}>
+                                <Reveal kind="up" delay={index * 0.08}>
+                                    <article className="rounded-[14px] bg-white p-2 transition-colors hover:bg-accent-soft">
+                                        <div className="relative aspect-[236/181] w-full overflow-hidden rounded-[14px]">
+                                            <Image
+                                                src={item.image}
+                                                alt={`연세진치과 ${item.title} 진료 이미지`}
+                                                fill
+                                                sizes="(max-width: 768px) 50vw, 252px"
+                                                className="object-cover"
+                                            />
+                                        </div>
+                                        <h3 className="pt-[15px] pb-[18px] text-center text-subheading font-black text-primary">
+                                            {item.title}
+                                        </h3>
+                                    </article>
+                                </Reveal>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </div>
         </section>
     );
