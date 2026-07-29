@@ -14,7 +14,7 @@ export default function FloatingMenu() {
     const total = FLOATING.length;
 
     return (
-        <div className="fixed bottom-5 right-4 z-30 flex flex-col gap-2 md:bottom-8 md:right-6 md:gap-3">
+        <div className="fixed bottom-5 right-4 z-30 flex flex-col gap-2 md:bottom-8 md:right-6 md:gap-3 ">
             <AnimatePresence>
                 {isOpen &&
                     FLOATING.map((item, index) => (

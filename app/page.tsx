@@ -8,6 +8,7 @@ import Philosophy from '@/components/sections/Philosophy';
 import SpecialCare from '@/components/sections/SpecialCare';
 import SignatureCare from '@/components/sections/SignatureCare';
 import Doctor from '@/components/sections/Doctor';
+import Research from '@/components/sections/Research';
 
 export default function Home() {
     return (
@@ -20,6 +21,7 @@ export default function Home() {
                 <SpecialCare />
                 <SignatureCare />
                 <Doctor />
+                <Research />
                 <Contact />
             </main>
             <Footer />

@@ -3,15 +3,14 @@ import { getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 
-// 파이어베이스 콘솔 > 프로젝트 설정 > 내 앱 에서 복사한 값을 그대로 붙여넣는다.
-// 회사 계정 프로젝트가 생기면 이 객체 값만 통째로 교체한다.
 const firebaseConfig = {
-    apiKey: '',
-    authDomain: '',
-    projectId: '',
-    storageBucket: '',
-    messagingSenderId: '',
-    appId: '',
+    apiKey: 'AIzaSyBuPOs3HCPoOMj1rIzfHOKd-UMDH3lJdbk',
+    authDomain: 'yonseijin-94254.firebaseapp.com',
+    projectId: 'yonseijin-94254',
+    storageBucket: 'yonseijin-94254.firebasestorage.app',
+    messagingSenderId: '435806643066',
+    appId: '1:435806643066:web:88c146bb1910031bd42cc3',
+    measurementId: 'G-SYKE550K71',
 };
 
 export const isFirebaseReady = Boolean(firebaseConfig.apiKey && firebaseConfig.projectId);

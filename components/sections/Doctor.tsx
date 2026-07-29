@@ -5,7 +5,11 @@ import SectionTitle from '@/components/ui/SectionTitle';
 
 export default function Doctor() {
     return (
-        <section id="doctor" className="relative py-16 md:py-24 lg:py-37" aria-labelledby="doctor-title">
+        <section
+            id="doctor"
+            className="relative py-16 md:py-24 lg:py-37 overflow-x-hidden"
+            aria-labelledby="doctor-title"
+        >
             <Image
                 src="/images/bg-sub-02.jpg"
                 alt="의료진 배경"

@@ -8,7 +8,11 @@ const DAY_LABEL = 'w-30 shrink-0 text-justify [text-align-last:justify] text-sub
 
 export default function Contact() {
     return (
-        <section id="contact" className="bg-primary py-16 md:py-24 lg:py-28" aria-labelledby="contact-title">
+        <section
+            id="contact"
+            className="bg-primary py-16 md:py-24 lg:py-28 overflow-x-hidden"
+            aria-labelledby="contact-title"
+        >
             <div className="mx-auto w-full max-w-site px-5 md:px-8">
                 <Reveal className="text-center">
                     <h2 id="contact-title" className="text-heading lg:text-[30px] font-black leading-12 text-white">
