@@ -93,16 +93,7 @@ export default function FloatingMenu() {
                 whileTap={reduced ? undefined : { scale: 0.9 }}
                 className="flex h-14 w-14 items-center justify-center rounded-full bg-white text-basic shadow-[0_4px_16px_rgb(0_0_0/0.18)] transition-colors hover:bg-gray-100 md:h-[70px] md:w-[70px]"
             >
-                <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    aria-hidden="true"
-                    className="h-5 w-5 md:h-[25px] md:w-[25px]"
-                >
-                    <path d="M12 19V5M5 12l7-7 7 7" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+                <span className="text-body font-medium lg:font-extrabold">Top</span>
             </motion.button>
         </div>
     );
