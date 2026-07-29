@@ -30,7 +30,7 @@ export default function Research() {
                     <p className="mt-3 text-[18px] md:text-subheading text-basic md:mt-6 ">{RESEARCH.desc}</p>
                 </Reveal>
 
-                <div className="mt-10 flex flex-col gap-6 md:mt-18.5 lg:flex-row lg:items-start lg:gap-11.5">
+                <div className="mt-10 flex flex-col-reverse gap-6 md:mt-18.5 lg:flex-row lg:items-start lg:gap-11.5">
                     <Reveal kind="scale" key={current.label} instant className="flex-1 lg:flex-none">
                         <article className="flex flex-col gap-6 rounded-[14px] rounded-tl-[60px] bg-primary p-2 md:flex-row md:gap-[50px] md:p-[18px] lg:h-[557px] lg:w-[928px] lg:rounded-tl-[150px]">
                             {/* #STYLE: md 구간 이미지 붕괴 방지를 위해 min-h 설정 및 aspect 비율 조정 */}
