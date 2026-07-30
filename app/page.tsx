@@ -10,6 +10,7 @@ import SignatureCare from '@/components/sections/SignatureCare';
 import Doctor from '@/components/sections/Doctor';
 import Research from '@/components/sections/Research';
 import Faq from '../components/sections/faq';
+import CoreTabs from './../components/sections/CoreTabs';
 
 export default function Home() {
     return (
@@ -23,6 +24,7 @@ export default function Home() {
                 <SignatureCare />
                 <Doctor />
                 <Research />
+                <CoreTabs />
                 <Faq />
                 <Contact />
             </main>
