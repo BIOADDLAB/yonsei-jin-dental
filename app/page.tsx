@@ -11,6 +11,7 @@ import Doctor from '@/components/sections/Doctor';
 import Research from '@/components/sections/Research';
 import Faq from '../components/sections/faq';
 import CoreTabs from './../components/sections/CoreTabs';
+import NoticeSection from './../components/sections/NoticeSection';
 
 export default function Home() {
     return (
@@ -26,6 +27,7 @@ export default function Home() {
                 <Research />
                 <CoreTabs />
                 <Faq />
+                <NoticeSection />
                 <Contact />
             </main>
             <Footer />
