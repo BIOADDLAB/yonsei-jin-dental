@@ -402,50 +402,112 @@ function Panel({ tab }: { tab: (typeof CORE_TABS)[number] }) {
                                         )}
 
                                         {slide.steps && (
-                                            <div className="mt-6 flex flex-col gap-y-4 text-primary md:mt-[33px] md:gap-y-5 lg:text-white">
-                                                {Array.from({ length: Math.ceil(slide.steps.length / 3) }, (_, row) => {
-                                                    const start = row * 3;
-                                                    const rowSteps = slide.steps!.slice(start, start + 3);
-                                                    return (
-                                                        <ol
-                                                            key={row}
-                                                            className="flex flex-wrap items-center gap-x-4 gap-y-3 md:gap-x-[32px]"
-                                                        >
-                                                            {rowSteps.map((step, i) => {
-                                                                const stepIndex = start + i;
-                                                                const isLastInRow = i === rowSteps.length - 1;
-                                                                return (
-                                                                    <motion.li
-                                                                        key={step}
-                                                                        variants={reduced ? undefined : STAGGER_ITEM}
-                                                                        className="flex items-center gap-4 md:gap-[32px]"
-                                                                    >
-                                                                        <span className="flex flex-col text-center">
-                                                                            <span className="text-caption leading-[26px] font-medium md:leading-[30px]">
-                                                                                {String(stepIndex + 1).padStart(2, '0')}
-                                                                            </span>
-                                                                            <span className="text-wrap-design text-body leading-[26px] font-medium md:leading-[30px]">
-                                                                                {step}
-                                                                            </span>
-                                                                        </span>
-                                                                        {!isLastInRow && (
-                                                                            <span
-                                                                                aria-hidden="true"
-                                                                                className="inline-flex shrink-0"
+                                            <div className="mt-6 text-primary md:mt-[33px] lg:text-white">
+                                                <div className="flex flex-col gap-y-5 md:hidden">
+                                                    {Array.from(
+                                                        { length: Math.ceil(slide.steps.length / 2) },
+                                                        (_, row) => {
+                                                            const start = row * 2;
+                                                            const rowSteps = slide.steps!.slice(start, start + 2);
+                                                            return (
+                                                                <ol
+                                                                    key={`m-${row}`}
+                                                                    className="grid grid-cols-2 items-start gap-x-2"
+                                                                >
+                                                                    {rowSteps.map((step, i) => {
+                                                                        const stepIndex = start + i;
+                                                                        const showArrow = i < rowSteps.length - 1;
+                                                                        return (
+                                                                            <motion.li
+                                                                                key={step}
+                                                                                variants={
+                                                                                    reduced ? undefined : STAGGER_ITEM
+                                                                                }
+                                                                                className="relative flex flex-col items-center px-1 text-center"
                                                                             >
-                                                                                <img
-                                                                                    src="/images/i-arr-r-02.svg"
-                                                                                    alt=""
-                                                                                    className="h-3 w-3 brightness-0 lg:brightness-0 lg:invert"
-                                                                                />
-                                                                            </span>
-                                                                        )}
-                                                                    </motion.li>
-                                                                );
-                                                            })}
-                                                        </ol>
-                                                    );
-                                                })}
+                                                                                <span className="text-caption leading-[26px] font-medium">
+                                                                                    {String(stepIndex + 1).padStart(
+                                                                                        2,
+                                                                                        '0',
+                                                                                    )}
+                                                                                </span>
+                                                                                <span className="text-wrap-design text-body leading-[26px] font-medium whitespace-pre-line">
+                                                                                    {step}
+                                                                                </span>
+                                                                                {showArrow && (
+                                                                                    <span
+                                                                                        aria-hidden="true"
+                                                                                        className="pointer-events-none absolute -right-1 top-[14px] inline-flex"
+                                                                                    >
+                                                                                        <img
+                                                                                            src="/images/i-arr-r-02.svg"
+                                                                                            alt=""
+                                                                                            className="h-3 w-3 brightness-0"
+                                                                                        />
+                                                                                    </span>
+                                                                                )}
+                                                                            </motion.li>
+                                                                        );
+                                                                    })}
+                                                                </ol>
+                                                            );
+                                                        },
+                                                    )}
+                                                </div>
+
+                                                <div className="hidden flex-col gap-y-5 md:flex">
+                                                    {Array.from(
+                                                        { length: Math.ceil(slide.steps.length / 3) },
+                                                        (_, row) => {
+                                                            const start = row * 3;
+                                                            const rowSteps = slide.steps!.slice(start, start + 3);
+                                                            return (
+                                                                <ol
+                                                                    key={`d-${row}`}
+                                                                    className="flex flex-wrap items-center gap-x-[32px] gap-y-3"
+                                                                >
+                                                                    {rowSteps.map((step, i) => {
+                                                                        const stepIndex = start + i;
+                                                                        const isLastInRow = i === rowSteps.length - 1;
+                                                                        return (
+                                                                            <motion.li
+                                                                                key={step}
+                                                                                variants={
+                                                                                    reduced ? undefined : STAGGER_ITEM
+                                                                                }
+                                                                                className="flex items-center gap-[32px]"
+                                                                            >
+                                                                                <span className="flex flex-col text-center">
+                                                                                    <span className="text-caption leading-[30px] font-medium">
+                                                                                        {String(stepIndex + 1).padStart(
+                                                                                            2,
+                                                                                            '0',
+                                                                                        )}
+                                                                                    </span>
+                                                                                    <span className="text-wrap-design text-body leading-[30px] font-medium whitespace-pre-line">
+                                                                                        {step}
+                                                                                    </span>
+                                                                                </span>
+                                                                                {!isLastInRow && (
+                                                                                    <span
+                                                                                        aria-hidden="true"
+                                                                                        className="inline-flex shrink-0"
+                                                                                    >
+                                                                                        <img
+                                                                                            src="/images/i-arr-r-02.svg"
+                                                                                            alt=""
+                                                                                            className="h-3 w-3 brightness-0 lg:invert"
+                                                                                        />
+                                                                                    </span>
+                                                                                )}
+                                                                            </motion.li>
+                                                                        );
+                                                                    })}
+                                                                </ol>
+                                                            );
+                                                        },
+                                                    )}
+                                                </div>
                                             </div>
                                         )}
                                     </motion.div>

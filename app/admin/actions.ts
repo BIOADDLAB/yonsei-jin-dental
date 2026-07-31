@@ -28,7 +28,14 @@ export const loginAdmin = async (formData: FormData) => {
 
 export const logoutAdmin = async () => {
     const cookieStore = await cookies();
-    cookieStore.delete(ADMIN_COOKIE_NAME);
+
+    cookieStore.set(ADMIN_COOKIE_NAME, '', {
+        httpOnly: true,
+        sameSite: 'lax',
+        secure: process.env.NODE_ENV === 'production',
+        path: '/admin',
+        maxAge: 0,
+    });
 
     redirect('/admin');
 };
