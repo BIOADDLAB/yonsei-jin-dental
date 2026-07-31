@@ -4,8 +4,6 @@ import { useState } from 'react';
 import { FAQ } from '@/data/site';
 import Reveal from '@/components/ui/Reveal';
 
-// #ISSUE: 태블릿(md) 구간에서 FAQ 배경 텍스트의 네거티브 마진(-ml-10)이 부모의 패딩(px-10)을 상쇄시켜 화면 왼쪽 끝에 완전히 붙어버리는 현상
-// #STYLE: 부모 요소의 md 구간 패딩을 늘리고(md:px-16), 텍스트의 네거티브 마진을 줄여(md:-ml-4) 태블릿에서도 충분한 좌측 여백을 확보
 export default function Faq() {
     const [category, setCategory] = useState(0);
     const [open, setOpen] = useState(0);
@@ -20,10 +18,8 @@ export default function Faq() {
     return (
         <section id="faq" className="mt-[100px]" aria-labelledby="faq-title">
             <div className="grid grid-cols-1 items-end lg:grid-cols-2">
-                {/* #STYLE: md:px-10 -> md:px-16 으로 변경하여 태블릿 뷰에서 전체적인 좌우 여백 확보 */}
                 <div className="rounded-tr-[100px] md:rounded-tr-[200px] bg-primary px-5 py-20 md:px-16 md:py-24 lg:rounded-tr-[120px] lg:pb-[120px] lg:pt-[140px]">
                     <Reveal className="lg:ml-auto lg:w-[420px]">
-                        {/* #STYLE: md:-ml-10 -> md:-ml-4 로 변경. 기존에는 -40px 이동으로 인해 왼쪽 벽에 충돌했음 */}
                         <p className="text-display -ml-2 font-bold leading-[20px]! text-white/25 md:-ml-4 md:text-[80px] md:font-medium md:leading-[45px]">
                             FAQ
                         </p>
@@ -44,9 +40,12 @@ export default function Faq() {
                                         }`}
                                     >
                                         {category === index && (
-                                            <span className="absolute -left-2 -top-1 -z-10 block h-4 w-4 rounded-full bg-accent/70" />
+                                            <span
+                                                aria-hidden
+                                                className="pointer-events-none absolute -left-3.5 top-1/2 z-0 block h-[31px] w-[31px] -translate-y-[75%] rounded-full bg-accent/40"
+                                            />
                                         )}
-                                        {item.category}
+                                        <span className="relative z-10">{item.category}</span>
                                     </button>
                                 </li>
                             ))}

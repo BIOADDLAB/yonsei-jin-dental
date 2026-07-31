@@ -23,7 +23,7 @@ export const NAV = [
     { label: '특화진료', href: '#signature' },
     { label: '의료진소개', href: '#doctor' },
     { label: '학술·연구', href: '#research' },
-    { label: '진료안내', href: '#contact' },
+    { label: '진료안내', href: '#core' },
 ];
 
 // 우측 하단 고정 버튼

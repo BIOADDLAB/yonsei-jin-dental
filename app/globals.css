@@ -127,9 +127,12 @@ body {
 
 /* 시안 공통 텍스처 배경 */
 .bg-texture {
-    background-image: url('/images/bg-sub-01.jpg');
+    /* background-image: url('/images/bg-sub-01.jpg'); */
     /* background-size: cover; */
     /* background-position: center; */
+    background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.7)), url('/images/bg-sub-01.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
 .bg-texture-stone {
