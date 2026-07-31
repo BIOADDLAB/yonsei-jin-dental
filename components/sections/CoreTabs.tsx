@@ -119,12 +119,24 @@ function SystemShots({
     shots: { image: string; alt: string; size: 'wide' | 'narrow' | 'slim' }[];
     reduced: boolean;
 }) {
-    const main = shots[0];
+    // 모바일은 한 장만 보이므로, 이번 페이지의 메인(wide) 사진을 보여준다
+    const main = shots.find((s) => s.size === 'wide') ?? shots[0];
 
     return (
         <>
             <div className="relative h-[200px] w-full overflow-hidden rounded-[14px] border border-primary lg:hidden">
-                <Image src={main.image} alt={main.alt} fill sizes="100vw" className="object-cover" />
+                <AnimatePresence mode="wait" initial={false}>
+                    <motion.div
+                        key={main.image}
+                        variants={reduced ? FADE_ONLY : IMAGE_MOTION}
+                        initial="enter"
+                        animate="center"
+                        exit="exit"
+                        className="absolute inset-0"
+                    >
+                        <Image src={main.image} alt={main.alt} fill sizes="100vw" className="object-cover" />
+                    </motion.div>
+                </AnimatePresence>
             </div>
 
             <div className="hidden gap-3.5 lg:flex">
