@@ -6,6 +6,7 @@ import { createNotice, deleteNotice, updateNotice, useNotices, type Notice, type
 import NoticeList from '@/components/notice/NoticeList';
 import NoticeModal from '@/components/notice/NoticeModal';
 import RichTextEditor from '@/components/admin/RichTextEditor';
+import { uploadNoticeImage } from '@/lib/notice';
 
 const today = () => new Date().toISOString().slice(0, 10);
 const EMPTY: NoticeInput = { title: '', date: today(), imageUrl: '', content: '' };
@@ -42,16 +43,16 @@ export default function NoticeAdmin() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    // 목데이터 단계라 파일을 서버에 올리지 않고 data URL 로 보관한다.
-    // API 연결 시 이 함수만 업로드 요청으로 바꾸면 된다.
-    const pickImage = (event: ChangeEvent<HTMLInputElement>) => {
+    const pickImage = async (event: ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         if (!file) return;
-        const reader = new FileReader();
-        reader.onload = () => setForm((prev) => ({ ...prev, imageUrl: String(reader.result) }));
-        reader.readAsDataURL(file);
+        try {
+            const imageUrl = await uploadNoticeImage(file);
+            setForm((prev) => ({ ...prev, imageUrl }));
+        } catch {
+            setMessage('이미지 업로드에 실패했습니다.');
+        }
     };
-
     const submit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if (!form.title.trim() || isEmptyHtml(form.content)) {
