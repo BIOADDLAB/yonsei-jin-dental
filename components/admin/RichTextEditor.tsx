@@ -31,7 +31,7 @@ export default function RichTextEditor({ value, onChange }: Props) {
         content: value,
         editorProps: {
             attributes: {
-                class: 'notice-content min-h-[280px] px-5 py-4 text-small leading-[1.9] text-basic outline-none',
+                class: 'notice-content min-h-[220px] max-w-full px-3 py-3 text-small leading-[1.9] text-basic outline-none sm:min-h-[280px] sm:px-5 sm:py-4',
             },
         },
         onUpdate: ({ editor: next }) => onChange(next.getHTML()),
@@ -61,8 +61,8 @@ export default function RichTextEditor({ value, onChange }: Props) {
         tool.mark === 'heading' ? editor.isActive('heading', { level: tool.level }) : editor.isActive(tool.mark);
 
     return (
-        <div className="overflow-hidden rounded-2xl border border-neutral-300 bg-white transition-colors focus-within:border-primary">
-            <div className="flex flex-wrap gap-1 border-b border-neutral-200 bg-neutral-100 px-3 py-2">
+        <div className="w-full min-w-0 max-w-full overflow-hidden rounded-2xl border border-neutral-300 bg-white transition-colors focus-within:border-primary">
+            <div className="flex max-w-full flex-wrap gap-1 border-b border-neutral-200 bg-neutral-100 px-2 py-2 sm:px-3">
                 {TOOLS.map((tool) => (
                     <button
                         key={tool.label}
@@ -78,7 +78,9 @@ export default function RichTextEditor({ value, onChange }: Props) {
                 ))}
             </div>
 
-            <EditorContent editor={editor} />
+            <div className="max-w-full overflow-x-hidden [&_.tiptap]:max-w-full [&_.ProseMirror]:max-w-full">
+                <EditorContent editor={editor} />
+            </div>
         </div>
     );
 }

@@ -9,6 +9,12 @@ import SectionTitle from '@/components/ui/SectionTitle';
 export default function NoticeSection() {
     const { notices, loading } = useNotices();
     const [selected, setSelected] = useState<Notice | null>(null);
+    const [activeId, setActiveId] = useState<string | null>(null);
+
+    const handleSelect = (notice: Notice) => {
+        setActiveId(notice.id);
+        setSelected(notice);
+    };
 
     return (
         <section id="notice" className="bg-texture-stone py-16 md:py-24 lg:py-28" aria-labelledby="notice-title">
@@ -16,7 +22,7 @@ export default function NoticeSection() {
                 <SectionTitle eyebrow="Notice" title="연세진치과 공지사항" />
 
                 <div className="mx-auto mt-10 w-full max-w-[870px] md:mt-14">
-                    <NoticeList notices={notices} loading={loading} onSelect={setSelected} />
+                    <NoticeList notices={notices} loading={loading} onSelect={handleSelect} activeId={activeId} />
                 </div>
             </div>
 

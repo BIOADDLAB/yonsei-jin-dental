@@ -197,6 +197,15 @@ body {
 .notice-content :last-child {
     margin-bottom: 0;
 }
+
+/* 본문 이미지가 부모 너비를 넘지 않도록 제한 */
+.notice-content img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+
 /* 에디터 placeholder */
 .notice-content p.is-editor-empty:first-child::before {
     content: attr(data-placeholder);
@@ -204,4 +213,28 @@ body {
     height: 0;
     color: color-mix(in srgb, var(--color-basic) 40%, transparent);
     pointer-events: none;
+}
+/* 스켈레톤 — 은은하게 흐르는 shimmer */
+@keyframes skeleton-shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+.skeleton {
+    border-radius: 8px;
+    background: linear-gradient(90deg, #e8eaed 0%, #e8eaed 35%, #f4f5f7 50%, #e8eaed 65%, #e8eaed 100%);
+    background-size: 200% 100%;
+    animation: skeleton-shimmer 1.6s ease-in-out infinite;
+}
+
+/* 스크롤바 숨김 (스크롤 기능은 유지) */
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
 }

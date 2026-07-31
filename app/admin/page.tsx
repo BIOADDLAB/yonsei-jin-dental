@@ -62,16 +62,16 @@ export default async function AdminPage({ searchParams }: Props) {
     }
 
     return (
-        <main className="min-h-screen bg-neutral-100 py-10">
-            <div className="mx-auto flex w-full max-w-[1000px] items-center justify-between px-5 md:px-8">
-                <div>
-                    <p className="text-small font-medium text-primary">Yonsei JIN Admin</p>
-                    <h1 className="mt-1 text-subheading font-black text-primary">공지사항 관리</h1>
+        <main className="min-h-screen bg-neutral-100 py-6 md:py-10">
+            <div className="mx-auto flex w-full max-w-[1000px] flex-col gap-3 px-4 sm:flex-row sm:items-center sm:justify-between md:px-8">
+                <div className="min-w-0">
+                    <p className="text-caption font-medium text-primary md:text-small">Yonsei JIN Admin</p>
+                    <h1 className="mt-1 text-body font-black text-primary md:text-subheading">공지사항 관리</h1>
                 </div>
-                <form action={logoutAdmin}>
+                <form action={logoutAdmin} className="shrink-0 self-start sm:self-auto">
                     <button
                         type="submit"
-                        className="rounded-full border border-neutral-300 bg-white px-5 py-2 text-caption font-bold text-basic/70 transition hover:border-primary hover:text-primary"
+                        className="rounded-full border border-neutral-300 bg-white px-4 py-2 text-caption font-bold text-basic/70 transition hover:border-primary hover:text-primary md:px-5"
                     >
                         로그아웃
                     </button>

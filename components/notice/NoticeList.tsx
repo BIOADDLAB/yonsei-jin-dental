@@ -9,31 +9,43 @@ type Props = {
     notices: Notice[];
     loading: boolean;
     onSelect: (notice: Notice) => void;
+    /** 현재 선택된(강조할) 공지 id. 없으면 첫 번째가 primary */
+    activeId?: string | null;
     /** 관리자 목록에서는 진입 애니메이션을 끈다 */
     animate?: boolean;
     /** 관리자 목록에 붙는 수정·삭제 버튼 */
     renderActions?: (notice: Notice) => React.ReactNode;
 };
 
-/** 공지 목록. 시안 기준 PC 카드 870x82, 간격 20, 첫 줄만 네이비 */
-export default function NoticeList({ notices, loading, onSelect, animate = true, renderActions }: Props) {
+/** 공지 목록. 시안 기준 PC 카드 870x82, 간격 20. 선택한 항목이 primary */
+export default function NoticeList({
+    notices,
+    loading,
+    onSelect,
+    activeId = null,
+    animate = true,
+    renderActions,
+}: Props) {
     if (loading) {
-        return <p className="py-10 text-center text-small text-basic/60">공지사항을 불러오는 중입니다.</p>;
+        return <NoticeListSkeleton />;
     }
     if (notices.length === 0) {
         return <p className="py-10 text-center text-small text-basic/60">등록된 공지사항이 없습니다.</p>;
     }
 
+    const highlightId = activeId ?? notices[0]?.id;
+
     return (
         <ul className="space-y-3 md:space-y-5">
             {notices.map((notice, index) => {
-                const on = index === 0;
+                const on = notice.id === highlightId;
                 const row = (
                     <div className="flex items-center gap-2">
                         <button
                             type="button"
                             onClick={() => onSelect(notice)}
                             aria-label={`${notice.title} 자세히 보기`}
+                            aria-current={on ? 'true' : undefined}
                             className={`group flex min-w-0 flex-1 items-center gap-3 rounded-[28px] px-4 py-3.5 text-left transition md:h-[82px] md:gap-3.5 md:rounded-full md:py-0 md:pr-[39px] md:pl-[43px] ${
                                 on ? 'bg-primary hover:bg-primary/90' : 'bg-white hover:bg-accent-soft'
                             } active:scale-[0.995]`}
@@ -48,10 +60,9 @@ export default function NoticeList({ notices, loading, onSelect, animate = true,
                                 {String(index + 1).padStart(2, '0')}
                             </span>
 
-                            {/* 좁은 화면에서는 제목이 잘리지 않도록 날짜를 아래로 내린다 */}
                             <span className="flex min-w-0 flex-1 flex-col gap-0.5 md:flex-row md:items-center md:justify-between md:gap-4">
                                 <span
-                                    className={`min-w-0 text-small md:truncate md:text-body ${
+                                    className={`min-w-0 truncate text-small md:text-body ${
                                         on ? 'font-extrabold text-white' : 'font-bold text-primary'
                                     }`}
                                 >
@@ -75,6 +86,28 @@ export default function NoticeList({ notices, loading, onSelect, animate = true,
 
                 return <li key={notice.id}>{animate ? <Reveal delay={index * 0.05}>{row}</Reveal> : row}</li>;
             })}
+        </ul>
+    );
+}
+
+function NoticeListSkeleton() {
+    return (
+        <ul className="space-y-3 md:space-y-5" aria-busy="true" aria-label="공지사항 불러오는 중">
+            {Array.from({ length: 5 }).map((_, i) => (
+                <li key={i}>
+                    <div
+                        className={`flex items-center gap-3 rounded-[28px] px-4 py-3.5 md:h-[82px] md:rounded-full md:px-[43px] ${
+                            i === 0 ? 'bg-primary/10' : 'bg-white'
+                        }`}
+                    >
+                        <div className="skeleton h-[30px] w-[30px] shrink-0 rounded-full" />
+                        <div className="flex min-w-0 flex-1 flex-col gap-2 md:flex-row md:items-center md:justify-between">
+                            <div className="skeleton h-4 w-[70%] max-w-[280px] md:h-5" />
+                            <div className="skeleton h-3.5 w-20 shrink-0 md:h-5" />
+                        </div>
+                    </div>
+                </li>
+            ))}
         </ul>
     );
 }

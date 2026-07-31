@@ -32,9 +32,9 @@ export default function Modal({ open, onClose, title, children }: Props) {
             aria-modal="true"
         >
             <button type="button" className="absolute inset-0 cursor-default" aria-label="닫기" onClick={onClose} />
-            <div className="relative max-h-[85vh] w-full max-w-3xl overflow-auto rounded-3xl bg-white p-6 md:p-8">
+            <div className="scrollbar-hide relative max-h-[85vh] w-full max-w-3xl overflow-x-hidden overflow-y-auto rounded-3xl bg-white p-6 md:p-8">
                 <div className="mb-5 flex items-start justify-between gap-4">
-                    <h3 className="text-subheading font-bold text-primary">{title}</h3>
+                    <h3 className="min-w-0 flex-1 break-words text-subheading font-bold text-primary">{title}</h3>
                     <button
                         type="button"
                         onClick={onClose}
