@@ -155,7 +155,7 @@ export default function CoreTabs() {
 
             <div className="mx-auto w-full max-w-site px-5 md:px-8">
                 <ul
-                    className="flex overflow-x-auto border-b-2 border-primary [scrollbar-width:none] [-ms-overflow-style:none] lg:overflow-visible lg:border-b-0"
+                    className="flex overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] lg:overflow-visible lg:border-b-0"
                     role="tablist"
                     aria-label="핵심역량 진료 분류"
                 >
@@ -175,8 +175,8 @@ export default function CoreTabs() {
                                     onClick={() => setActive(index)}
                                     className={`relative flex h-[72px] w-full items-center justify-center px-3 text-center text-[16px] leading-[1.3] transition md:h-[74px] md:px-4 lg:h-[110px] lg:px-3 lg:text-subheading lg:leading-[32px] lg:whitespace-normal lg:rounded-tl-[40px] ${
                                         on
-                                            ? 'font-black text-primary after:absolute after:inset-x-0 after:-bottom-[2px] after:z-10 after:h-[3px] after:bg-accent lg:bg-accent lg:after:hidden lg:flex-col lg:gap-1'
-                                            : 'font-bold text-primary lg:bg-primary lg:font-extrabold lg:text-white lg:hover:bg-primary/90'
+                                            ? 'font-black text-primary border-b-[3px] border-accent z-10 lg:border-b-0 lg:bg-accent lg:flex-col lg:gap-1'
+                                            : 'font-bold text-primary border-b-2 border-primary lg:border-b-0 lg:bg-primary lg:font-extrabold lg:text-white lg:hover:bg-primary/90'
                                     }`}
                                 >
                                     <span className="block max-w-[5.5em] lg:hidden">{item.label}</span>

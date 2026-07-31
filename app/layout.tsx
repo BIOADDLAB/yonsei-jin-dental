@@ -2,9 +2,8 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
 
-// 나눔스퀘어 네오 가변 폰트 한 개로 100~900 전 굵기를 커버한다.
 const nanum = localFont({
-    src: '../public/fonts/NanumSquareNeo-Variable.woff2',
+    src: './fonts/NanumSquareNeo-Variable.ttf',
     weight: '100 900',
     variable: '--font-nanum',
     display: 'swap',

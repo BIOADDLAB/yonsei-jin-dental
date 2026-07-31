@@ -150,3 +150,58 @@ body {
         transition-duration: 0.01ms !important;
     }
 }
+
+/* 공지 본문. 에디터가 만든 HTML 과 모달이 같은 모양으로 보이도록 한 곳에서 정의한다 */
+.notice-content h1 {
+    margin: 1.2em 0 0.5em;
+    font-size: clamp(20px, 1.8vw, 24px);
+    font-weight: 800;
+    color: var(--color-primary);
+}
+.notice-content h2 {
+    margin: 1.1em 0 0.4em;
+    font-size: clamp(17px, 1.5vw, 20px);
+    font-weight: 800;
+    color: var(--color-primary);
+}
+.notice-content p {
+    margin: 0.6em 0;
+}
+.notice-content strong {
+    font-weight: 800;
+    color: var(--color-primary);
+}
+.notice-content ul,
+.notice-content ol {
+    margin: 0.8em 0;
+    padding-left: 1.4em;
+}
+.notice-content ul {
+    list-style: disc;
+}
+.notice-content ol {
+    list-style: decimal;
+}
+.notice-content li {
+    margin: 0.3em 0;
+}
+.notice-content blockquote {
+    margin: 1em 0;
+    border-left: 3px solid var(--color-primary);
+    background: var(--color-accent-soft);
+    padding: 0.8em 1.2em;
+}
+.notice-content :first-child {
+    margin-top: 0;
+}
+.notice-content :last-child {
+    margin-bottom: 0;
+}
+/* 에디터 placeholder */
+.notice-content p.is-editor-empty:first-child::before {
+    content: attr(data-placeholder);
+    float: left;
+    height: 0;
+    color: color-mix(in srgb, var(--color-basic) 40%, transparent);
+    pointer-events: none;
+}

@@ -1,88 +1,84 @@
-'use client';
+import { loginAdmin, logoutAdmin } from './actions';
+import { isAdminAuthenticated } from './auth';
+import NoticeAdmin from './NoticeAdmin';
 
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { isFirebaseReady, login } from '@/lib/firebase';
-import { useAdminUser } from '@/lib/notice';
+type Props = {
+    searchParams?: Promise<{ error?: string }>;
+};
 
-export default function AdminLoginPage() {
-    const router = useRouter();
-    const { user, checking } = useAdminUser();
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
-    const [loading, setLoading] = useState(false);
+export default async function AdminPage({ searchParams }: Props) {
+    const authenticated = await isAdminAuthenticated();
+    const params = await searchParams;
 
-    useEffect(() => {
-        if (user) router.replace('/admin/notice');
-    }, [user, router]);
-
-    const submit = async () => {
-        setError('');
-        setLoading(true);
-        try {
-            await login(email, password);
-            router.replace('/admin/notice');
-        } catch {
-            setError('이메일 또는 비밀번호를 확인해 주세요.');
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    if (!isFirebaseReady) {
+    if (!authenticated) {
         return (
-            <main className="flex min-h-screen items-center justify-center px-5">
-                <p className="text-center text-small text-basic/70">
-                    lib/firebase.ts 의 firebaseConfig 를 먼저 채워 주세요.
-                </p>
-            </main>
-        );
-    }
+            <main className="grid min-h-screen place-items-center bg-neutral-100 px-5 py-16">
+                <div className="w-full max-w-[420px] rounded-[32px] bg-white p-8 md:p-10">
+                    <p className="text-small font-medium text-primary">Yonsei JIN Admin</p>
+                    <h1 className="mt-2 text-subheading font-black text-primary">관리자 로그인</h1>
+                    <p className="mt-3 text-small text-basic/70">
+                        공지사항을 관리하려면 아이디와 비밀번호를 입력해 주세요.
+                    </p>
 
-    if (checking) {
-        return (
-            <main className="flex min-h-screen items-center justify-center px-5">
-                <p className="text-small text-basic/60">확인 중입니다.</p>
+                    <form action={loginAdmin} className="mt-8 grid gap-3">
+                        <label className="grid gap-2 text-caption font-bold text-primary">
+                            아이디
+                            <input
+                                type="text"
+                                name="id"
+                                autoComplete="username"
+                                placeholder="아이디 입력"
+                                className="rounded-2xl border border-neutral-300 px-4 py-3 text-small font-medium text-basic outline-none transition-colors focus:border-primary"
+                            />
+                        </label>
+
+                        <label className="grid gap-2 text-caption font-bold text-primary">
+                            비밀번호
+                            <input
+                                type="password"
+                                name="password"
+                                autoComplete="current-password"
+                                placeholder="비밀번호 입력"
+                                className="rounded-2xl border border-neutral-300 px-4 py-3 text-small font-medium text-basic outline-none transition-colors focus:border-primary"
+                            />
+                        </label>
+
+                        {params?.error === '1' && (
+                            <p className="rounded-2xl bg-red-50 px-4 py-3 text-caption font-bold text-red-600">
+                                아이디 또는 비밀번호가 올바르지 않습니다.
+                            </p>
+                        )}
+
+                        <button
+                            type="submit"
+                            className="mt-2 rounded-full bg-primary px-6 py-3 text-small font-bold text-white transition hover:bg-primary/90 active:scale-[0.98]"
+                        >
+                            로그인
+                        </button>
+                    </form>
+                </div>
             </main>
         );
     }
 
     return (
-        <main className="flex min-h-screen items-center justify-center px-5">
-            <div className="w-full max-w-[400px] rounded-3xl bg-white p-8">
-                <h1 className="text-subheading font-extrabold text-primary">연세진치과 관리자</h1>
-                <p className="mt-2 text-caption text-basic/60">공지사항을 관리하려면 로그인해 주세요.</p>
-
-                <div className="mt-6 space-y-3">
-                    <input
-                        type="email"
-                        value={email}
-                        onChange={(event) => setEmail(event.target.value)}
-                        placeholder="이메일"
-                        className="w-full rounded-xl border border-neutral-200 px-4 py-3 text-small outline-none focus:border-primary"
-                    />
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(event) => setPassword(event.target.value)}
-                        placeholder="비밀번호"
-                        onKeyDown={(event) => event.key === 'Enter' && submit()}
-                        className="w-full rounded-xl border border-neutral-200 px-4 py-3 text-small outline-none focus:border-primary"
-                    />
+        <main className="min-h-screen bg-neutral-100 py-10">
+            <div className="mx-auto flex w-full max-w-[1000px] items-center justify-between px-5 md:px-8">
+                <div>
+                    <p className="text-small font-medium text-primary">Yonsei JIN Admin</p>
+                    <h1 className="mt-1 text-subheading font-black text-primary">공지사항 관리</h1>
                 </div>
-
-                {error && <p className="mt-3 text-caption text-red-600">{error}</p>}
-
-                <button
-                    type="button"
-                    onClick={submit}
-                    disabled={loading}
-                    className="mt-5 w-full rounded-xl bg-primary py-3 text-small font-bold text-white transition hover:bg-primary/90 disabled:opacity-50"
-                >
-                    {loading ? '로그인 중' : '로그인'}
-                </button>
+                <form action={logoutAdmin}>
+                    <button
+                        type="submit"
+                        className="rounded-full border border-neutral-300 bg-white px-5 py-2 text-caption font-bold text-basic/70 transition hover:border-primary hover:text-primary"
+                    >
+                        로그아웃
+                    </button>
+                </form>
             </div>
+
+            <NoticeAdmin />
         </main>
     );
 }

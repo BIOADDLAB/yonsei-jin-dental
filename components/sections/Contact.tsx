@@ -75,9 +75,28 @@ export default function Contact() {
                                 referrerPolicy="strict-origin-when-cross-origin"
                                 className="absolute inset-0 h-full w-full border-0"
                             />
-                            <div className="pointer-events-none absolute top-2 right-2 rounded-sm bg-white/70 px-1.5 py-1.5 shadow-[0_4px_16px_rgb(0_0_0/0.18)]">
-                                <p className="text-small font-extrabold text-primary">{CLINIC.name}</p>
-                                <p className="mt-0.5 text-caption-sm text-basic/70">{CLINIC.address}</p>
+
+                            {/* 지도 바로가기 버튼 */}
+                            <div className="absolute right-2 top-2 flex flex-col gap-2 sm:flex-row">
+                                <a
+                                    href={`https://naver.me/59vHMVNw`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-1.5 rounded-lg bg-white px-3 py-2 text-caption font-bold text-basic shadow-[0_2px_8px_rgb(0_0_0/0.15)] transition hover:bg-neutral-50 active:scale-[0.98]"
+                                >
+                                    <img src="/images/i-naver.svg" alt="" className="h-6 w-6" />
+                                    네이버 지도
+                                </a>
+                                <a
+                                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(CLINIC.address)}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-1.5 rounded-lg bg-white px-3 py-2 text-caption font-bold text-basic shadow-[0_2px_8px_rgb(0_0_0/0.15)] transition hover:bg-neutral-50 active:scale-[0.98]"
+                                >
+                                    {/* 구글 지도 아이콘 — 이미지 넣으면 됨 */}
+                                    <img src="/images/i-google.svg" alt="" className="h-6 w-6" />
+                                    구글 지도
+                                </a>
                             </div>
                         </div>
                     </Reveal>

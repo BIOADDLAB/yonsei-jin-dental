@@ -287,7 +287,7 @@ export const CORE_TABS: CoreTab[] = [
                 body: '기존 임플란트는 절개로 인해 통증과 붓기, 출혈이 많았습니다.\n네비게이션 임플란트는 3D CT 기반의 정밀 분석과 맞춤형\n가이드를 통해 정확하게 식립하며, 최소 절개로 빠른 회복을 돕습니다.',
             },
             {
-                image: '/images/img-who-02.jpg',
+                image: '/images/img-who-03.jpg',
                 alt: '네비게이션 임플란트 진행 과정을 안내하는 장면',
                 title: '진행과정',
                 steps: ['정밀 진단', '디지털 설계', '가이드 제작', '무절개 식립', '최종 보철'],
@@ -339,7 +339,7 @@ export const CORE_TABS: CoreTab[] = [
         },
         slides: [
             {
-                image: '/images/img-who-02.jpg',
+                image: '/images/img-who-01.jpg',
                 alt: '연세진치과 치아교정 상담을 안내하는 의료진',
                 title: '이런 분께 권해드립니다',
                 items: [
@@ -352,7 +352,7 @@ export const CORE_TABS: CoreTab[] = [
             },
             {
                 image: '/images/img-who-04.jpg',
-                alt: '치아교정 진행 과정을 안내하는 장면',
+                alt: '',
                 title: '진행과정',
                 steps: ['정밀 진단', '분석 및 상담', '장치 선택 및 부착', '교정 치료', '유지 관리\n(유지장치)'],
             },
@@ -394,7 +394,7 @@ export const CORE_TABS: CoreTab[] = [
         ],
         slides: [
             {
-                image: '/images/img-who-03.jpg',
+                image: '/images/img-who-01.jpg',
                 alt: '연세진치과 디지털 풀아치 임플란트 상담을 안내하는 의료진',
                 title: '이런 분께 권해드립니다',
                 items: [
@@ -470,7 +470,7 @@ export const CORE_TABS: CoreTab[] = [
         ],
         slides: [
             {
-                image: '/images/img-who-04.jpg',
+                image: '/images/img-who-07.jpg',
                 alt: '연세진치과 자연치아 보존 진료를 준비하는 의료진',
                 title: '연세진치과의 약속',
                 no: 1,
@@ -491,7 +491,7 @@ export const CORE_TABS: CoreTab[] = [
                 title: '연세진치과의 약속',
                 no: 3,
                 head: '발치는 신중하게, 환자마다 다르게 판단합니다',
-                body: '치아를 빼야 하는 기준은 정해진 공식으로\n나눌 수 없습니다. 치아의 상태, 뿌리와 잇몸뼈의 조건,\n앞으로의 사용 가능성을 하나하나 살펴, 환자분마다\n가장 나은 방향을 신중히 판단합니다.\n\n살릴 수 없는 치아를 무리하게 붙잡지도, 살릴 수 있는 치아를 쉽게 포기하지도 않습니다.',
+                body: '치아를 빼야 하는 기준은 정해진 공식으로\n나눌 수 없습니다. 치아의 상태, 뿌리와 잇몸뼈의 조건,\n앞으로의 사용 가능성을 하나하나 살펴, 환자분마다\n가장 나은 방향을 신중히 판단합니다.\n\n살릴 수 없는 치아를 무리하게 붙잡지도, 살릴 수 있는 \n치아를 쉽게 포기하지도 않습니다.',
             },
         ],
     },
