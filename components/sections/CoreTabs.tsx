@@ -173,7 +173,7 @@ export default function CoreTabs() {
                                     aria-selected={on}
                                     aria-controls={`panel-${item.id}`}
                                     onClick={() => setActive(index)}
-                                    className={`relative flex h-[72px] w-full items-center justify-center px-3 text-center text-[16px] leading-[1.3] transition md:h-[74px] md:px-4 lg:h-[110px] lg:px-3 lg:text-subheading lg:leading-[32px] lg:whitespace-normal lg:rounded-tl-[40px] ${
+                                    className={`relative flex h-[72px] w-full items-center justify-center px-3 text-center text-lead !leading-[27px] transition  md:h-[74px] md:px-4 lg:h-[110px] lg:px-3 lg:text-subheading lg:!leading-[32px] lg:whitespace-normal lg:rounded-tl-[40px] ${
                                         on
                                             ? 'font-black text-primary border-b-[3px] border-accent z-10 lg:border-b-0 lg:bg-accent lg:flex-col lg:gap-1'
                                             : 'font-bold text-primary border-b-2 border-primary lg:border-b-0 lg:bg-primary lg:font-extrabold lg:text-white lg:hover:bg-primary/90'
