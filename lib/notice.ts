@@ -1,11 +1,12 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
-import { addDoc, collection, deleteDoc, doc, getDocs, orderBy, query, updateDoc } from 'firebase/firestore';
+import { addDoc, collection, deleteDoc, doc, getDocs, orderBy, query, updateDoc, writeBatch } from 'firebase/firestore';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { isFirebaseReady, requireFirebase } from '@/lib/firebase';
 
 const COLLECTION = 'notices';
+const MAX_NOTICES = 15;
 
 export type Notice = {
     id: string;
@@ -13,57 +14,59 @@ export type Notice = {
     date: string;
     imageUrl: string;
     content: string;
+    order: number;
 };
 
-export type NoticeInput = Omit<Notice, 'id'>;
+export type NoticeInput = Omit<Notice, 'id' | 'order'> & { order?: number };
 
-/** Firebase 연결 전 / 실패 시 보여줄 기본 공지 */
 export const NOTICE_FALLBACK: Notice[] = [
     {
         id: 'n6',
         title: '주차 이용 안내 공지드립니다.',
         date: '2026-07-15',
         imageUrl: '',
-        content:
-            '건물 주차장을 무료로 이용하실 수 있습니다.\n\n· 진료 시 2시간 무료\n· 접수처에 차량 번호를 알려 주세요.',
+        content: '건물 주차장을 무료로 이용하실 수 있습니다.',
+        order: 0,
     },
     {
         id: 'n5',
         title: '비급여 진료비 안내 공지드립니다.',
         date: '2026-07-14',
         imageUrl: '',
-        content:
-            '비급여 진료비용을 안내드립니다.\n\n자세한 항목과 금액은 내원 시 접수처에 비치된 안내문을 확인해 주시기 바랍니다.',
+        content: '비급여 진료비용을 안내드립니다.',
+        order: 1,
     },
     {
         id: 'n4',
         title: '네이버 예약 이용 안내 공지드립니다.',
         date: '2026-07-10',
         imageUrl: '',
-        content:
-            '네이버 예약으로 진료 예약이 가능합니다.\n\n네이버에서 연세진치과를 검색하신 뒤 예약하기를 눌러 주세요.',
+        content: '네이버 예약으로 진료 예약이 가능합니다.',
+        order: 2,
     },
     {
         id: 'n3',
         title: '여름휴가 휴진 일정 안내 공지드립니다.',
         date: '2026-07-08',
         imageUrl: '',
-        content:
-            '여름휴가 기간 동안 아래와 같이 휴진합니다.\n\n· 8월 4일(월) ~ 8월 8일(금)\n\n8월 11일(월)부터 정상 진료합니다.',
+        content: '여름휴가 기간 동안 휴진합니다.',
+        order: 3,
     },
     {
         id: 'n2',
         title: '6월 진료일정 변경 안내 공지드립니다.',
         date: '2026-06-28',
         imageUrl: '',
-        content: '6월 넷째 주 진료 일정이 아래와 같이 변경됩니다.\n\n· 수요일 진료 시간 9:00 ~ 18:00 → 9:00 ~ 15:00',
+        content: '6월 넷째 주 진료 일정이 변경됩니다.',
+        order: 4,
     },
     {
         id: 'n1',
         title: '6월 휴진안내 공지드립니다.',
         date: '2026-06-25',
         imageUrl: '',
-        content: '6월 중 휴진 일정을 안내드립니다.\n\n· 6월 6일(토) 현충일 휴진\n· 6월 20일(토) 학회 참석으로 휴진',
+        content: '6월 중 휴진 일정을 안내드립니다.',
+        order: 5,
     },
 ];
 
@@ -71,7 +74,7 @@ export async function fetchNotices(): Promise<Notice[]> {
     if (!isFirebaseReady) return NOTICE_FALLBACK;
 
     const { db } = requireFirebase();
-    const snapshot = await getDocs(query(collection(db, COLLECTION), orderBy('date', 'desc')));
+    const snapshot = await getDocs(query(collection(db, COLLECTION), orderBy('order', 'asc')));
     return snapshot.docs.map((item) => ({
         id: item.id,
         ...(item.data() as Omit<Notice, 'id'>),
@@ -79,18 +82,59 @@ export async function fetchNotices(): Promise<Notice[]> {
 }
 
 export async function createNotice(input: NoticeInput) {
+    const list = await fetchNotices();
+    if (list.length >= MAX_NOTICES) {
+        throw new Error(`공지사항은 최대 ${MAX_NOTICES}개까지 등록할 수 있습니다.`);
+    }
+
     const { db } = requireFirebase();
-    await addDoc(collection(db, COLLECTION), input);
+    // 새 글은 맨 위(order: 0), 기존 글 order +1
+    const batch = writeBatch(db);
+    list.forEach((item) => {
+        batch.update(doc(db, COLLECTION, item.id), { order: item.order + 1 });
+    });
+    const refDoc = doc(collection(db, COLLECTION));
+    batch.set(refDoc, {
+        title: input.title,
+        date: input.date,
+        imageUrl: input.imageUrl,
+        content: input.content,
+        order: 0,
+    });
+    await batch.commit();
 }
 
 export async function updateNotice(id: string, input: NoticeInput) {
     const { db } = requireFirebase();
-    await updateDoc(doc(db, COLLECTION, id), input);
+    await updateDoc(doc(db, COLLECTION, id), {
+        title: input.title,
+        date: input.date,
+        imageUrl: input.imageUrl,
+        content: input.content,
+    });
 }
 
 export async function deleteNotice(id: string) {
     const { db } = requireFirebase();
     await deleteDoc(doc(db, COLLECTION, id));
+
+    // 삭제 후 order 재정렬
+    const list = await fetchNotices();
+    const batch = writeBatch(db);
+    list.forEach((item, index) => {
+        batch.update(doc(db, COLLECTION, item.id), { order: index });
+    });
+    await batch.commit();
+}
+
+/** 드래그로 바꾼 순서 저장 */
+export async function reorderNotices(orderedIds: string[]) {
+    const { db } = requireFirebase();
+    const batch = writeBatch(db);
+    orderedIds.forEach((id, index) => {
+        batch.update(doc(db, COLLECTION, id), { order: index });
+    });
+    await batch.commit();
 }
 
 export async function uploadNoticeImage(file: File) {
