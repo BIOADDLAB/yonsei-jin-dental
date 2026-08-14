@@ -12,6 +12,17 @@ export const metadata: Metadata = {
     title: { default: TITLE, template: '%s | 연세진치과' },
     description: DESCRIPTION,
     alternates: { canonical: '/' },
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+            'max-video-preview': -1,
+        },
+    },
     openGraph: {
         title: TITLE,
         description: DESCRIPTION,
