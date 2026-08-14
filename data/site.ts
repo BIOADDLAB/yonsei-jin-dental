@@ -14,7 +14,7 @@ export const CLINIC = {
     ],
     lunch: { day: '점 심 시 간', time: '12:30 ~ 14:00' },
     notes: ['목요일 휴진', '진료종료 1시간 전 접수마감 / 예약진료'],
-    parking: '*주차 가능',
+    parking: '주차 가능',
 };
 
 export const NAV = [
@@ -45,9 +45,9 @@ export const PHILOSOPHY = {
     alt: '연세진치과 상담실과 진료 준비 공간',
     slides: [
         {
-            lead: '연세진치과는 3가지를 지킵니다.',
-            title: '정직하게 설명합니다.',
-            body: '구강 상태를 있는 그대로 말씀드리고,\n필요 없는 치료는 권하지 않습니다.',
+            lead: '',
+            title: '환자분의 치아를 먼저 생각합니다',
+            body: '가장 좋은 치아는 원래 갖고 있는 환자분의 치아입니다.\n뺄 수 있는 치아라도 살릴 방법이 있다면, 신경치료를 비롯해 할 수 있는 모든 방법을 먼저 찾습니다.\n발치와 임플란트는 언제나 마지막 선택입니다.',
         },
         {
             title: '환자가 결정합니다.',
@@ -66,6 +66,9 @@ type SpecialCareItem = {
     title: string[];
     highlight?: string;
     body: Line[];
+    image: string;
+    alt: string;
+    imagePosition: string;
 };
 
 export const SPECIAL_CARE: { eyebrow: string; title: string; items: SpecialCareItem[] } = {
@@ -82,6 +85,9 @@ export const SPECIAL_CARE: { eyebrow: string; title: string; items: SpecialCareI
                     text: '뺄 수 있는 치아라도 살릴 방법이 있다면, 신경치료를\n비롯해 할 수 있는 모든 방법을 먼저 찾습니다.\n발치와 임플란트는 언제나 마지막 선택입니다.',
                 },
             ],
+            image: '/images/img-doc-01.jpg',
+            alt: '연세진치과 대표원장',
+            imagePosition: '50% 15%',
         },
         {
             no: '02',
@@ -96,6 +102,9 @@ export const SPECIAL_CARE: { eyebrow: string; title: string; items: SpecialCareI
                     strong: true,
                 },
             ],
+            image: '/images/img-ex-01.jpg',
+            alt: '연세진치과 디지털 진단 장비',
+            imagePosition: '50% 50%',
         },
         {
             no: '03',
@@ -108,6 +117,9 @@ export const SPECIAL_CARE: { eyebrow: string; title: string; items: SpecialCareI
                 { text: '연세진치과는 통증과 두려움을 더는 일을\n늘 먼저 생각합니다.', strong: true },
                 { text: ' 절개를 줄이고 회복을 앞당기는 방법으로,\n치과에 대한 두려움까지 덜어드립니다.' },
             ],
+            image: '/images/img-ex-02.jpg',
+            alt: '통증을 줄인 치과 진료',
+            imagePosition: '50% 50%',
         },
         {
             no: '04',
@@ -123,6 +135,9 @@ export const SPECIAL_CARE: { eyebrow: string; title: string; items: SpecialCareI
                     text: ' 치료가 끝나는 순간까지, 그리고 그\n이후로도 환자분의 구강 건강을 곁에서 책임지고 살펴드립니다.',
                 },
             ],
+            image: '/images/img-tour-01.jpg',
+            alt: '연세진치과 상담 공간',
+            imagePosition: '50% 50%',
         },
     ],
 };
@@ -178,6 +193,7 @@ export const RESEARCH = {
             title: '함께 보는 진료',
             image: '/images/img-card-03.jpg',
             alt: '연세진치과 의료진이 수술 환자 브리핑을 진행하는 모습',
+            tagEn: 'Clinical Study',
             items: [
                 '매주 수술 환자 브리핑 1회,\n교육 미팅 2회 상시 진행',
                 '수술을 앞둔 환자의 상태를 의료진이\n함께 검토하고 준비하는 시스템',
@@ -188,6 +204,7 @@ export const RESEARCH = {
             title: '끊임없는 연구와 교류',
             image: '/images/img-card-01.jpg',
             alt: '연세진치과 원장이 대외 학술대회 강연에 참석한 모습',
+            tagEn: 'Academic Forum',
             items: [
                 '사)한국치과교정연구회 정기학술대회 및\n대의원 총회 지속 참석 (2024~2025 등)',
                 '최신 임상 지견 공유를 위한 학술 활동 참여',
@@ -198,6 +215,7 @@ export const RESEARCH = {
             title: '교정 연구 및 교육',
             image: '/images/img-card-02.jpg',
             alt: '한국치과교정연구회 교육 과정 단체 사진',
+            tagEn: 'Ortho Research',
             items: [
                 '現 (사)한국치과교정연구회 교수부원 및 강원지부 인스트럭터 활동',
                 '국내외 치과의사 대상 KORI 인스트럭터 참여',
@@ -209,6 +227,7 @@ export const RESEARCH = {
             title: '해외 교정 연수',
             image: '/images/img-card-03.jpg',
             alt: '미국 TWEED 교정 코스 해외 연수 단체 사진',
+            tagEn: 'Global Training',
             items: ['미국 애리조나 TWEED 국제 재단 교정 코스 수료', '전문적인 교정학 연수 과정 이수'],
         },
     ],

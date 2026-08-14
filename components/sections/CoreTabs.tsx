@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { CORE_TABS } from '@/data/site';
@@ -59,7 +59,6 @@ const CIRCLE =
     'relative mx-auto aspect-square w-[min(280px,74vw)] shrink-0 overflow-hidden rounded-full border-[6px] border-primary bg-neutral-300 md:w-[320px] lg:mx-0 lg:w-[418px] lg:border-0';
 const EXPERTISE_CIRCLE =
     'relative mx-auto aspect-square w-[min(280px,74vw)] shrink-0 overflow-hidden rounded-full border-[6px] border-primary bg-neutral-300 md:w-[320px] lg:mx-0 lg:w-[418px]';
-const ARROW_BTN = 'flex h-8 w-8 items-center justify-center rounded-full border border-primary lg:border-white';
 const CHECK_ICON =
     'mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-center text-caption text-white lg:bg-white lg:text-primary';
 const SHOT_SIZE = {
@@ -159,6 +158,15 @@ export default function CoreTabs() {
     const [active, setActive] = useState(0);
     const tab = CORE_TABS[active];
 
+    useEffect(() => {
+        const onSelect = (event: Event) => {
+            const index = (event as CustomEvent<number>).detail;
+            if (Number.isInteger(index) && index >= 0 && index < CORE_TABS.length) setActive(index);
+        };
+        window.addEventListener('select-core-tab', onSelect);
+        return () => window.removeEventListener('select-core-tab', onSelect);
+    }, []);
+
     return (
         <section id="core" className="bg-texture-stone py-12 md:py-24 lg:py-28" aria-labelledby="core-title">
             <h2 id="core-title" className="sr-only">
@@ -167,7 +175,7 @@ export default function CoreTabs() {
 
             <div className="mx-auto w-full max-w-site px-5 md:px-8">
                 <ul
-                    className="flex overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] lg:overflow-visible lg:border-b-0"
+                    className="flex overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] lg:isolate lg:items-end lg:overflow-visible lg:border-b-0 lg:pt-7"
                     role="tablist"
                     aria-label="핵심역량 진료 분류"
                 >
@@ -176,8 +184,8 @@ export default function CoreTabs() {
                         return (
                             <li
                                 key={item.id}
-                                className="shrink-0 lg:-ml-[1px] lg:flex-1 lg:shrink lg:first:ml-0"
-                                style={{ zIndex: on ? CORE_TABS.length + 1 : CORE_TABS.length - index }}
+                                className="relative shrink-0 lg:-ml-[18px] lg:flex-1 lg:shrink lg:first:ml-0"
+                                style={{ zIndex: on ? 30 : index + 1 }}
                             >
                                 <button
                                     type="button"
@@ -185,10 +193,10 @@ export default function CoreTabs() {
                                     aria-selected={on}
                                     aria-controls={`panel-${item.id}`}
                                     onClick={() => setActive(index)}
-                                    className={`relative flex h-[72px] w-full items-center justify-center px-3 text-center text-lead !leading-[27px] transition  md:h-[74px] md:px-4 lg:h-[110px] lg:px-3 lg:text-subheading lg:!leading-[32px] lg:whitespace-normal lg:rounded-tl-[40px] ${
+                                    className={`core-tab relative flex h-[72px] w-full items-center justify-center px-3 text-center text-lead !leading-[27px] transition duration-300 md:h-[74px] md:px-4 lg:h-[110px] lg:px-3 lg:text-subheading lg:!leading-[32px] lg:whitespace-normal lg:rounded-t-[28px] ${
                                         on
-                                            ? 'font-black text-primary border-b-[3px] border-accent z-10 lg:border-b-0 lg:bg-accent lg:flex-col lg:gap-1'
-                                            : 'font-bold text-primary border-b-2 border-primary lg:border-b-0 lg:bg-primary lg:font-extrabold lg:text-white lg:hover:bg-primary/90'
+                                            ? 'core-tab-active z-20 border-b-[3px] border-primary bg-white font-black text-primary lg:border-b-0 lg:bg-accent lg:flex-col lg:gap-1'
+                                            : 'z-0 border-b-2 border-primary bg-primary font-bold text-white lg:border-b-0 lg:bg-primary lg:font-extrabold lg:hover:brightness-110'
                                     }`}
                                 >
                                     <span className="block max-w-[5.5em] lg:hidden">{item.label}</span>
@@ -222,7 +230,7 @@ export default function CoreTabs() {
                 <div
                     id={`panel-${tab.id}`}
                     role="tabpanel"
-                    className="bg-white/90 px-5 py-12 md:px-10 md:pt-[114px] md:pb-[80px] lg:px-0"
+                    className="relative z-0 bg-white/90 px-5 py-12 md:px-10 md:pt-[114px] md:pb-[80px] lg:px-0"
                 >
                     <Panel key={tab.id} tab={tab} />
                 </div>
@@ -248,7 +256,7 @@ function Panel({ tab }: { tab: (typeof CORE_TABS)[number] }) {
                 <h3 className="mt-6 text-heading leading-[1.5] font-medium text-primary md:mt-6.5 md:leading-[55px]">
                     <span className="text-wrap-design block">{tab.title.top}</span>
                     <span className="mt-2 block md:mt-5 lg:mt-0">
-                        {tab.title.lead && <span className="font-medium text-blue">{tab.title.lead} </span>}
+                        {tab.title.lead && <span className="font-medium text-primary">{tab.title.lead} </span>}
                         <span className="font-black">{tab.title.bottom}</span>
                     </span>
                 </h3>

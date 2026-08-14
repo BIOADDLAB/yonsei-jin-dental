@@ -52,7 +52,7 @@ export default function Philosophy() {
                 {/* 진료철학 3가지 자동 슬라이드. 배경은 화면 왼쪽 끝에서 시작한다. PC 기준 901x236 */}
                 <div className="mt-10 lg:mt-11">
                     <div
-                        className={`relative flex h-[204px] w-[92%] items-center overflow-hidden rounded-r-[32px] bg-accent-soft py-7 pr-6 pl-14 md:h-[220px] md:w-[94%] md:rounded-r-[110px] md:py-10 md:pr-10 md:pl-20 lg:h-[236px] lg:w-[46.93vw] lg:rounded-r-full lg:py-0 lg:pr-16 ${TEXT_INSET}`}
+                        className={`relative flex min-h-[250px] w-[94%] items-center overflow-hidden rounded-r-[32px] bg-accent-soft py-8 pr-7 pl-14 md:min-h-[240px] md:rounded-r-[110px] md:py-9 md:pr-12 md:pl-20 lg:min-h-[250px] lg:w-[47.5vw] lg:rounded-r-full lg:pr-16 ${TEXT_INSET}`}
                     >
                         <AnimatePresence mode="wait">
                             <motion.div
@@ -77,7 +77,7 @@ export default function Philosophy() {
                                 >
                                     {slide.title}
                                 </p>
-                                <p className="text-wrap-design mt-1 text-body leading-relaxed font-medium text-primary">
+                                <p className="text-wrap-design mt-2 text-small leading-[1.75] font-semibold text-primary md:text-body">
                                     {slide.body}
                                 </p>
                             </motion.div>
