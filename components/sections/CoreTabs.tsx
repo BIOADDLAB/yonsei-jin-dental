@@ -156,6 +156,8 @@ function SystemShots({
 
 export default function CoreTabs() {
     const [active, setActive] = useState(0);
+    const [showSwipeHint, setShowSwipeHint] = useState(true);
+    const reducedMotion = useReducedMotion() ?? false;
     const tab = CORE_TABS[active];
 
     useEffect(() => {
@@ -167,6 +169,11 @@ export default function CoreTabs() {
         return () => window.removeEventListener('select-core-tab', onSelect);
     }, []);
 
+    useEffect(() => {
+        const timer = window.setTimeout(() => setShowSwipeHint(false), 2800);
+        return () => window.clearTimeout(timer);
+    }, []);
+
     return (
         <section id="core" className="bg-texture-stone py-12 md:py-24 lg:py-28" aria-labelledby="core-title">
             <h2 id="core-title" className="sr-only">
@@ -174,58 +181,87 @@ export default function CoreTabs() {
             </h2>
 
             <div className="mx-auto w-full max-w-site px-5 md:px-8">
-                <ul
-                    className="flex overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] lg:isolate lg:items-end lg:overflow-visible lg:border-b-0 lg:pt-7"
-                    role="tablist"
-                    aria-label="핵심역량 진료 분류"
-                >
-                    {CORE_TABS.map((item, index) => {
-                        const on = active === index;
-                        return (
-                            <li
-                                key={item.id}
-                                className="relative shrink-0 lg:-ml-[18px] lg:flex-1 lg:shrink lg:first:ml-0"
-                                style={{ zIndex: on ? 30 : index + 1 }}
-                            >
-                                <button
-                                    type="button"
-                                    role="tab"
-                                    aria-selected={on}
-                                    aria-controls={`panel-${item.id}`}
-                                    onClick={() => setActive(index)}
-                                    className={`core-tab relative flex h-[72px] w-full items-center justify-center px-3 text-center text-lead !leading-[27px] transition duration-300 md:h-[74px] md:px-4 lg:h-[110px] lg:px-3 lg:text-subheading lg:!leading-[32px] lg:whitespace-normal lg:rounded-t-[28px] ${
-                                        on
-                                            ? 'core-tab-active z-20 border-b-[3px] border-primary bg-white font-black text-primary lg:border-b-0 lg:bg-accent lg:flex-col lg:gap-1'
-                                            : 'z-0 border-b-2 border-primary bg-primary font-bold text-white lg:border-b-0 lg:bg-primary lg:font-extrabold lg:hover:brightness-110'
-                                    }`}
+                <div className="relative">
+                    <ul
+                        className="-mb-3 flex isolate items-end overflow-x-auto px-3 pt-7 pb-3 [scrollbar-width:none] [-ms-overflow-style:none] lg:overflow-visible lg:px-0"
+                        role="tablist"
+                        aria-label="핵심역량 진료 분류"
+                        onPointerDown={() => setShowSwipeHint(false)}
+                        onScroll={() => setShowSwipeHint(false)}
+                    >
+                        {CORE_TABS.map((item, index) => {
+                            const on = active === index;
+                            return (
+                                <li
+                                    key={item.id}
+                                    className="relative -ml-3 w-[152px] shrink-0 first:ml-0 md:-ml-4 md:w-auto md:flex-1 md:shrink lg:-ml-[18px]"
+                                    style={{ zIndex: on ? 30 : index + 1 }}
                                 >
-                                    <span className="block max-w-[5.5em] lg:hidden">{item.label}</span>
-                                    <span className="hidden leading-[1.3] lg:block">
-                                        {item.label.split(' ').map((word, i) => (
-                                            <span key={i} className="block">
-                                                {word}
-                                            </span>
-                                        ))}
-                                    </span>
-                                    {on && (
-                                        <svg
-                                            viewBox="0 0 24 24"
-                                            width="14"
-                                            height="14"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            strokeWidth="2.5"
-                                            aria-hidden="true"
-                                            className="mt-0.5 hidden shrink-0 text-primary lg:block"
-                                        >
-                                            <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
-                                        </svg>
-                                    )}
-                                </button>
-                            </li>
-                        );
-                    })}
-                </ul>
+                                    <button
+                                        type="button"
+                                        role="tab"
+                                        aria-selected={on}
+                                        aria-controls={`panel-${item.id}`}
+                                        onClick={() => setActive(index)}
+                                        className={`relative flex h-[88px] w-full items-center justify-center rounded-t-[22px] border border-white/10 px-3 text-center text-lead !leading-[27px] shadow-[inset_-1px_0_rgb(255_255_255/0.12)] transition duration-300 md:h-[96px] md:rounded-t-[24px] md:px-4 lg:h-[110px] lg:rounded-t-[28px] lg:px-3 lg:text-subheading lg:!leading-[32px] lg:whitespace-normal ${
+                                            on
+                                                ? "z-20 scale-x-[1.035] flex-col gap-1 border-[#9ebde6] bg-accent font-black text-primary shadow-[-10px_-6px_18px_rgb(6_26_66/0.20),10px_-6px_18px_rgb(6_26_66/0.16),0_9px_14px_rgb(6_26_66/0.16)] after:absolute after:right-2 after:-bottom-2 after:left-2 after:-z-10 after:h-2 after:rounded-b-[12px] after:bg-[#a9c7ef] after:shadow-[0_5px_9px_rgb(6_26_66/0.16)] after:content-[''] lg:scale-x-[1.045]"
+                                                : 'z-0 bg-primary font-bold text-white hover:brightness-110 lg:font-extrabold'
+                                        }`}
+                                    >
+                                        <span className="block max-w-[5.5em] lg:hidden">{item.label}</span>
+                                        <span className="hidden leading-[1.3] lg:block">
+                                            {item.label.split(' ').map((word, i) => (
+                                                <span key={i} className="block">
+                                                    {word}
+                                                </span>
+                                            ))}
+                                        </span>
+                                        {on && (
+                                            <svg
+                                                viewBox="0 0 24 24"
+                                                width="14"
+                                                height="14"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                strokeWidth="2.5"
+                                                aria-hidden="true"
+                                                className="mt-0.5 block shrink-0 text-primary"
+                                            >
+                                                <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+                                            </svg>
+                                        )}
+                                    </button>
+                                </li>
+                            );
+                        })}
+                    </ul>
+
+                    <AnimatePresence>
+                        {showSwipeHint && (
+                            <motion.div
+                                initial={{ opacity: 0, y: -4 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: 4 }}
+                                className="pointer-events-none absolute top-full left-1/2 z-40 mt-2 flex -translate-x-1/2 items-center gap-2 whitespace-nowrap rounded-full border border-primary/10 bg-white/90 px-4 py-2 text-caption font-bold text-primary shadow-[0_6px_20px_rgb(6_26_66/0.14)] backdrop-blur-md md:hidden"
+                            >
+                                <motion.span
+                                    aria-hidden="true"
+                                    animate={reducedMotion ? { x: 0 } : { x: [-3, 3, -3] }}
+                                    transition={
+                                        reducedMotion
+                                            ? { duration: 0 }
+                                            : { duration: 1.1, repeat: Infinity, ease: 'easeInOut' }
+                                    }
+                                    className="text-[16px] leading-none"
+                                >
+                                    ↔
+                                </motion.span>
+                                <span>옆으로 밀어보세요</span>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </div>
 
                 <div
                     id={`panel-${tab.id}`}
