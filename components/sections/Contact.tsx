@@ -3,6 +3,8 @@ import Reveal from '@/components/ui/Reveal';
 import Image from 'next/image';
 
 const NAVER_MAP_URL = 'https://naver.me/59vHMVNw';
+const GOOGLE_MAP_SRC =
+    'https://www.google.com/maps/embed?pb=!1m5!3m3!1m2!1s0x356360a70ac0fe69%3A0xe7fac5aeed631523!2z6rK96riw64-EIOyXrOyjvOyLnCDshLjsooXroZwgMzc1LTEgMuy4tQ!5e0!3m2!1sko!2skr!4v1785218104182!5m2!1sko!2skr';
 
 const DAY_LABEL = 'w-30 shrink-0 text-justify [text-align-last:justify] text-subheading font-bold text-white';
 
@@ -53,7 +55,10 @@ export default function Contact() {
                             ))}
                         </ul>
                         <p className="mt-3.5 flex items-center gap-2 text-subheading font-extrabold text-white">
-                            <span aria-hidden="true" className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white text-primary">
+                            <span
+                                aria-hidden="true"
+                                className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white text-primary"
+                            >
                                 <Image src="/images/i-car.svg" alt="" width={22} height={22} />
                             </span>
                             {CLINIC.parking}
@@ -62,7 +67,9 @@ export default function Contact() {
                         <div className="mt-8 border-t border-white/50 pt-6 text-small font-extrabold text-white">
                             <p>병원명 : {CLINIC.name}</p>
                             <p>주소 : {CLINIC.address}</p>
-                            <p className="mt-1 font-black tracking-[0.04em] [font-variant-numeric:tabular-nums]">TEL : {CLINIC.tel}</p>
+                            <p className="mt-1 font-black tracking-[0.04em] [font-variant-numeric:tabular-nums]">
+                                TEL : {CLINIC.tel}
+                            </p>
                         </div>
                     </Reveal>
 
@@ -71,23 +78,37 @@ export default function Contact() {
                         className="order-1 flex flex-col mx-auto w-full max-w-[674px] lg:order-2 lg:mx-0 lg:max-w-none"
                     >
                         <h3 className="text-subheading font-extrabold text-white">오시는 길 안내</h3>
-                        <a
-                            href={NAVER_MAP_URL}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="네이버 지도에서 연세진치과 위치와 길찾기 보기"
-                            className="group relative mt-6 min-h-[320px] w-full max-w-[674px] flex-1 overflow-hidden rounded-[20px] bg-neutral-200 md:min-h-[420px] lg:min-h-0"
-                        >
-                            <Image src="/images/map-naver.jpg" alt="연세진치과 주변 네이버 지도" fill sizes="(max-width: 1024px) 100vw, 674px" className="object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
-                            <span className="absolute left-[60%] top-[55%] flex -translate-x-1/2 -translate-y-full flex-col items-center">
-                                <span className="rounded-full bg-primary px-3 py-1.5 text-caption font-black text-white shadow-lg">연세진치과</span>
-                                <span className="h-0 w-0 border-x-[9px] border-t-[12px] border-x-transparent border-t-primary" />
-                            </span>
-                            <span className="absolute right-3 top-3 flex items-center gap-2 rounded-lg bg-white px-3 py-2 text-caption font-black text-basic shadow-[0_4px_14px_rgb(0_0_0/0.18)] transition group-hover:-translate-y-0.5">
-                                <Image src="/images/i-naver.svg" alt="" width={24} height={24} />
-                                네이버 지도 열기
-                            </span>
-                        </a>
+                        <div className="relative mt-6 min-h-[320px] w-full max-w-[674px] flex-1 overflow-hidden rounded-[20px] bg-neutral-300 md:min-h-[420px] lg:min-h-0">
+                            <iframe
+                                src={GOOGLE_MAP_SRC}
+                                title={`${CLINIC.name} 위치 지도`}
+                                loading="lazy"
+                                allowFullScreen
+                                referrerPolicy="strict-origin-when-cross-origin"
+                                className="absolute inset-0 h-full w-full border-0"
+                            />
+
+                            <div className="absolute right-2 top-2 flex flex-col gap-2 sm:flex-row">
+                                <a
+                                    href={NAVER_MAP_URL}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-1.5 rounded-lg bg-white px-3 py-2 text-caption font-bold text-basic shadow-[0_2px_8px_rgb(0_0_0/0.15)] transition hover:bg-neutral-50 active:scale-[0.98]"
+                                >
+                                    <Image src="/images/i-naver.svg" alt="" width={24} height={24} />
+                                    네이버 지도
+                                </a>
+                                <a
+                                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(CLINIC.address)}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-1.5 rounded-lg bg-white px-3 py-2 text-caption font-bold text-basic shadow-[0_2px_8px_rgb(0_0_0/0.15)] transition hover:bg-neutral-50 active:scale-[0.98]"
+                                >
+                                    <Image src="/images/i-google.svg" alt="" width={24} height={24} />
+                                    구글 지도
+                                </a>
+                            </div>
+                        </div>
                     </Reveal>
                 </div>
             </div>
