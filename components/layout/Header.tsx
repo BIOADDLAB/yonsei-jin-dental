@@ -7,11 +7,11 @@ import { CLINIC, NAV } from '@/data/site';
 
 export default function Header() {
     const [scrolled, setScrolled] = useState(false);
-    const [hovered, setHovered] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
 
     useEffect(() => {
-        const onScroll = () => setScrolled(window.scrollY > 10);
+        const onScroll = () => setScrolled(window.scrollY > 12);
+        onScroll();
         window.addEventListener('scroll', onScroll, { passive: true });
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
@@ -27,16 +27,14 @@ export default function Header() {
         };
     }, [menuOpen]);
 
-    const solid = scrolled || hovered || menuOpen;
+    const solid = scrolled || menuOpen;
 
     return (
         <header
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
-            className={`fixed inset-x-0 top-0 z-40 transition-[background-color,box-shadow,border-color] duration-300 ${
+            className={`fixed inset-x-0 top-0 z-40 border-b transition-[background-color,box-shadow,border-color,backdrop-filter] duration-300 ${
                 solid
-                    ? 'border-b border-transparent bg-primary [box-shadow:0_4px_20px_rgb(0_0_0/0.08)]'
-                    : 'border-b border-white/60 bg-transparent'
+                    ? 'border-white/15 bg-primary/[0.96] backdrop-blur-md [box-shadow:0_8px_28px_rgb(0_0_0/0.16)]'
+                    : 'border-white/30 bg-transparent shadow-none'
             }`}
         >
             <div className="mx-auto flex h-[80px] w-full max-w-site items-center justify-between px-5 md:h-[100px] md:px-8">
@@ -60,7 +58,7 @@ export default function Header() {
                         <Link
                             key={item.href}
                             href={item.href}
-                            className={`text-lead font-medium text-white transition-colors hover:text-accent hover:[text-shadow:0_2px_10px_rgb(0_0_0/0.35)] active:text-accent`}
+                            className="text-lead font-bold text-white transition-colors hover:text-accent active:text-accent"
                         >
                             {item.label}
                         </Link>

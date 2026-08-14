@@ -51,7 +51,7 @@ export default function Doctor() {
                                                     width="12"
                                                     height="14"
                                                     viewBox="0 0 12 14"
-                                                    fill="#1C2B54"
+                                                    fill="#061A42"
                                                     xmlns="http://www.w3.org/2000/svg"
                                                 >
                                                     <path

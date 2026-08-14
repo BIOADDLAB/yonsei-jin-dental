@@ -1,17 +1,25 @@
 @import 'tailwindcss';
 
+@font-face {
+    font-family: 'Pretendard';
+    src: url('/fonts/PretendardVariable.woff2') format('woff2-variations');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
 @theme {
     /* 브랜드 컬러 시스템
      primary   : 메인 브랜드 컬러 (네이비)
      secondary : 보조 강조 컬러 (블루)
      accent    : 포인트 컬러 (스카이블루)  */
     --color-basic: #0f0f0f;
-    --color-primary: #012174;
-    --color-accent: #bce2fe;
-    --color-accent-soft: #e9f6ff;
-    --color-hover: #96d2ff;
+    --color-primary: #061a42;
+    --color-accent: #d7e7ff;
+    --color-accent-soft: #eef5ff;
+    --color-hover: #bdd7ff;
 
-    --font-sans: var(--font-nanum), system-ui, sans-serif;
+    --font-sans: 'Pretendard', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
 
     --container-site: 1330px;
 
@@ -108,6 +116,36 @@
     background: color-mix(in srgb, var(--color-primary) 20%, transparent);
 }
 
+@media (min-width: 1280px) {
+    .core-tab {
+        transform-origin: bottom center;
+        border: 1px solid rgb(255 255 255 / 0.12);
+        box-shadow: inset -1px 0 rgb(255 255 255 / 0.12);
+    }
+
+    .core-tab-active {
+        transform: scaleX(1.045);
+        border-color: #9ebde6;
+        box-shadow:
+            -14px -8px 24px rgb(6 26 66 / 0.24),
+            14px -8px 24px rgb(6 26 66 / 0.2),
+            0 12px 20px rgb(6 26 66 / 0.2);
+    }
+
+    .core-tab-active::after {
+        content: '';
+        position: absolute;
+        right: 10px;
+        bottom: -10px;
+        left: 10px;
+        z-index: -1;
+        height: 11px;
+        border-radius: 0 0 14px 14px;
+        background: #a9c7ef;
+        box-shadow: 0 7px 12px rgb(6 26 66 / 0.18);
+    }
+}
+
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 72px;
@@ -123,6 +161,19 @@ body {
     overflow-x: clip;
     word-break: keep-all;
     overflow-wrap: break-word;
+    font-weight: 500;
+    letter-spacing: -0.025em;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 3px solid var(--color-hover);
+    outline-offset: 3px;
 }
 
 /* 시안 공통 텍스처 배경 */

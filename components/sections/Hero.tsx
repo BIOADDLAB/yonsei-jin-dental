@@ -13,8 +13,9 @@ export default function Hero() {
                 priority
                 quality={90}
                 sizes="(max-width: 768px) 200vw, 100vw"
-                className="object-cover object-[75%_center] md:object-center"
+                className="object-cover object-[75%_center] brightness-[1.12] saturate-[0.94] md:object-center"
             />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#061a42]/18 via-transparent to-[#061a42]/16" />
 
             <Reveal kind="scale" className="relative z-10 flex h-full flex-col items-center justify-center text-center">
                 <p className="text-heading font-black text-white">{CLINIC.nameEn}</p>

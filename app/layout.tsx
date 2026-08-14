@@ -1,13 +1,5 @@
 import type { Metadata } from 'next';
-import localFont from 'next/font/local';
 import './globals.css';
-
-const nanum = localFont({
-    src: './fonts/NanumSquareNeo-Variable.ttf',
-    weight: '100 900',
-    variable: '--font-nanum',
-    display: 'swap',
-});
 
 // #TODO: 도메인 확정되면 실제 주소로 교체
 const SITE_URL = 'https://yonsei-jin-dental.vercel.app/';
@@ -46,7 +38,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="ko" className={nanum.variable}>
+        <html lang="ko">
             <body>{children}</body>
         </html>
     );
