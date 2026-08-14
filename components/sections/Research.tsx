@@ -17,7 +17,11 @@ export default function Research() {
     };
 
     return (
-        <section id="research" className="overflow-hidden bg-texture py-16 md:py-24 lg:py-32" aria-labelledby="research-title">
+        <section
+            id="research"
+            className="overflow-hidden bg-texture py-16 md:py-24 lg:py-32"
+            aria-labelledby="research-title"
+        >
             <div className="mx-auto w-full max-w-site px-5 md:px-8">
                 <Reveal>
                     <div className="flex flex-col md:flex-row md:items-end md:gap-4">
@@ -26,7 +30,9 @@ export default function Research() {
                         </h2>
                         <p className="text-[16px] font-bold text-primary md:pb-1 md:text-[18px]">{RESEARCH.eyebrow}</p>
                     </div>
-                    <p className="text-wrap-design mt-4 text-body font-semibold leading-[1.7] text-basic md:mt-6">{RESEARCH.desc}</p>
+                    <p className="text-wrap-design mt-4 text-body font-semibold leading-[1.7] text-basic md:mt-6">
+                        {RESEARCH.desc}
+                    </p>
                 </Reveal>
 
                 <Reveal kind="scale" className="mt-12 md:mt-16">
@@ -39,8 +45,8 @@ export default function Research() {
                             transition={{ duration: reduced ? 0 : 0.35, ease: [0.22, 1, 0.36, 1] }}
                             className="relative grid md:mb-10 md:min-h-[500px] md:grid-cols-[52%_48%]"
                         >
-                            <span className="absolute top-10 left-[52%] z-30 hidden h-[150px] w-[42px] items-center justify-center overflow-hidden bg-primary text-[11px] font-extrabold tracking-[0.22em] text-white md:flex">
-                                <span className="whitespace-nowrap" style={{ transform: 'rotate(90deg)' }}>
+                            <span className="absolute top-10 left-[52%] z-30 hidden h-[150px] w-[42px] items-center justify-center overflow-hidden bg-primary text-[11px] font-bold tracking-[0.22em] text-white md:flex ">
+                                <span className=" whitespace-nowrap" style={{ transform: 'rotate(-90deg)' }}>
                                     {current.tagEn}
                                 </span>
                             </span>
@@ -69,8 +75,13 @@ export default function Research() {
                                 </h3>
                                 <ul className="mt-7 space-y-4">
                                     {current.items.map((item) => (
-                                        <li key={item} className="flex gap-3 text-body leading-[1.75] font-semibold text-[#39445a]">
-                                            <span aria-hidden="true" className="font-black text-primary">·</span>
+                                        <li
+                                            key={item}
+                                            className="flex gap-3 text-body leading-[1.75] font-semibold text-[#39445a]"
+                                        >
+                                            <span aria-hidden="true" className="font-black text-primary">
+                                                ·
+                                            </span>
                                             <span className="text-wrap-design">{item}</span>
                                         </li>
                                     ))}
