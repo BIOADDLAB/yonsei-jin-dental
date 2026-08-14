@@ -15,7 +15,7 @@ export default function Hero() {
                 className="object-cover object-[75%_center] brightness-[1.03] saturate-[0.96] md:object-center"
             />
 
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,26,66,0.22)_0%,rgba(6,26,66,0.14)_48%,rgba(6,26,66,0.20)_100%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,26,66,0.22)_0%,rgba(6,26,66,0.1)_48%,rgba(6,26,66,0.20)_100%)]" />
 
             <Reveal kind="scale" className="relative z-10 flex h-full flex-col items-center justify-center text-center">
                 <p className="text-heading font-black text-white">{CLINIC.nameEn}</p>
