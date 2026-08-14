@@ -38,7 +38,9 @@ export default function SpecialCare() {
                                 className="grid min-h-[520px] lg:h-full lg:min-h-0 lg:grid-cols-[minmax(0,1fr)_420px]"
                             >
                                 <div className="flex flex-col justify-center px-7 py-10 md:px-12 lg:px-10 lg:py-7 xl:px-14">
-                                    <p className="text-[64px] leading-none font-black text-primary/20 md:text-[82px] lg:text-[64px]">{item.no}</p>
+                                    <p className="text-[64px] leading-none font-black text-primary/20 md:text-[82px] lg:text-[64px]">
+                                        {item.no}
+                                    </p>
                                     <h3 className="text-wrap-design mt-3 text-[28px] leading-[1.3] font-black text-basic md:text-[38px] lg:text-[34px]">
                                         {item.title.join('\n')}
                                     </h3>
@@ -87,7 +89,9 @@ export default function SpecialCare() {
                                 aria-label="이전 진료철학"
                                 className="flex h-11 w-11 items-center justify-center border border-primary/20 bg-white text-primary transition hover:bg-accent-soft"
                             >
-                                <span aria-hidden="true" className="text-[24px] leading-none">←</span>
+                                <span aria-hidden="true" className="text-[24px] leading-none">
+                                    ←
+                                </span>
                             </button>
                             <button
                                 type="button"
@@ -95,11 +99,12 @@ export default function SpecialCare() {
                                 aria-label="다음 진료철학"
                                 className="flex h-11 w-11 items-center justify-center bg-primary text-white transition hover:brightness-110"
                             >
-                                <span aria-hidden="true" className="text-[24px] leading-none">→</span>
+                                <span aria-hidden="true" className="text-[24px] leading-none">
+                                    →
+                                </span>
                             </button>
                         </div>
                     </div>
-
                 </Reveal>
             </div>
         </section>
