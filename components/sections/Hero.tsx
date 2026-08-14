@@ -17,14 +17,12 @@ export default function Hero() {
             />
             <div className="absolute inset-0 bg-primary/[0.10]" />
             <div className="absolute inset-0 bg-gradient-to-b from-primary/[0.04] via-transparent to-primary/[0.14]" />
-
             <Reveal kind="scale" className="relative z-10 flex h-full flex-col items-center justify-center text-center">
                 <p className="text-heading font-black text-white">{CLINIC.nameEn}</p>
                 <h1 className="mt-1 text-display font-extrabold text-white [text-shadow:0_4px_10px_rgba(35,50,125,0.50)]">
                     {CLINIC.name}
                 </h1>
             </Reveal>
-
             <div className="absolute bottom-10 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-1.5 md:bottom-13 md:gap-2 lg:bottom-15">
                 <div className="flex h-8 w-5 items-start justify-center rounded-full border-2 border-white p-1 md:h-10 md:w-6">
                     <div className="h-1.5 w-0.5 animate-wheel rounded-full bg-white md:h-2 md:w-0.5" />
