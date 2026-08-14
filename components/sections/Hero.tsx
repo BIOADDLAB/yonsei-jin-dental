@@ -11,23 +11,26 @@ export default function Hero() {
                 fill
                 priority
                 quality={90}
-                sizes="(max-width: 768px) 200vw, 100vw"
-                className="object-cover object-[75%_center] brightness-[1.14] saturate-[0.92] md:object-center"
+                sizes="100vw"
+                className="object-cover object-[75%_center] saturate-[0.92] md:object-center"
             />
 
+            {/* 타원: 타이틀 뒤쪽만 좁게 눌러 대비 확보 / 선형: 헤더·스크롤 인디케이터용 최소 스크림 */}
             <div
                 aria-hidden="true"
                 className="absolute inset-0 z-[1]"
                 style={{
                     background:
-                        'linear-gradient(180deg, rgba(6, 26, 66, 0.13) 0%, rgba(6, 26, 66, 0.05) 50%, rgba(6, 26, 66, 0.10) 100%)',
+                        'radial-gradient(ellipse 44% 32% at 50% 48%, rgba(6, 26, 66, 0.42) 0%, rgba(6, 26, 66, 0) 100%), linear-gradient(180deg, rgba(6, 26, 66, 0.18) 0%, rgba(6, 26, 66, 0.04) 45%, rgba(6, 26, 66, 0.26) 100%)',
                 }}
             />
 
             <Reveal kind="scale" className="relative z-10 flex h-full flex-col items-center justify-center text-center">
-                <p className="text-heading font-black text-white">{CLINIC.nameEn}</p>
+                <p className="text-heading font-black text-white [text-shadow:0_2px_8px_rgba(6,26,66,0.7)]">
+                    {CLINIC.nameEn}
+                </p>
 
-                <h1 className="mt-1 text-display font-extrabold text-white [text-shadow:0_4px_10px_rgba(6,26,66,0.45)]">
+                <h1 className="mt-1 text-display font-extrabold text-white [text-shadow:0_2px_8px_rgba(6,26,66,0.7)]">
                     {CLINIC.name}
                 </h1>
             </Reveal>
