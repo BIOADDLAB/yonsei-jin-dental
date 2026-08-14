@@ -54,7 +54,7 @@ export default function Contact() {
                                 <li key={note}>{note}</li>
                             ))}
                         </ul>
-                        <p className="mt-3.5 flex items-center gap-2 text-subheading font-extrabold text-white">
+                        <p className="mt-3.5 flex items-center gap-2 text-subheading font-bold text-white">
                             <span
                                 aria-hidden="true"
                                 className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white text-primary"
@@ -64,10 +64,10 @@ export default function Contact() {
                             {CLINIC.parking}
                         </p>
 
-                        <div className="mt-8 border-t border-white/50 pt-6 text-small font-extrabold text-white">
+                        <div className="mt-8 border-t border-white/50 pt-6 text-small font-semibold tracking-[0.04em] text-white">
                             <p>병원명 : {CLINIC.name}</p>
                             <p>주소 : {CLINIC.address}</p>
-                            <p className="mt-1 font-black tracking-[0.04em] [font-variant-numeric:tabular-nums]">
+                            <p className="mt-1 font-semibold tracking-[0.04em] [font-variant-numeric:tabular-nums]">
                                 TEL : {CLINIC.tel}
                             </p>
                         </div>
