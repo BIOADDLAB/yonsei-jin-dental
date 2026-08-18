@@ -5,6 +5,8 @@ export const CLINIC = {
     nameEn: 'Yonsei Jin Dental',
     owner: '조진세',
     address: '경기도 여주시 세종로 375-1, 2층',
+    lat: 37.2651789,
+    lng: 127.6399568,
     tel: '031-883-0045',
     bizNo: '627-02-01230',
     hours: [

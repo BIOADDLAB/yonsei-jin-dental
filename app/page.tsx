@@ -60,8 +60,8 @@ const structuredData = {
             },
             geo: {
                 '@type': 'GeoCoordinates',
-                latitude: 37.2651789,
-                longitude: 127.6399568,
+                latitude: CLINIC.lat,
+                longitude: CLINIC.lng,
             },
             openingHoursSpecification: [
                 {
