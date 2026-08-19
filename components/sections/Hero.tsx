@@ -40,7 +40,7 @@ export default function Hero() {
                     <div className="h-1.5 w-0.5 animate-wheel rounded-full bg-white md:h-2 md:w-0.5" />
                 </div>
 
-                <Image src="/images/i-arr-down-03.svg" alt="" width={14} height={8} className="w-3 md:w-auto" />
+                <Image src="/images/i-arr-down-03.svg" alt="" width={14} height={8} className="h-auto w-3 md:w-auto" />
             </div>
         </section>
     );

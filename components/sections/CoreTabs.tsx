@@ -1,9 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { CORE_TABS } from '@/data/site';
+import ScrollHint from '@/components/ui/ScrollHint';
 
 function usePager(total: number) {
     const [[index, dir], setState] = useState<[number, number]>([0, 1]);
@@ -156,8 +157,7 @@ function SystemShots({
 
 export default function CoreTabs() {
     const [active, setActive] = useState(0);
-    const [showSwipeHint, setShowSwipeHint] = useState(true);
-    const reducedMotion = useReducedMotion() ?? false;
+    const tabListRef = useRef<HTMLUListElement>(null);
     const tab = CORE_TABS[active];
 
     useEffect(() => {
@@ -169,11 +169,6 @@ export default function CoreTabs() {
         return () => window.removeEventListener('select-core-tab', onSelect);
     }, []);
 
-    useEffect(() => {
-        const timer = window.setTimeout(() => setShowSwipeHint(false), 2800);
-        return () => window.clearTimeout(timer);
-    }, []);
-
     return (
         <section id="core" className="bg-texture-stone py-12 md:py-24 lg:py-28" aria-labelledby="core-title">
             <h2 id="core-title" className="sr-only">
@@ -183,11 +178,10 @@ export default function CoreTabs() {
             <div className="mx-auto w-full max-w-site px-5 md:px-8">
                 <div className="relative">
                     <ul
+                        ref={tabListRef}
                         className="-mb-3 flex isolate items-end overflow-x-auto px-3 pt-7 pb-3 [scrollbar-width:none] [-ms-overflow-style:none] lg:overflow-visible lg:px-0"
                         role="tablist"
                         aria-label="핵심역량 진료 분류"
-                        onPointerDown={() => setShowSwipeHint(false)}
-                        onScroll={() => setShowSwipeHint(false)}
                     >
                         {CORE_TABS.map((item, index) => {
                             const on = active === index;
@@ -237,36 +231,13 @@ export default function CoreTabs() {
                         })}
                     </ul>
 
-                    <AnimatePresence>
-                        {showSwipeHint && (
-                            <motion.div
-                                initial={{ opacity: 0, y: -4 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: 4 }}
-                                className="pointer-events-none absolute top-full left-1/2 z-40 mt-2 flex -translate-x-1/2 items-center gap-2 whitespace-nowrap rounded-full border border-primary/10 bg-white/90 px-4 py-2 text-caption font-bold text-primary shadow-[0_6px_20px_rgb(6_26_66/0.14)] backdrop-blur-md md:hidden"
-                            >
-                                <motion.span
-                                    aria-hidden="true"
-                                    animate={reducedMotion ? { x: 0 } : { x: [-3, 3, -3] }}
-                                    transition={
-                                        reducedMotion
-                                            ? { duration: 0 }
-                                            : { duration: 1.1, repeat: Infinity, ease: 'easeInOut' }
-                                    }
-                                    className="text-[16px] leading-none"
-                                >
-                                    ↔
-                                </motion.span>
-                                <span>옆으로 밀어보세요</span>
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
+                    <ScrollHint targetRef={tabListRef} />
                 </div>
 
                 <div
                     id={`panel-${tab.id}`}
                     role="tabpanel"
-                    className="relative z-0 bg-white/90 px-5 py-12 md:px-10 md:pt-[114px] md:pb-[80px] lg:px-0"
+                    className="relative z-0 bg-white/90 px-5 pt-[72px] pb-12 md:px-10 md:pt-[114px] md:pb-[80px] lg:px-0"
                 >
                     <Panel key={tab.id} tab={tab} />
                 </div>
