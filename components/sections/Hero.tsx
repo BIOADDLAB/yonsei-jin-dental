@@ -6,7 +6,7 @@ export default function Hero() {
     return (
         <section className="relative h-[100dvh] min-h-[420px] w-full overflow-hidden">
             <Image
-                src="/images/bg-hero.jpg"
+                src="/images/bg-hero-02.jpg"
                 alt="연세진치과 디지털 장비를 갖춘 진료실 전경"
                 fill
                 priority
