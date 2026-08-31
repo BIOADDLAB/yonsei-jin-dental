@@ -1,6 +1,6 @@
 import { loginAdmin, logoutAdmin } from './actions';
 import { isAdminAuthenticated } from './auth';
-import NoticeAdmin from './NoticeAdmin';
+import AdminPanel from './AdminPanel';
 
 type Props = {
     searchParams?: Promise<{ error?: string }>;
@@ -66,7 +66,7 @@ export default async function AdminPage({ searchParams }: Props) {
             <div className="mx-auto flex w-full max-w-[1000px] flex-col gap-3 px-4 sm:flex-row sm:items-center sm:justify-between md:px-8">
                 <div className="min-w-0">
                     <p className="text-caption font-medium text-primary md:text-small">Yonsei JIN Admin</p>
-                    <h1 className="mt-1 text-body font-black text-primary md:text-subheading">공지사항 관리</h1>
+                    <h1 className="mt-1 text-body font-black text-primary md:text-subheading">홈페이지 관리</h1>
                 </div>
                 <form action={logoutAdmin} className="shrink-0 self-start sm:self-auto">
                     <button
@@ -78,7 +78,7 @@ export default async function AdminPage({ searchParams }: Props) {
                 </form>
             </div>
 
-            <NoticeAdmin />
+            <AdminPanel />
         </main>
     );
 }

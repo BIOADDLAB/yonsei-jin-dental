@@ -48,7 +48,12 @@ export default function Contact() {
                             </div>
                         </dl>
 
-                        <ul className="mt-5.5 space-y-1 text-body font-medium text-white">
+                        {/* 목요일 휴진은 놓치지 않도록 가볍게만 강조 */}
+                        <p className="mt-5.5 inline-flex items-center rounded-full border border-white/45 px-4 py-1 text-[16px] font-bold text-white">
+                            {CLINIC.closedDay}
+                        </p>
+
+                        <ul className="mt-3 space-y-1 text-body font-medium text-white">
                             {CLINIC.notes.map((note) => (
                                 <li key={note}>{note}</li>
                             ))}
@@ -77,8 +82,20 @@ export default function Contact() {
                         className="order-1 flex flex-col mx-auto w-full max-w-[674px] lg:order-2 lg:mx-0 lg:max-w-none"
                     >
                         <h3 className="text-subheading font-extrabold text-white">오시는 길 안내</h3>
-                        <div className="relative mt-6 min-h-[320px] w-full max-w-[674px] flex-1 overflow-hidden rounded-[20px] bg-neutral-300 md:min-h-[420px] lg:min-h-0">
+                        {/* isolate: 네이버 지도가 만든 높은 z-index 컨트롤이 고정 헤더 위로 튀어나오지 않게 가둔다 */}
+                        <div className="relative isolate mt-6 min-h-[320px] w-full max-w-[674px] flex-1 overflow-hidden rounded-[20px] bg-neutral-300 md:min-h-[420px] lg:min-h-0">
                             <NaverMap lat={CLINIC.lat} lng={CLINIC.lng} name={CLINIC.name} />
+
+                            {/* 지도 위에 치과 전경 사진을 얹는다. 지도 컨트롤(좌상단 줌·우상단 버튼)과 겹치지 않는 좌하단 */}
+                            <div className="pointer-events-none absolute bottom-3 left-3 w-[38%] max-w-[240px] min-w-[120px] overflow-hidden rounded-[12px] border-2 border-white shadow-[0_6px_18px_rgb(0_0_0/0.28)]">
+                                <Image
+                                    src="/images/img-map.jpg"
+                                    alt="연세진치과가 있는 건물 외관"
+                                    width={1600}
+                                    height={1066}
+                                    className="h-auto w-full object-cover"
+                                />
+                            </div>
 
                             <div className="absolute right-2 top-2 flex flex-col gap-2 sm:flex-row">
                                 <a

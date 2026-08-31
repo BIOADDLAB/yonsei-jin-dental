@@ -72,7 +72,7 @@ export default function Faq() {
                                                         onClick={() => setOpen(open === index ? -1 : index)}
                                                         className="flex w-full items-center justify-between gap-4 text-left"
                                                     >
-                                                        <span className="text-body font-black text-primary md:text-[18px] lg:text-[20px]">
+                                                        <span className="text-[17px] font-black text-primary md:text-[20px] lg:text-[22px]">
                                                             Q. {item.q}
                                                         </span>
                                                         <span
@@ -91,9 +91,19 @@ export default function Faq() {
                                                         </span>
                                                     </button>
                                                 </h3>
+                                                {/* 답변은 둘째 줄부터 첫 줄 첫 글자에 맞춰 들여쓴다 */}
                                                 {open === index && (
-                                                    <p className="text-wrap-design mt-4 text-small leading-relaxed text-basic/80 md:mt-5 md:text-[16px]">
-                                                        {item.a ? `A. ${item.a}` : '답변을 준비하고 있습니다.'}
+                                                    <p className="mt-4 flex gap-2 text-[16px] leading-[1.8] text-basic/80 md:mt-5 md:text-[17px] lg:text-[18px]">
+                                                        {item.a ? (
+                                                            <>
+                                                                <span className="shrink-0 font-bold">A.</span>
+                                                                <span className="text-wrap-design min-w-0">
+                                                                    {item.a}
+                                                                </span>
+                                                            </>
+                                                        ) : (
+                                                            <span>답변을 준비하고 있습니다.</span>
+                                                        )}
                                                     </p>
                                                 )}
                                             </article>

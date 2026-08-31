@@ -12,6 +12,7 @@ import Research from '@/components/sections/Research';
 import Faq from '../components/sections/faq';
 import CoreTabs from './../components/sections/CoreTabs';
 import NoticeSection from './../components/sections/NoticeSection';
+import PopupModal from '@/components/popup/PopupModal';
 import { CLINIC, DOCTOR, FAQ, SIGNATURE_CARE } from '@/data/site';
 
 const SITE_URL = 'https://yonsei-jin-dental.vercel.app';
@@ -143,6 +144,7 @@ export default function Home() {
             </main>
             <Footer />
             <FloatingMenu />
+            <PopupModal />
         </>
     );
 }

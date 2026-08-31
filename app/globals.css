@@ -252,12 +252,18 @@ a:focus-visible {
     margin-bottom: 0;
 }
 
-/* 본문 이미지가 부모 너비를 넘지 않도록 제한 */
+/* 본문 이미지. 개수 제한 없이 넣을 수 있고 부모 너비를 넘지 않는다 */
 .notice-content img {
     display: block;
     max-width: 100%;
     height: auto;
+    margin: 1em 0;
     border-radius: 12px;
+}
+/* 에디터에서 선택한 이미지 표시 */
+.notice-content img.ProseMirror-selectednode {
+    outline: 3px solid var(--color-hover);
+    outline-offset: 2px;
 }
 
 /* 에디터 placeholder */

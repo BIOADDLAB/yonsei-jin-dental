@@ -4,10 +4,18 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Modal from '@/components/ui/Modal';
 import { formatDate } from '@/components/notice/NoticeList';
-import type { Notice } from '@/lib/notice';
+
+/** 공지·학술활동 모두 같은 모달을 쓴다. 두 타입에 공통인 필드만 요구한다 */
+export type NoticeView = {
+    id: string;
+    title: string;
+    date: string;
+    imageUrl: string;
+    content: string;
+};
 
 type Props = {
-    notice: Notice | null;
+    notice: NoticeView | null;
     onClose: () => void;
 };
 
@@ -20,7 +28,7 @@ export default function NoticeModal({ notice, onClose }: Props) {
     );
 }
 
-function NoticeBody({ notice }: { notice: Notice }) {
+function NoticeBody({ notice }: { notice: NoticeView }) {
     const [ready, setReady] = useState(false);
     const [imageLoaded, setImageLoaded] = useState(false);
 

@@ -5,15 +5,30 @@ import Reveal from '@/components/ui/Reveal';
 export default function Hero() {
     return (
         <section className="relative h-[100dvh] min-h-[420px] w-full overflow-hidden">
+            {/* 자동재생이 막히거나 영상을 못 받는 환경에서는 첫 프레임 사진이 그대로 남는다 */}
             <Image
-                src="/images/bg-hero.jpg"
+                src="/images/hero-sum.jpg"
                 alt="연세진치과 디지털 장비를 갖춘 진료실 전경"
                 fill
                 priority
                 quality={90}
                 sizes="100vw"
-                className="object-cover object-[75%_center] saturate-[0.92] md:object-center"
+                className="object-cover object-center saturate-[0.92]"
             />
+
+            <video
+                className="absolute inset-0 h-full w-full object-cover object-center saturate-[0.92]"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                poster="/images/hero-sum.jpg"
+                aria-hidden="true"
+                tabIndex={-1}
+            >
+                <source src="/videos/hero-main.mp4" type="video/mp4" />
+            </video>
 
             {/* 타원: 타이틀 뒤쪽만 좁게 눌러 대비 확보 / 선형: 헤더·스크롤 인디케이터용 최소 스크림 */}
             <div

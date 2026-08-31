@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { RESEARCH } from '@/data/site';
 import Reveal from '@/components/ui/Reveal';
+import { openAcademic } from '@/lib/academic-event';
 
 export default function Research() {
     const [active, setActive] = useState(0);
@@ -87,9 +88,20 @@ export default function Research() {
                                     ))}
                                 </ul>
 
-                                <span className="mt-9 inline-flex bg-primary px-5 py-3 text-caption font-extrabold text-white">
+                                {/* 누르면 공지사항 섹션으로 이동하며 해당 학술활동 모달이 열린다 */}
+                                <button
+                                    type="button"
+                                    onClick={() => openAcademic(current.id)}
+                                    className="mt-9 inline-flex items-center gap-2 bg-primary px-5 py-3 text-caption font-extrabold text-white transition hover:brightness-125 active:scale-[0.98]"
+                                >
                                     {current.label}
-                                </span>
+                                    <img
+                                        src="/images/i-link.svg"
+                                        alt=""
+                                        aria-hidden="true"
+                                        className="h-3 w-3 brightness-0 invert"
+                                    />
+                                </button>
 
                                 <div className="absolute right-0 bottom-0 flex">
                                     <button

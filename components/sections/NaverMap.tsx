@@ -30,6 +30,10 @@ export default function NaverMap({ lat, lng, name }: Props) {
             zoom: 17,
             scaleControl: false,
             logoControl: true,
+            // 좌하단은 전경 사진 자리라 로고를 우하단으로 보낸다
+            logoControlOptions: {
+                position: naver.maps.Position.BOTTOM_RIGHT,
+            },
             mapDataControl: false,
             zoomControl: true,
             zoomControlOptions: {

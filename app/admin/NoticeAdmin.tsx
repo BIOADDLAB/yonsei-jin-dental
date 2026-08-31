@@ -1,7 +1,6 @@
 'use client';
 
-import { useState, type ChangeEvent, type FormEvent } from 'react';
-import Image from 'next/image';
+import { useState, type FormEvent } from 'react';
 import { DndContext, closestCenter, PointerSensor, useSensor, useSensors, type DragEndEvent } from '@dnd-kit/core';
 import { SortableContext, useSortable, verticalListSortingStrategy, arrayMove } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
@@ -36,7 +35,6 @@ export default function NoticeAdmin() {
     const [form, setForm] = useState<NoticeInput>(EMPTY);
     const [preview, setPreview] = useState<Notice | null>(null);
     const [busy, setBusy] = useState(false);
-    const [uploading, setUploading] = useState(false);
     const [message, setMessage] = useState('');
 
     const reset = () => {
@@ -53,22 +51,6 @@ export default function NoticeAdmin() {
             content: notice.content,
         });
         window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
-
-    const pickImage = async (event: ChangeEvent<HTMLInputElement>) => {
-        const file = event.target.files?.[0];
-        if (!file) return;
-        setUploading(true);
-        setMessage('');
-        try {
-            const imageUrl = await uploadNoticeImage(file);
-            setForm((prev) => ({ ...prev, imageUrl }));
-        } catch {
-            setMessage('이미지 업로드에 실패했습니다.');
-        } finally {
-            setUploading(false);
-            event.target.value = '';
-        }
     };
 
     const submit = async (event: FormEvent<HTMLFormElement>) => {
@@ -186,50 +168,14 @@ export default function NoticeAdmin() {
 
                     <div className="grid min-w-0 gap-2 text-caption font-bold text-primary">
                         <span>
-                            대표 이미지 <span className="font-medium text-basic/50">(선택 · 1장)</span>
-                        </span>
-                        <div className="flex min-w-0 max-w-full flex-wrap items-center gap-3">
-                            <input
-                                type="file"
-                                accept="image/*"
-                                onChange={pickImage}
-                                disabled={uploading || busy}
-                                className="max-w-full text-caption disabled:opacity-50"
-                            />
-                            {uploading && (
-                                <span className="inline-flex items-center gap-2 text-caption font-medium text-primary">
-                                    <Spinner className="h-4 w-4" />
-                                    업로드 중…
-                                </span>
-                            )}
-                            {form.imageUrl && !uploading && (
-                                <div className="flex items-center gap-3">
-                                    <Image
-                                        src={form.imageUrl}
-                                        alt="대표 이미지 미리보기"
-                                        width={72}
-                                        height={72}
-                                        unoptimized
-                                        className="h-[72px] w-[72px] rounded-xl object-cover"
-                                    />
-                                    <button
-                                        type="button"
-                                        onClick={() => setForm({ ...form, imageUrl: '' })}
-                                        className={`${ACTION_BTN} text-basic/70 hover:border-primary hover:text-primary`}
-                                    >
-                                        이미지 삭제
-                                    </button>
-                                </div>
-                            )}
-                        </div>
-                    </div>
-
-                    <div className="grid min-w-0 gap-2 text-caption font-bold text-primary">
-                        <span>
                             내용 <span className="text-red-600">*</span>
                         </span>
                         <div className="min-w-0 max-w-full">
-                            <RichTextEditor value={form.content} onChange={(v) => setForm({ ...form, content: v })} />
+                            <RichTextEditor
+                                value={form.content}
+                                onChange={(v) => setForm({ ...form, content: v })}
+                                onUploadImage={uploadNoticeImage}
+                            />
                         </div>
                     </div>
 
@@ -238,7 +184,7 @@ export default function NoticeAdmin() {
                     <div className="flex flex-wrap gap-2">
                         <button
                             type="submit"
-                            disabled={busy || uploading}
+                            disabled={busy}
                             className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-caption font-bold text-white transition hover:bg-primary/90 active:scale-[0.98] disabled:opacity-50"
                         >
                             {busy && <Spinner className="h-4 w-4 text-white" />}

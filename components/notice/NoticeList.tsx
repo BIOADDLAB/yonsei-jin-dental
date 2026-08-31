@@ -17,7 +17,7 @@ type Props = {
     renderActions?: (notice: Notice) => React.ReactNode;
 };
 
-/** 공지 목록. 시안 기준 PC 카드 870x82, 간격 20. 선택한 항목이 primary */
+/** 공지 목록. 시안 기준 PC 카드 870x82, 간격 20. 모서리만 약간 둥근 사각. 선택한 항목이 primary */
 export default function NoticeList({
     notices,
     loading,
@@ -46,7 +46,7 @@ export default function NoticeList({
                             onClick={() => onSelect(notice)}
                             aria-label={`${notice.title} 자세히 보기`}
                             aria-current={on ? 'true' : undefined}
-                            className={`group flex min-w-0 flex-1 items-center gap-3 rounded-[28px] px-4 py-3.5 text-left transition md:h-[82px] md:gap-3.5 md:rounded-full md:py-0 md:pr-[39px] md:pl-[43px] ${
+                            className={`group flex min-w-0 flex-1 items-center gap-3 rounded-[14px] px-4 py-3.5 text-left transition md:h-[82px] md:gap-3.5 md:rounded-[16px] md:py-0 md:pr-[39px] md:pl-[43px] ${
                                 on ? 'bg-primary hover:bg-primary/90' : 'bg-white hover:bg-accent-soft'
                             } active:scale-[0.995]`}
                         >
@@ -96,7 +96,7 @@ function NoticeListSkeleton() {
             {Array.from({ length: 5 }).map((_, i) => (
                 <li key={i}>
                     <div
-                        className={`flex items-center gap-3 rounded-[28px] px-4 py-3.5 md:h-[82px] md:rounded-full md:px-[43px] ${
+                        className={`flex items-center gap-3 rounded-[14px] px-4 py-3.5 md:h-[82px] md:rounded-[16px] md:px-[43px] ${
                             i === 0 ? 'bg-primary/10' : 'bg-white'
                         }`}
                     >

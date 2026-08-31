@@ -61,7 +61,12 @@ const CIRCLE =
 const EXPERTISE_CIRCLE =
     'relative mx-auto aspect-square w-[min(280px,74vw)] shrink-0 overflow-hidden rounded-full border-[6px] border-primary bg-neutral-300 md:w-[320px] lg:mx-0 lg:w-[418px]';
 const CHECK_ICON =
-    'mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-center text-caption text-white lg:bg-white lg:text-primary';
+    'mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-center text-caption text-white lg:mt-1.5 lg:bg-white lg:text-primary';
+/* 약속 카드(자연치아 보존원칙 · 철저한 위생관리) 시안 기준 타이포.
+   globals.css 의 .text-subheading 은 레이어 밖이라 lg:text-[34px] 를 이긴다. 섞지 말고 px 로만 준다 */
+const PROMISE_TITLE = 'text-[22px] md:text-[28px] lg:text-[34px]';
+const PROMISE_HEAD = 'block leading-[1.5] lg:text-[22px] lg:text-[#BCE2FE]';
+const PROMISE_BODY = 'lg:text-[20px] lg:leading-[35px] lg:text-[#EDEDED]';
 const SHOT_SIZE = {
     wide: 'w-full lg:w-[502px]',
     narrow: 'w-[84px] md:w-[168px]',
@@ -338,7 +343,7 @@ function Panel({ tab }: { tab: (typeof CORE_TABS)[number] }) {
 
                         <div className={CARD_BODY}>
                             <div className="flex w-full items-center justify-between gap-3 md:gap-4">
-                                <div className="relative h-[40px] min-w-0 flex-1">
+                                <div className="relative h-[40px] min-w-0 flex-1 lg:h-[48px]">
                                     <AnimatePresence mode="wait" initial={false} custom={a.dir}>
                                         <motion.h4
                                             key={a.index}
@@ -347,7 +352,9 @@ function Panel({ tab }: { tab: (typeof CORE_TABS)[number] }) {
                                             initial="enter"
                                             animate="center"
                                             exit="exit"
-                                            className="absolute inset-y-0 left-0 flex items-center pr-2 text-subheading font-extrabold text-primary lg:text-white"
+                                            className={`absolute inset-y-0 left-0 flex items-center pr-2 font-extrabold text-primary lg:text-white ${
+                                                slide.no != null ? PROMISE_TITLE : 'text-subheading'
+                                            }`}
                                         >
                                             {slide.title}
                                             {slide.no != null && (
@@ -356,7 +363,7 @@ function Panel({ tab }: { tab: (typeof CORE_TABS)[number] }) {
                                                     initial={reduced ? false : { opacity: 0, y: -8 }}
                                                     animate={{ opacity: 1, y: 0 }}
                                                     transition={{ duration: 0.35, ease: EASE, delay: 0.1 }}
-                                                    className="absolute -top-5 -right-6 text-[40px] font-medium text-primary/20 md:-top-6 md:-right-8 md:text-[50px] lg:text-white/30"
+                                                    className="absolute -top-5 -right-6 text-[40px] font-medium text-primary/20 md:-top-6 md:-right-8 md:text-[50px] lg:-top-5 lg:-right-10 lg:text-[56px] lg:text-white/30"
                                                 >
                                                     {slide.no}
                                                 </motion.span>
@@ -397,13 +404,15 @@ function Panel({ tab }: { tab: (typeof CORE_TABS)[number] }) {
                                         )}
 
                                         {slide.head && (
-                                            <div className="mt-6 flex items-start gap-2.5 text-body font-medium text-primary md:mt-[60px] md:gap-3.5 lg:text-white">
+                                            <div className="mt-6 flex items-start gap-2.5 text-body font-medium text-primary md:mt-[60px] md:gap-3.5 lg:gap-2.5 lg:text-white">
                                                 <span aria-hidden="true" className={CHECK_ICON}>
                                                     ✓
                                                 </span>
                                                 <div className="min-w-0">
-                                                    <strong>{slide.head}</strong>
-                                                    <p className="text-wrap-design mt-4 whitespace-pre-line leading-[28px] md:mt-[30px] md:leading-[34px]">
+                                                    <strong className={PROMISE_HEAD}>{slide.head}</strong>
+                                                    <p
+                                                        className={`text-wrap-design mt-4 whitespace-pre-line leading-[28px] md:mt-[30px] md:leading-[34px] ${PROMISE_BODY}`}
+                                                    >
                                                         {slide.body}
                                                     </p>
                                                 </div>

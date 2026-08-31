@@ -72,8 +72,11 @@ export default function Philosophy() {
                                 </span>
 
                                 {slide.lead && <p className="text-body font-medium text-primary">{slide.lead}</p>}
+                                {/* 시안 기준 PC 24px */}
                                 <p
-                                    className={`text-lead font-extrabold text-primary ${slide.lead ? 'mt-1.5 md:mt-3' : ''}`}
+                                    className={`text-[20px] leading-[1.4] font-extrabold text-primary md:text-[24px] ${
+                                        slide.lead ? 'mt-1.5 md:mt-3' : ''
+                                    }`}
                                 >
                                     {slide.title}
                                 </p>

@@ -15,7 +15,8 @@ export const CLINIC = {
         { day: '토 요 일', time: '9:00 ~ 12:30' },
     ],
     lunch: { day: '점 심 시 간', time: '12:30 ~ 14:00' },
-    notes: ['목요일 휴진', '진료종료 1시간 전 접수마감 / 예약진료'],
+    closedDay: '목요일 휴진',
+    notes: ['진료종료 1시간 전 접수마감 / 예약진료'],
     parking: '주차 가능',
 };
 
@@ -43,8 +44,8 @@ export const PHILOSOPHY = {
         '여주에서 14년, 한 가지 마음으로 진료해 왔습니다.',
         '치아 때문에, 비용 때문에, 두려움 때문에\n치료를 미루는 분이 없기를 바라는 마음입니다.',
     ],
-    image: '/images/img-tour-01.jpg',
-    alt: '연세진치과 상담실과 진료 준비 공간',
+    image: '/images/img-ph.jpg',
+    alt: '연세진치과 진료실에서 환자에게 파노라마 영상을 설명하는 모습',
     slides: [
         {
             lead: '',
@@ -83,20 +84,21 @@ export const SPECIAL_CARE: { eyebrow: string; title: string; items: SpecialCareI
             title: ['환자분의 치아를 먼저 생각합니다'],
             highlight: '가장 좋은 치아는 원래 갖고 있는\n환자분의 치아입니다.',
             body: [
-                {
-                    text: '뺄 수 있는 치아라도 살릴 방법이 있다면, 신경치료를\n비롯해 할 수 있는 모든 방법을 먼저 찾습니다.\n발치와 임플란트는 언제나 마지막 선택입니다.',
-                },
+                { text: '뺄 수 있는 치아라도 살릴 방법이 있다면,\n신경치료를 비롯해 ' },
+                { text: '할 수 있는 모든 방법을 먼저 찾습니다.', strong: true },
+                { text: '\n발치와 임플란트는 언제나 마지막 선택입니다.' },
             ],
-            image: '/images/img-doc-01.jpg',
-            alt: '연세진치과 대표원장',
-            imagePosition: '50% 15%',
+            image: '/images/img-sc-01.jpg',
+            alt: '연세진치과 원장이 모형으로 칫솔질을 설명하는 모습',
+            imagePosition: '50% 50%',
         },
         {
             no: '02',
             tone: 'dark',
             title: ['대학병원급 디지털 첨단 장비로 정밀하게,', '여주 유일 풀아치까지!'],
+            highlight: '손끝의 감에만 의존하지 않습니다.',
             body: [
-                { text: '손끝의 감에만 의존하지 않습니다. 수술 전 3D 디지털\n진단과 설계를 바탕으로, ' },
+                { text: '수술 전 3D 디지털 진단과 설계를 바탕으로,\n' },
                 { text: '계획된 위치에 정확하게 치료합니다.', strong: true },
                 { text: '\n잇몸 절개를 최소화하는 디오나비 네비게이션 임플란트,\n그리고 ' },
                 {
@@ -112,33 +114,32 @@ export const SPECIAL_CARE: { eyebrow: string; title: string; items: SpecialCareI
             no: '03',
             tone: 'dark',
             title: ['덜 아픈 치료를 지향합니다'],
+            highlight: '아픔을 오래 겪어본 사람은,\n아픈 것을 참는 일이 얼마나 고단한지 압니다.',
             body: [
-                {
-                    text: '아픔을 오래 겪어본 사람은, 아픈 것을 참는 일이 얼마나\n고단한지 압니다. "이 정도는 참으세요"라는 말이 환자분께 얼마나\n무거운지 알기에, ',
-                },
-                { text: '연세진치과는 통증과 두려움을 더는 일을\n늘 먼저 생각합니다.', strong: true },
-                { text: ' 절개를 줄이고 회복을 앞당기는 방법으로,\n치과에 대한 두려움까지 덜어드립니다.' },
+                { text: '"이 정도는 참으세요"라는 말이 환자분께\n얼마나 무거운지 알기에, ' },
+                { text: '연세진치과는 통증과 두려움을\n더는 일을 늘 먼저 생각합니다.', strong: true },
+                { text: ' 절개를 줄이고 회복을\n앞당기는 방법으로, 치과에 대한 두려움까지 덜어드립니다.' },
             ],
-            image: '/images/img-ex-02.jpg',
-            alt: '통증을 줄인 치과 진료',
+            image: '/images/img-sc-03.jpg',
+            alt: '연세진치과 원장이 외과 진료를 진행하는 모습',
             imagePosition: '50% 50%',
         },
         {
             no: '04',
             tone: 'light',
             title: ['끝까지 책임지는 진료'],
+            highlight: '좋은 치료는 환자분의 이야기를\n끝까지 듣는데서 시작한다고 믿습니다.',
             body: [
-                { text: '좋은 치료는 환자분의 이야기를 끝까지 듣는 데서 시작한다고\n믿습니다. ' },
                 {
-                    text: '어디가 어떻게 불편하신지 충분히 듣고, 무엇을\n치료할지는 언제나 환자분 자신이 결정하실 수 있도록 있는\n그대로 설명드립니다.',
+                    text: '어디가 어떻게 불편하신지 충분히 듣고, 무엇을 치료할지는\n언제나 환자분 자신이 결정하실 수 있도록 있는 그대로\n설명드립니다.',
                     strong: true,
                 },
                 {
-                    text: ' 치료가 끝나는 순간까지, 그리고 그\n이후로도 환자분의 구강 건강을 곁에서 책임지고 살펴드립니다.',
+                    text: ' 치료가 끝나는 순간까지, 그리고 그 이후로도\n환자분의 구강 건강을 곁에서 책임지고 살펴드립니다.',
                 },
             ],
-            image: '/images/img-tour-01.jpg',
-            alt: '연세진치과 상담 공간',
+            image: '/images/img-sc-04.jpg',
+            alt: '연세진치과 원장이 환자에게 임플란트 계획을 설명하는 모습',
             imagePosition: '50% 50%',
         },
     ],
@@ -154,7 +155,7 @@ export const SIGNATURE_CARE = [
 export const DOCTOR = {
     name: '조진세',
     role: '대표원장',
-    image: '/images/img-doc.png',
+    image: '/images/img-doc.jpg',
     groups: [
         {
             label: '학력',
@@ -190,10 +191,10 @@ export const RESEARCH = {
     desc: '연세진치과는 더 안전하고 정확한 치료를\n위해 끊임없이 연구하고 노력합니다.',
     tabs: [
         {
-            // #TODO: 원내학술활동의 활동사진은 추후에 받기로 함
+            id: 'in-house',
             label: '원내 학술 활동',
             title: '함께 보는 진료',
-            image: '/images/img-card-03.jpg',
+            image: '/images/img-card-00.jpg',
             alt: '연세진치과 의료진이 수술 환자 브리핑을 진행하는 모습',
             tagEn: 'Clinical Study',
             items: [
@@ -202,6 +203,7 @@ export const RESEARCH = {
             ],
         },
         {
+            id: 'conference',
             label: '대외 학술대회',
             title: '끊임없는 연구와 교류',
             image: '/images/img-card-01.jpg',
@@ -213,6 +215,7 @@ export const RESEARCH = {
             ],
         },
         {
+            id: 'ortho-research',
             label: '교정 연구 및 교육',
             title: '교정 연구 및 교육',
             image: '/images/img-card-02.jpg',
@@ -225,6 +228,7 @@ export const RESEARCH = {
             ],
         },
         {
+            id: 'global-training',
             label: '글로벌 교정 연수',
             title: '해외 교정 연수',
             image: '/images/img-card-03.jpg',
@@ -234,6 +238,22 @@ export const RESEARCH = {
         },
     ],
 };
+
+/** 학술·연구 4개 버튼 = 공지사항 섹션의 학술활동 카테고리. 관리자에서 이 id 로 글을 저장한다 */
+export const ACADEMIC_CATEGORIES = RESEARCH.tabs.map(({ id, label }) => ({ id, label }));
+
+/** 한 페이지 사이트라 별도 주소가 없다. 팝업 링크는 이 섹션 앵커를 쓴다 */
+export const SECTION_ANCHORS = [
+    { href: '#philosophy', label: '병원철학' },
+    { href: '#special', label: '특별함' },
+    { href: '#signature', label: '특화진료' },
+    { href: '#doctor', label: '의료진소개' },
+    { href: '#research', label: '학술·연구' },
+    { href: '#core', label: '진료안내' },
+    { href: '#faq', label: '자주 묻는 질문' },
+    { href: '#notice', label: '공지사항' },
+    { href: '#contact', label: '오시는 길' },
+];
 
 /* 핵심역량 5개 탭.
    slides  = 네이비 카드 페이저 (권해드립니다 / 비교 / 진행과정 / 약속)
@@ -491,7 +511,7 @@ export const CORE_TABS: CoreTab[] = [
         ],
         slides: [
             {
-                image: '/images/img-who-07.jpg',
+                image: '/images/img-t4-01.jpg',
                 alt: '연세진치과 자연치아 보존 진료를 준비하는 의료진',
                 title: '연세진치과의 약속',
                 no: 1,
@@ -499,7 +519,7 @@ export const CORE_TABS: CoreTab[] = [
                 body: '신경까지 손상된 치아라도 곧바로 빼지 않고,\n신경치료(근관치료)를 통해 자연치아를 최대한\n보존하는 것을 우선합니다.\n\n발치와 임플란트는 다른 방법으로 치아를 살리기\n어려울 때 선택하는 마지막 단계입니다.',
             },
             {
-                image: '/images/img-who-08.jpg',
+                image: '/images/img-t4-02.jpg',
                 alt: '재신경치료를 검토하는 연세진치과 의료진',
                 title: '연세진치과의 약속',
                 no: 2,
@@ -507,7 +527,7 @@ export const CORE_TABS: CoreTab[] = [
                 body: '한 번 신경치료를 받은 치아에 다시\n문제가 생겨도 바로 발치를 권하지 않습니다.\n\n재신경치료는 까다로운 치료지만,\n자연치아를 지킬 가능성이 있다면\n먼저 그 방법을 고려합니다.',
             },
             {
-                image: '/images/img-who-09.jpg',
+                image: '/images/img-t4-03.jpg',
                 alt: '발치 여부를 신중히 판단하는 연세진치과 진료 장면',
                 title: '연세진치과의 약속',
                 no: 3,
