@@ -7,7 +7,7 @@ export default function Hero() {
         <section className="relative h-[100dvh] min-h-[420px] w-full overflow-hidden">
             {/* 자동재생이 막히거나 영상을 못 받는 환경에서는 첫 프레임 사진이 그대로 남는다 */}
             <Image
-                src="/images/hero-sum.jpg"
+                src="/images/hero-sum-02.jpg"
                 alt="연세진치과 디지털 장비를 갖춘 진료실 전경"
                 fill
                 priority
