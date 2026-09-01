@@ -195,6 +195,7 @@ export const RESEARCH = {
             label: '원내 학술 활동',
             title: '함께 보는 진료',
             image: '/images/img-card-00.jpg',
+            imagePosition: '50% 70%',
             alt: '연세진치과 의료진이 수술 환자 브리핑을 진행하는 모습',
             tagEn: 'Clinical Study',
             items: [
@@ -207,7 +208,8 @@ export const RESEARCH = {
             label: '대외 학술대회',
             title: '끊임없는 연구와 교류',
             image: '/images/img-card-01.jpg',
-            alt: '연세진치과 원장이 대외 학술대회 강연에 참석한 모습',
+            imagePosition: '50% 50%',
+            alt: '2025년 정기학술대회 및 정기대의원 총회 참석 단체 사진',
             tagEn: 'Academic Forum',
             items: [
                 '사)한국치과교정연구회 정기학술대회 및\n대의원 총회 지속 참석 (2024~2025 등)',
@@ -219,7 +221,8 @@ export const RESEARCH = {
             label: '교정 연구 및 교육',
             title: '교정 연구 및 교육',
             image: '/images/img-card-02.jpg',
-            alt: '한국치과교정연구회 교육 과정 단체 사진',
+            imagePosition: '50% 50%',
+            alt: '교정 실습 교육에서 참가자들을 지도하는 모습',
             tagEn: 'Ortho Research',
             items: [
                 '現 (사)한국치과교정연구회 교수부원 및 강원지부 인스트럭터 활동',
@@ -232,6 +235,7 @@ export const RESEARCH = {
             label: '글로벌 교정 연수',
             title: '해외 교정 연수',
             image: '/images/img-card-03.jpg',
+            imagePosition: '50% 50%',
             alt: '미국 TWEED 교정 코스 해외 연수 단체 사진',
             tagEn: 'Global Training',
             items: ['미국 애리조나 TWEED 국제 재단 교정 코스 수료', '전문적인 교정학 연수 과정 이수'],
@@ -595,7 +599,7 @@ export const FAQ = [
             },
             {
                 q: '진행 과정이 어떻게 되나요?',
-                a: '정밀 진단 — 3D CT 촬영 및 구강 스캔으로 뼈와 신경, 잇몸 상태를 정확히 분석합니다.\n디지털 설계 — 촬영 데이터를 바탕으로 임플란트의 위치와 각도를 정밀하게 계획합니다.\n가이드 제작 — 설계대로 수술을 안내하는 맞춤 수술 가이드를 제작합니다.\n무절개 식립 — 가이드를 이용해 계획된 위치에 정확하게 임플란트를 심습니다.',
+                a: '정밀 진단 — 3D CT 촬영 및 구강 스캔으로 뼈와 신경, 잇몸 상태를 정확히 분석합니다.\n디지털 설계 — 촬영 데이터를 바탕으로 임플란트의 위치와 각도를 정밀하게 계획합니다.\n가이드 제작 — 설계대로 수술을 안내하는 맞춤 수술 가이드를 제작합니다.\n무절개 식립 — 가이드를 이용해 계획된 위치에 정확하게 임플란트를 심습니다.\n최종 보철'
             },
         ],
     },

@@ -60,6 +60,7 @@ export default function Research() {
                                     priority={active === 0}
                                     sizes="(max-width: 767px) 100vw, 52vw"
                                     className="object-cover"
+                                    style={{ objectPosition: current.imagePosition }}
                                 />
                             </div>
 
