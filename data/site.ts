@@ -345,7 +345,7 @@ export const CORE_TABS: CoreTab[] = [
                 shots: [
                     { image: '/images/img-ex-01.jpg', alt: '디오나비 디지털 임플란트 수술 계획 장비', size: 'wide' },
                     {
-                        image: '/images/img-ex-02.jpg',
+                        image: '/images/img-dio-1000-v.jpg',
                         alt: '환자 구강 스캔을 진행하는 네비게이션 임플란트 진료 장면',
                         size: 'narrow',
                     },
@@ -356,11 +356,15 @@ export const CORE_TABS: CoreTab[] = [
                 desc: '원장님은 디오나비 시술\n1000례를 달성하였습니다.\n오랜 임상 경험에서 나오는\n정확함으로 환자분의 안전한\n치료를 책임집니다.',
                 shots: [
                     {
-                        image: '/images/img-ex-02.jpg',
-                        alt: '디오나비 시술 1000례를 달성한 연세진치과 진료 장면',
+                        image: '/images/img-dio-1000.jpg',
+                        alt: '디오나비 1,000례 달성 인증패 (DIOnavi. Thousand Club, 2024.9)',
                         size: 'wide',
                     },
-                    { image: '/images/img-ex-01.jpg', alt: '디오나비 임플란트 시술을 준비하는 의료진', size: 'narrow' },
+                    {
+                        image: '/images/img-ex-01.jpg',
+                        alt: '디오나비 1,000례 달성 인증패',
+                        size: 'narrow',
+                    },
                 ],
             },
         ],
@@ -599,7 +603,7 @@ export const FAQ = [
             },
             {
                 q: '진행 과정이 어떻게 되나요?',
-                a: '정밀 진단 — 3D CT 촬영 및 구강 스캔으로 뼈와 신경, 잇몸 상태를 정확히 분석합니다.\n디지털 설계 — 촬영 데이터를 바탕으로 임플란트의 위치와 각도를 정밀하게 계획합니다.\n가이드 제작 — 설계대로 수술을 안내하는 맞춤 수술 가이드를 제작합니다.\n무절개 식립 — 가이드를 이용해 계획된 위치에 정확하게 임플란트를 심습니다.\n최종 보철'
+                a: '정밀 진단 — 3D CT 촬영 및 구강 스캔으로 뼈와 신경, 잇몸 상태를 정확히 분석합니다.\n디지털 설계 — 촬영 데이터를 바탕으로 임플란트의 위치와 각도를 정밀하게 계획합니다.\n가이드 제작 — 설계대로 수술을 안내하는 맞춤 수술 가이드를 제작합니다.\n무절개 식립 — 가이드를 이용해 계획된 위치에 정확하게 임플란트를 심습니다.\n최종 보철',
             },
         ],
     },
