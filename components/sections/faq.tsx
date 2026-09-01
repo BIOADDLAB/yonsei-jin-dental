@@ -97,7 +97,7 @@ export default function Faq() {
                                                         {item.a ? (
                                                             <>
                                                                 <span className="shrink-0 font-bold">A.</span>
-                                                                <span className="text-wrap-design min-w-0">
+                                                                <span className="min-w-0 whitespace-pre-line">
                                                                     {item.a}
                                                                 </span>
                                                             </>

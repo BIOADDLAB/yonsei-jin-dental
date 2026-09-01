@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type MouseEvent } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CLINIC, NAV } from '@/data/site';
@@ -29,6 +29,16 @@ export default function Header() {
 
     const solid = scrolled || menuOpen;
 
+    // 한 페이지 사이트라 href="/" 로는 아무 일도 일어나지 않는다. 직접 최상단으로 올린다
+    const goTop = (event: MouseEvent<HTMLAnchorElement>) => {
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+        event.preventDefault();
+        setMenuOpen(false);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        // 주소에 #notice 같은 앵커가 남아 있으면 지운다
+        if (window.location.hash) window.history.replaceState(null, '', window.location.pathname);
+    };
+
     return (
         <header
             className={`fixed inset-x-0 top-0 z-40 border-b transition-[background-color,box-shadow,border-color,backdrop-filter] duration-300 ${
@@ -40,8 +50,9 @@ export default function Header() {
             <div className="mx-auto flex h-[80px] w-full max-w-site items-center justify-between px-5 md:h-[100px] md:px-8">
                 <Link
                     href="/"
+                    onClick={goTop}
                     className={`flex items-center gap-2.5  text-white`}
-                    aria-label={`${CLINIC.name} 홈으로 이동`}
+                    aria-label={`${CLINIC.name} 홈 최상단으로 이동`}
                 >
                     <Image
                         src="/images/logo.svg"
