@@ -61,7 +61,7 @@ const CIRCLE =
 const EXPERTISE_CIRCLE =
     'relative mx-auto aspect-square w-[min(280px,74vw)] shrink-0 overflow-hidden rounded-full border-[6px] border-primary bg-neutral-300 md:w-[320px] lg:mx-0 lg:w-[418px]';
 const CHECK_ICON =
-    'mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-center text-caption text-white lg:mt-1.5 lg:bg-white lg:text-primary';
+    'mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-center text-caption text-white lg:mt-1.5 lg:bg-[#BCE2FE] lg:text-primary';
 /* 약속 카드(자연치아 보존원칙 · 철저한 위생관리) 시안 기준 타이포.
    globals.css 의 .text-subheading 은 레이어 밖이라 lg:text-[34px] 를 이긴다. 섞지 말고 px 로만 준다 */
 const PROMISE_TITLE = 'text-[22px] md:text-[28px] lg:text-[34px]';
