@@ -383,7 +383,7 @@ export const CORE_TABS: CoreTab[] = [
         expertise: {
             title: [{ text: '연세진치과', strong: true }, { text: '의 교정 전문성' }],
             body: '연세진치과 원장은 (사)한국치과교정연구회 교수부원 및\n강원지부 인스트럭터로 활동하며, 서울 TWEED 코스에서\n국내외 치과의사들의 실습을 지도하고 있습니다.\n\n교육생으로 시작해 오랜 학술 활동과 임상 경험을 쌓아왔으며,\n구강의 기능과 심미를 함께 고려한 정밀한 교정 치료를 통해\n환자에게 적합한 치료 계획을 세웁니다.',
-            image: '/images/img-doc.png',
+            image: '/images/img-doc.jpg',
             alt: '연세진치과 조진세 대표원장 교정 진료 소개',
         },
         slides: [
