@@ -38,7 +38,7 @@ export default function SignatureCare() {
                                                 className="object-cover transition-transform duration-500 group-hover:scale-105"
                                             />
                                             <span className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center bg-primary/[0.78] px-3 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
-                                                <span className="text-small font-bold">{item.title} 진료</span>
+                                                <span className="text-small font-bold">{item.title}</span>
                                                 <span className="mt-2 border-b border-white/70 pb-0.5 text-caption font-extrabold">
                                                     자세히 보기 →
                                                 </span>
