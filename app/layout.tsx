@@ -10,7 +10,6 @@ export const metadata: Metadata = {
     metadataBase: new URL(SITE_URL),
     title: { default: TITLE, template: '%s | 연세진치과' },
     description: DESCRIPTION,
-    alternates: { canonical: '/' },
     verification: {
         google: 'eT5IHm4x2p7RpqPESslqXKNv8bNAqwxVtjzhbqvQHi8',
         other: {
