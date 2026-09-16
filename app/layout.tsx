@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 
-// #TODO: 도메인 확정되면 실제 주소로 교체
-const SITE_URL = 'https://yonsei-jin-dental.vercel.app/';
+const SITE_URL = 'https://www.yonseijin.com';
 const TITLE = '연세진치과 | 여주 임플란트·치아교정 치과';
 const DESCRIPTION =
     '여주 연세진치과는 네비게이션 임플란트, 치아교정, 디지털 풀아치 진료를 제공하며 자연치아 보존과 철저한 위생관리를 원칙으로 합니다.';
@@ -12,6 +11,12 @@ export const metadata: Metadata = {
     title: { default: TITLE, template: '%s | 연세진치과' },
     description: DESCRIPTION,
     alternates: { canonical: '/' },
+    verification: {
+        google: 'eT5IHm4x2p7RpqPESslqXKNv8bNAqwxVtjzhbqvQHi8',
+        other: {
+            'naver-site-verification': '56eafac6d866dd6e1b1fd72af747198e4c808d00',
+        },
+    },
     robots: {
         index: true,
         follow: true,

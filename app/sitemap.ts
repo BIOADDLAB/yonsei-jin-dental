@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-const SITE_URL = 'https://yonsei-jin-dental.vercel.app';
+const SITE_URL = 'https://www.yonseijin.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
     return [

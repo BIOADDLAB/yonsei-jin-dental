@@ -15,7 +15,7 @@ import NoticeSection from './../components/sections/NoticeSection';
 import PopupModal from '@/components/popup/PopupModal';
 import { CLINIC, DOCTOR, FAQ, SIGNATURE_CARE } from '@/data/site';
 
-const SITE_URL = 'https://yonsei-jin-dental.vercel.app';
+const SITE_URL = 'https://www.yonseijin.com';
 
 const faqEntities = FAQ.flatMap(({ items }) =>
     items
